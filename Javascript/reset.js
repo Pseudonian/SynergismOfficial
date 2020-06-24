@@ -456,8 +456,7 @@ function reset(i,fast) {
     }
 }
 
-function resetUpgrades(i, fast) {
-    fast = fast || false
+function resetUpgrades(i) {
     if (i > 2.5) {
         var i
         for (i = 41; i < 61; i++) {
@@ -582,8 +581,6 @@ function resetUpgrades(i, fast) {
     }
     if (player.achievements[87] > 0.5) {
         player.upgrades[86] = 1
-    }
-    if (!fast){
     }
 }
 

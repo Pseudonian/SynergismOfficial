@@ -145,7 +145,6 @@ function buyAntUpgrade(i,auto) {
         if(!auto){antUpgradeDescription(i)}
         if(player.antUpgrades[12] == 1 && i == 12){revealStuff()}
     }
-    else{}
 }
 
 
