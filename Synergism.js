@@ -1994,10 +1994,14 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvents']('befo
 });
 
 function handleHotkeyPress(key) {
-  key = key.toLowerCase()
+	key = key.toLowerCase()
+	
   var type = ""
   var pos = ""
-  var num = 0
+	var num = 0
+	
+	// Producers
+	// FIXME: Omg it's so repetitive
   if (key === "1") {
     pos = "first";
     num += 1;
@@ -2048,15 +2052,6 @@ function handleHotkeyPress(key) {
       redeemshards(5)
     }
   }
-  if (key === "6") buyCrystalUpgrades(1)
-  if (key === "7") buyCrystalUpgrades(2)
-  if (key === "8") buyCrystalUpgrades(3)
-  if (key === "9") {
-    buyCrystalUpgrades(4)
-  }
-  if (key === "0") {
-    buyCrystalUpgrades(5)
-  }
   if (currentTab == "buildings") {
     type = "Coin"
   }
@@ -2073,7 +2068,21 @@ function handleHotkeyPress(key) {
   }
   if ((key === "1" || key === "2" || key === "3" || key === "4" || key === "5") && player.currentTab !== "reincarnation") {
     buyProducer(pos, type, num)
+	}
+	
+
+	// Crystal upgrades
+	if (key === "6") buyCrystalUpgrades(1)
+  if (key === "7") buyCrystalUpgrades(2)
+  if (key === "8") buyCrystalUpgrades(3)
+  if (key === "9") {
+    buyCrystalUpgrades(4)
   }
+  if (key === "0") {
+    buyCrystalUpgrades(5)
+  }
+
+	// Accel and Mult
   if (key === "a" && currentTab == "buildings") {
     buyAccelerator()
   }
@@ -2082,7 +2091,9 @@ function handleHotkeyPress(key) {
   }
   if (key === "m" && currentTab == "buildings") {
     buyMultiplier()
-  }
+	}
+	
+	// Resets
   if (key === "p") {
     resetCheck('prestige')
   }
