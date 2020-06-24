@@ -1718,7 +1718,7 @@ button:focus {
   background-color: black
 }
 
-#autoprestige {
+.autoreset {
   position: absolute;
   top: 420px;
   padding: 0;
@@ -1729,7 +1729,7 @@ button:focus {
   color: white
 }
 
-#prestigehotkeys, #transcendhotkeys, #reincarnatehotkeys {
+.layerhotkeys {
   position: absolute;
   padding: 5px;
   top: 460px;
@@ -2886,17 +2886,6 @@ button:focus {
   background-color: black
 }
 
-#autotranscend {
-  position: absolute;
-  top: 420px;
-  padding: 0;
-  left: 50%;
-  width: 750px;
-  margin-left: -375px;
-  text-align: center;
-  color: white
-}
-
 #toggle21 {
   position: absolute;
   width: 150px;
@@ -3226,17 +3215,6 @@ button:focus {
   top: 394px;
   left: 50%;
   margin-left: -75px;
-}
-
-#autoreincarnate {
-  position: absolute;
-  top: 420px;
-  padding: 0;
-  left: 50%;
-  width: 750px;
-  margin-left: -375px;
-  text-align: center;
-  color: white
 }
 
 #reincarnationamount {

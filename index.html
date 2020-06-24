@@ -689,7 +689,7 @@
       <div id="prestigeautomation">
         <button id="prestigeautotoggle" onclick="toggleautoreset(1)" style="border:2px solid green; background-color: #171717;"></button>
         <input class="transcendunlock" type="number" id="prestigeamount" min="1" max="999999999" defaultValue="1" oninput="updateAutoReset(1)" onclick="toggleFocus(1)"></input>
-        <p class="transcendunlock" id="autoprestige"></p>
+        <p class="transcendunlock autoreset" id="autoprestige"></p>
       </div>
     </div>
     <div id="prestigeinfo">
@@ -724,7 +724,7 @@
       <p id="crystalupgradedescription" style="color: white; text-align: center;">Hover over a crystal upgrade to get information!</p>
       <p id="crystalupgradeslevel" style="color: white; text-align: center;">Level: ---</p>
       <p id="crystalupgradescost" style="color: white; text-align: center;">Cost: --- crystals</p>
-      <p id="prestigehotkeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer. Press [6], [7], [8], [9] or [0] to buy the corresponding Crystal upgrade starting on the left.</p>
+      <p class="layerhotkeys" id="prestigehotkeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer. Press [6], [7], [8], [9] or [0] to buy the corresponding Crystal upgrade starting on the left.</p>
     </div>
 
   </div>
@@ -1040,9 +1040,9 @@
     <div id="transcendautomation">
       <button id="transcendautotoggle" onclick="toggleautoreset(2)" style="border:2px solid green; background-color: #171717;"></button>
       <input class="transcendunlock" type="number" id="transcendamount" min="1" max="999999999" defaultValue="1" oninput="updateAutoReset(2)" onclick="toggleFocus(2)">
-      <p class="transcendunlock" id="autotranscend"></p>
+      <p class="transcendunlock autoreset" id="autotranscend"></p>
     </div>
-    <p id="transcendhotkeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer.</p>
+    <p class="layerhotkeys" id="transcendhotkeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer.</p>
   </div>
 
 
@@ -1135,9 +1135,9 @@
     <div id="reincarnateautomation">
       <button id="reincarnateautotoggle" onclick="toggleautoreset(3)" style="border:2px solid green; background-color: #171717;"></button>
       <input class="reincarnationunlock" type="number" id="reincarnationamount" min="1" max="999999999" defaultValue="1" oninput="updateAutoReset(3)" onclick="toggleFocus(3)">
-      <p class="reincarnationunlock" id="autoreincarnate"></p>
+      <p class="reincarnationunlock autoreset" id="autoreincarnate"></p>
     </div>
-    <p id="reincarnatehotkeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer.</p>
+    <p class="layerhotkeys" id="reincarnatehotkeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer.</p>
   </div>
 
   <div id="research">
