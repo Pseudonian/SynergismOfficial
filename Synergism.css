@@ -338,7 +338,7 @@ button:focus {
   top: 194.5px;
 }
 
-#togglecoinbuy {
+.togglebuy {
   color: white;
   position: absolute;
   font-size: 11px;
@@ -1496,16 +1496,6 @@ button:focus {
   top: 20px;
 }
 
-#togglecrystalbuy {
-  color: white;
-  position: absolute;
-  font-size: 11px;
-  width: 220px;
-  left: 80%;
-  top: 30px;
-  margin-left: -87px;
-}
-
 #toggleofferingbuy {
   color: white;
   position: absolute;
@@ -1524,26 +1514,6 @@ button:focus {
   left: 80%;
   top: 30px;
   margin-left: -118.5px;
-}
-
-#togglemythosbuy {
-  color: white;
-  position: absolute;
-  font-size: 11px;
-  width: 220px;
-  left: 80%;
-  top: 30px;
-  margin-left: -87px;
-}
-
-#toggleparticlebuy {
-  color: white;
-  position: absolute;
-  font-size: 11px;
-  width: 220px;
-  left: 80%;
-  top: 30px;
-  margin-left: -87px;
 }
 
 #prestigeshardinfo {
