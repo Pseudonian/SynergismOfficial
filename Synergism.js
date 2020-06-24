@@ -242,18 +242,6 @@ const player = {
 				  ten: 0
 			  },
 			  
-			  highestchallengecompletions: {
-				  one: 0,
-				  two: 0,
-				  three: 0,
-				  four: 0,
-				  five: 0,
-				  six: 0,
-				  seven: 0,
-				  eight: 0,
-				  nine: 0,
-				  ten: 0
-			  },
 			  retrychallenges: false,
 			   currentChallenge: "",
 			   currentChallengeRein: "",
@@ -465,6 +453,8 @@ const player = {
 			  exporttest: "YES!",
 			  kongregatetest: "NO!"
 }
+
+player.highestchallengecompletions = Object.assign({}, player.challengecompletions)
 
 Object.defineProperty(player, 'version', {
    configurable: false,
@@ -836,19 +826,8 @@ function loadSynergy() {
 		player.resettoggle3 = 1;
 	}
 	if (player.reincarnationCount < 0.5 && player.unlocks.rrow4 == true) {
-		player.unlocks = {
-			coinone: false,
-			cointwo: false,
-			cointhree: false,
-			coinfour: false,
-			prestige: false,
-			generation: false,
-			transcend: false,
-			reincarnate: false,
-			rrow1: false,
-			rrow2: false,
-			rrow3: false,
-			rrow4: false
+		for (let key in player.unlocks) {
+			player.unlocks[key] = false
 		}
 	}
 	if (player.achievements[176] === undefined || data.achievements[176] === undefined){
@@ -1792,7 +1771,7 @@ function updateAll() {
 		autobuyBuildingTab()
 		autobuyCrystalUpgrades()
 		autobuyCrystalProducers()
-		
+
 //Autobuy "Transcension" Tab
 
 		if (player.toggles.sixteen == true && player.upgrades[94] == 1 && player.transcendPoints.greaterThanOrEqualTo(player.firstCostMythos)) {buyMax('first','Mythos',1,1)}
