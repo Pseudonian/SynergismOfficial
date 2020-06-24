@@ -43,7 +43,7 @@ select,
 textarea {
   font-size: 12px;
   padding: 0.05em;
-  margin: 0 0 0.0em;
+  margin: 0 0 0;
   box-sizing: border-box;
   border: 0 solid #ccc;
 }
@@ -1835,7 +1835,7 @@ button:focus {
   color: white
 }
 
-#prestigehotkeys {
+#prestigehotkeys, #transcendhotkeys, #reincarnatehotkeys {
   position: absolute;
   padding: 5px;
   top: 460px;
@@ -3083,18 +3083,6 @@ button:focus {
   color: pink;
 }
 
-#transcendhotkeys {
-  position: absolute;
-  padding: 5px;
-  top: 460px;
-  left: 50%;
-  width: 1200px;
-  margin-left: -600px;
-  height: 20px;
-  color: gray;
-  text-align: center;
-}
-
 #challenges {
   position: relative;
   padding: 0;
@@ -3491,18 +3479,6 @@ button:focus {
 
 #reincarnationinfo {
   color: lime;
-}
-
-#reincarnatehotkeys {
-  position: absolute;
-  padding: 5px;
-  top: 460px;
-  left: 50%;
-  width: 1200px;
-  margin-left: -600px;
-  height: 20px;
-  color: gray;
-  text-align: center;
 }
 
 #research {
