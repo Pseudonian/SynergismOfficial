@@ -174,19 +174,19 @@
 
     <div id="buildingtext">
       <p id=buildtext1 style="color: gold">Workers: 321495 [+1.49e+391945]</p>
-      <button id="buycoin1" onclick="buyProducer('first', 'Coin', 1)" style="background-color: #070707;">Cost: 100 Coins.</button>
+      <button class="buybutton" id="buycoin1" onclick="buyProducer('first', 'Coin', 1)" style="top: 42px;">Cost: 100 Coins.</button>
       <p id="buildtext2" style="color: gold">100 Coins/second [100%]</p>
       <p class="coinunlock1" id="buildtext3" style="color: gold">Investments: 0 [+0]</p>
-      <button class="coinunlock1" id="buycoin2" onclick="buyProducer('second','Coin', 2)" style="background-color: #070707;">Cost: 2e3 Coins.</button>
+      <button class="coinunlock1 buybutton" id="buycoin2" onclick="buyProducer('second','Coin', 2)" style="top: 97px;">Cost: 2e3 Coins.</button>
       <p class="coinunlock1" id="buildtext4" style="color: gold">0 Coins/second [0%]</p>
       <p class="coinunlock2" id="buildtext5" style="color: gold">Printers: 0 [+0]</p>
-      <button class="coinunlock2" id="buycoin3" onclick="buyProducer('third', 'Coin', 3)" style="background-color: #070707;">Cost: 4e4 Coins.</button>
+      <button class="coinunlock2 buybutton" id="buycoin3" onclick="buyProducer('third', 'Coin', 3)" style="top: 152px;">Cost: 4e4 Coins.</button>
       <p class="coinunlock2" id="buildtext6" style="color: gold">0 Coins/second [0%]</p>
       <p class="coinunlock3" id="buildtext7" style="color: gold">Coin Mints: 0 [+0]</p>
-      <button class="coinunlock3" id="buycoin4" onclick="buyProducer('fourth', 'Coin', 4)" style="background-color: #070707;">Cost: 8e5 Coins.</button>
+      <button class="coinunlock3 buybutton" id="buycoin4" onclick="buyProducer('fourth', 'Coin', 4)" style="top: 207px;">Cost: 8e5 Coins.</button>
       <p class="coinunlock3" id="buildtext8" style="color: gold">0 Coins/second [0%]</p>
       <p class="coinunlock4" id="buildtext9" style="color: gold">Alchemies: 0 [+0]</p>
-      <button class="coinunlock4" id="buycoin5" onclick="buyProducer('fifth', 'Coin', 5)" style="background-color: #070707;">Cost: 1.6e7 Coins.</button>
+      <button class="coinunlock4 buybutton" id="buycoin5" onclick="buyProducer('fifth', 'Coin', 5)" style="top: 262px;">Cost: 1.6e7 Coins.</button>
       <p class="coinunlock4" id="buildtext10" style="color: gold">0 Coins/second [0%]</p>
       <p class="coinunlock1" id="buildtext11" style="color: yellow">Accelerators: 0 [+0]</p>
       <button class="coinunlock1" id="buyaccelerator" onclick="buyAccelerator()" style="background-color: #070707;">Cost: 500 Coins.</button>
@@ -698,11 +698,11 @@
       <p id="prestigetext5">Coal Rigs: 0 [+0]</p>
       <p id="prestigetext7">Diamond Pickaxes: 0 [+0]</p>
       <p id="prestigetext9">Pandora's Box: 0 [+0]</p>
-      <button id="buydiamond1" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('first', 'Diamonds', 1)">434342</button>
-      <button id="buydiamond2" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('second', 'Diamonds', 3)">532523</button>
-      <button id="buydiamond3" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('third', 'Diamonds', 6)">5454546</button>
-      <button id="buydiamond4" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('fourth', 'Diamonds', 10)">646346</button>
-      <button id="buydiamond5" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('fifth', 'Diamonds', 15)">3464363</button>
+      <button class="buybutton" id="buydiamond1" style="top: 97px;" onclick="buyProducer('first', 'Diamonds', 1)"></button>
+      <button class="buybutton" id="buydiamond2" style="top: 152px;" onclick="buyProducer('second', 'Diamonds', 3)"></button>
+      <button class="buybutton" id="buydiamond3" style="top: 207px;" onclick="buyProducer('third', 'Diamonds', 6)"></button>
+      <button class="buybutton" id="buydiamond4" style="top: 262px;" onclick="buyProducer('fourth', 'Diamonds', 10)"></button>
+      <button class="buybutton" id="buydiamond5" style="top: 317px;" onclick="buyProducer('fifth', 'Diamonds', 15)"></button>
 
       <p id="prestigetext2">100 Shards/sec</p>
       <p id="prestigetext4">100 Augments/sec</p>
@@ -1025,11 +1025,11 @@
       <p id="transcendtext3">Wizards: 0 [+0]</p>
       <p id="transcendtext4">Oracles: 0 [+0]</p>
       <p id="transcendtext5">Grandmasters: 0 [+0]</p>
-      <button id="buymythos1" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('first','Mythos',1)"></button>
-      <button id="buymythos2" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('second','Mythos',3)"></button>
-      <button id="buymythos3" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('third','Mythos',6)"></button>
-      <button id="buymythos4" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('fourth','Mythos',10)"></button>
-      <button id="buymythos5" style="border: 1px solid white; border-radius: 8px;" onclick="buyProducer('fifth','Mythos', 15)"></button>
+      <button class="buybutton" id="buymythos1" style="top: 97px;" onclick="buyProducer('first','Mythos',1)"></button>
+      <button class="buybutton" id="buymythos2" style="top: 152px;" onclick="buyProducer('second','Mythos',3)"></button>
+      <button class="buybutton" id="buymythos3" style="top: 207px;" onclick="buyProducer('third','Mythos',6)"></button>
+      <button class="buybutton" id="buymythos4" style="top: 262px;" onclick="buyProducer('fourth','Mythos',10)"></button>
+      <button class="buybutton" id="buymythos5" style="top: 317px;" onclick="buyProducer('fifth','Mythos', 15)"></button>
 
       <p id="transcendtext6">100 Shards/sec</p>
       <p id="transcendtext7">100 Augments/sec</p>
@@ -1115,11 +1115,11 @@
       <p id="reincarnationtext5">Pulsars: 0 [+0]</p>
       <p id="reincarnationtext7">Black Holes: 0 [+0]</p>
       <p id="reincarnationtext9">Quasars: 0 [+0]</p>
-      <button id="buyparticles1" style="border: 1px solid white; border-radius: 8px;" onclick="buyParticleBuilding('first')">Cost: 1 Particles</button>
-      <button id="buyparticles2" style="border: 1px solid white; border-radius: 8px;" onclick="buyParticleBuilding('second')">Cost: 100 Particles</button>
-      <button id="buyparticles3" style="border: 1px solid white; border-radius: 8px;" onclick="buyParticleBuilding('third')">Cost: 1e+4 Particles</button>
-      <button id="buyparticles4" style="border: 1px solid white; border-radius: 8px;" onclick="buyParticleBuilding('fourth')">Cost: 1e+8 Particles</button>
-      <button id="buyparticles5" style="border: 1px solid white; border-radius: 8px;" onclick="buyParticleBuilding('fifth')">Cost: 1e+16 Particles</button>
+      <button class="buybutton" id="buyparticles1" style="top: 97px;" onclick="buyParticleBuilding('first')">Cost: 1 Particles</button>
+      <button class="buybutton" id="buyparticles2" style="top: 152px;" onclick="buyParticleBuilding('second')">Cost: 100 Particles</button>
+      <button class="buybutton" id="buyparticles3" style="top: 207px;" onclick="buyParticleBuilding('third')">Cost: 1e+4 Particles</button>
+      <button class="buybutton" id="buyparticles4" style="top: 262px;" onclick="buyParticleBuilding('fourth')">Cost: 1e+8 Particles</button>
+      <button class="buybutton" id="buyparticles5" style="top: 317px;" onclick="buyParticleBuilding('fifth')">Cost: 1e+16 Particles</button>
       <button class="auto" id="toggle22" onclick="toggleSettings(21)" style="border:2px solid green; background-color: #171717;">Auto: Off</button>
       <button class="auto" id="toggle23" onclick="toggleSettings(22)" style="border:2px solid green; background-color: #171717;">Auto: Off</button>
       <button class="auto" id="toggle24" onclick="toggleSettings(23)" style="border:2px solid green; background-color: #171717;">Auto: Off</button>

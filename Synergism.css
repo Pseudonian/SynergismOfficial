@@ -68,10 +68,13 @@ button:active {
   cursor: pointer;
 }
 
+/*
+// So this will cause the button border to disappear on focus, but somehow that wasn't the case until I use classes for button, but to keep the behaviour the same as before, this is commented, uncomment if that was what you wanted.
 button:focus {
   border-color: #171717;
   cursor: pointer;
 }
+*/
 
 #resourcesrow {
   position: relative;
@@ -505,7 +508,7 @@ button:focus {
   left: 52.5%
 }
 
-#buycoin1 {
+.buybutton {
   position: absolute;
   width: 150px;
   height: 30px;
@@ -514,55 +517,6 @@ button:focus {
   margin-top: -15px;
   border: 1px solid white;
   border-radius: 8px;
-
-}
-
-#buycoin2 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 97px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buycoin3 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 152px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buycoin4 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 207px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buycoin5 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 262px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
 }
 
 #buyaccelerator {
@@ -1698,66 +1652,6 @@ button:focus {
   position: absolute;
   top: 290px;
   left: 52.5%;
-}
-
-#buydiamond1 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 97px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buydiamond2 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 152px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buydiamond3 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 207px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buydiamond4 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 262px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buydiamond5 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 317px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
 }
 
 #prestigeinfo {
@@ -2980,66 +2874,6 @@ button:focus {
   left: 52.5%;
 }
 
-#buymythos1 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 97px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buymythos2 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 152px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buymythos3 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 207px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buymythos4 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 262px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buymythos5 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 317px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
 #transcendamount {
   position: absolute;
   top: 418px;
@@ -3376,66 +3210,6 @@ button:focus {
   position: absolute;
   top: 290px;
   left: 46.5%;
-}
-
-#buyparticles1 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 97px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buyparticles2 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 152px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buyparticles3 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 207px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buyparticles4 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 262px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
-}
-
-#buyparticles5 {
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  top: 317px;
-  left: 33%;
-  margin-top: -15px;
-  border: 1px solid white;
-  border-radius: 8px;
-
 }
 
 #toggle27 {
