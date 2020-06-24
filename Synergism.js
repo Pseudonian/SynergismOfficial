@@ -640,8 +640,8 @@ function loadSynergy() {
 
 	if (player.offerpromo15used === undefined){
 		player.offerpromo15used = false;
-		if (player.runeshards > 1000000){player.runeshards = 1000000; player.maxofferings = 1000000;};
-		if (player.researchPoints > 1.5e9){player.researchPoints = 1.5e9; player.maxobtainium = 1.5e9;};
+		if (player.runeshards > 1000000){player.runeshards = 1000000; player.maxofferings = 1000000;}
+		if (player.researchPoints > 1.5e9){player.researchPoints = 1.5e9; player.maxobtainium = 1.5e9;}
 
 	}
 	if (player.offerpromo16used === undefined){
@@ -828,10 +828,10 @@ function loadSynergy() {
 	}
 
 
-		if (player.transcendCount < 0){player.transcendCount = 0};
-		if (player.reincarnationCount < 0){player.reincarnationCount = 0;};
-		if (player.runeshards < 0){player.runeshards = 0;};
-		if (player.researchPoints < 0){player.researchPoints = 0;};
+		if (player.transcendCount < 0){player.transcendCount = 0}
+		if (player.reincarnationCount < 0){player.reincarnationCount = 0;}
+		if (player.runeshards < 0){player.runeshards = 0;}
+		if (player.researchPoints < 0){player.researchPoints = 0;}
 
 	if (player.resettoggle1 == 0) {
 		player.resettoggle1 = 1;
@@ -949,8 +949,8 @@ if (!player.autoResearchToggle){document.getElementById("toggleautoresearch").te
 if (player.autoSacrificeToggle){document.getElementById("toggleautosacrifice").textContent = "Automatic: ON"}
 if (!player.autoSacrificeToggle){document.getElementById("toggleautosacrifice").textContent = "Automatic: OFF"}
 
-if (player.autoResearchToggle && player.autoResearch > 0.5){document.getElementById("res" + player.autoResearch).style.backgroundColor = "orange"};
-if (player.autoSacrificeToggle && player.autoSacrifice > 0.5){document.getElementById("rune" + player.autoSacrifice).style.backgroundColor = "orange"};
+if (player.autoResearchToggle && player.autoResearch > 0.5){document.getElementById("res" + player.autoResearch).style.backgroundColor = "orange"}
+if (player.autoSacrificeToggle && player.autoSacrifice > 0.5){document.getElementById("rune" + player.autoSacrifice).style.backgroundColor = "orange"}
 
 calculateOffline();
 
@@ -1236,7 +1236,7 @@ function updateAllMultiplier() {
 	a *=(1 + rune2level/200 * effectiveLevelMult)
 	a *=(1 + 1/100 * player.researches[87])
 	a *=(1 + 1/25 * (player.antUpgrades[5] + bonusant5))
-	if ((player.currentChallenge !== "" || player.currentChallengeRein !== "") && player.upgrades[50] > 0.5) {a *= 1.25};
+	if ((player.currentChallenge !== "" || player.currentChallengeRein !== "") && player.upgrades[50] > 0.5) {a *= 1.25}
 		
 	a = Math.floor(a)
 	freeMultiplier = a;
@@ -1428,9 +1428,9 @@ globalCrystalMultiplier = globalCrystalMultiplier.times(Decimal.pow(1.05, player
 	mythosupgrade13 = new Decimal(1);
 	mythosupgrade14 = new Decimal(1);
 	mythosupgrade15 = new Decimal(1);
-	if (player.upgrades[53] == 1){mythosupgrade13 = mythosupgrade13.times(Decimal.min("1e1250", Decimal.pow(acceleratorEffect, 1/125)))};
-	if (player.upgrades[54] == 1){mythosupgrade14 = mythosupgrade14.times(Decimal.min("1e2000", Decimal.pow(multiplierEffect, 1/180)))};
-	if (player.upgrades[55] == 1){mythosupgrade15 = mythosupgrade15.times(Decimal.pow("1e1000", buildingPower - 1))};
+	if (player.upgrades[53] == 1){mythosupgrade13 = mythosupgrade13.times(Decimal.min("1e1250", Decimal.pow(acceleratorEffect, 1/125)))}
+	if (player.upgrades[54] == 1){mythosupgrade14 = mythosupgrade14.times(Decimal.min("1e2000", Decimal.pow(multiplierEffect, 1/180)))}
+	if (player.upgrades[55] == 1){mythosupgrade15 = mythosupgrade15.times(Decimal.pow("1e1000", buildingPower - 1))}
 
 	globalAntMult = new Decimal(1);
 	globalAntMult = globalAntMult.times(1 + 1/1440 * Math.pow(rune5level * effectiveLevelMult * (1 + player.researches[84]/1000), 2))
@@ -1521,7 +1521,7 @@ function resourceGain(dt,fast){
 		  producePerSecondParticles = produceParticles.times(40);
 
 		if (player.currentChallenge !== "three" && player.currentChallengeRein !== "ten") {player.transcendShards = player.transcendShards.add(produceMythos.times(dt/1));}
-		if (player.currentChallengeRein !== "ten"){player.reincarnationShards = player.reincarnationShards.add(produceParticles.times(dt/0.025))};
+		if (player.currentChallengeRein !== "ten"){player.reincarnationShards = player.reincarnationShards.add(produceParticles.times(dt/0.025))}
 
 		antEightProduce = player.eighthGeneratedAnts.add(player.eighthOwnedAnts).times(player.eighthProduceAnts).times(globalAntMult)
 		antSevenProduce = player.seventhGeneratedAnts.add(player.seventhOwnedAnts).times(player.seventhProduceAnts).times(globalAntMult)
@@ -2011,7 +2011,7 @@ function tick() {
 	if (player.researches[61] > 0.5) {
 		var u = 1;
 		var v = 0;
-		  if(player.upgrades[69] > 0.5){u = Math.min(3,Decimal.pow(Decimal.log(reincarnationPointGain.add(10), 10), 0.5))};
+		  if(player.upgrades[69] > 0.5){u = Math.min(3,Decimal.pow(Decimal.log(reincarnationPointGain.add(10), 10), 0.5))}
 		  u *= (1 + player.researches[76]/100);
 		  if(player.obtainiumtimer >= (60 - player.researches[62] - player.researches[63])) {
 		  player.researchPoints += Math.floor((1 + player.researches[64]) * u) * 100/100 * Math.floor((player.obtainiumtimer / (60 - player.researches[62] - player.researches[63])))
@@ -2080,11 +2080,11 @@ document['addEventListener' in document ? 'addEventListener' : 'attachEvent']('k
 	var type = ""
 	var pos = ""
 	var num = 0
-	if (event.key === "1") {pos = "first"; num += 1; if (currentTab == "challenges") {toggleChallenges('one')}; if (currentTab == "runes"){redeemshards(1)}}
-	if (event.key === "2") {pos = "second"; num += 2; if (currentTab == "challenges") {toggleChallenges('two')}; if (currentTab == "runes"){redeemshards(2)}}
-	if (event.key === "3") {pos = "third"; num += 3; if (currentTab == "challenges") {toggleChallenges('three')}; if (currentTab == "runes"){redeemshards(3)}}
-	if (event.key === "4") {pos = "fourth"; num += 4; if (currentTab == "challenges") {toggleChallenges('four')}; if (currentTab == "runes"){redeemshards(4)}}
-	if (event.key === "5") {pos = "fifth"; num += 5; if (currentTab == "challenges") {toggleChallenges('five')}; if(currentTab == "runes"){redeemshards(5)}}
+	if (event.key === "1") {pos = "first"; num += 1; if (currentTab == "challenges") {toggleChallenges('one')} if (currentTab == "runes"){redeemshards(1)}}
+	if (event.key === "2") {pos = "second"; num += 2; if (currentTab == "challenges") {toggleChallenges('two')} if (currentTab == "runes"){redeemshards(2)}}
+	if (event.key === "3") {pos = "third"; num += 3; if (currentTab == "challenges") {toggleChallenges('three')} if (currentTab == "runes"){redeemshards(3)}}
+	if (event.key === "4") {pos = "fourth"; num += 4; if (currentTab == "challenges") {toggleChallenges('four')} if (currentTab == "runes"){redeemshards(4)}}
+	if (event.key === "5") {pos = "fifth"; num += 5; if (currentTab == "challenges") {toggleChallenges('five')} if(currentTab == "runes"){redeemshards(5)}}
 	if (event.key === "6") {buyCrystalUpgrades(1)}
 	if (event.key === "7") {buyCrystalUpgrades(2)}
 	if (event.key === "8") {buyCrystalUpgrades(3)}

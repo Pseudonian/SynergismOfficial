@@ -23,8 +23,8 @@ function calculateObtainium(){
         if (player.achievements[53] > 0.5){
             obtainiumGain *= (1 + 1/2000 * (runeSum))
         }
-        if (player.achievements[128]){obtainiumGain *= 1.5};
-        if (player.achievements[129]){obtainiumGain *= 1.25};
+        if (player.achievements[128]){obtainiumGain *= 1.5}
+        if (player.achievements[129]){obtainiumGain *= 1.25}
         
         if (player.achievements[51] > 0.5){obtainiumGain += 4}
         obtainiumGain *= Math.min(1 + 3 * player.upgrades[70], Math.pow(player.reincarnationcounter/30, 2));
@@ -213,7 +213,7 @@ if (player.offlinetick < 1.5e12) {player.offlinetick = Date.now()}
     let simulatedTicks = 800;
     let tickValue = timeadd/800;
     let progressBarWidth = 0;
-    if(timeadd < 1000){simulatedTicks = Math.min(1, Math.floor(timeadd/1.25)); tickValue = Math.min(1.25,timeadd);};
+    if(timeadd < 1000){simulatedTicks = Math.min(1, Math.floor(timeadd/1.25)); tickValue = Math.min(1.25,timeadd);}
     let maxSimulatedTicks = simulatedTicks
     console.log("You were offline for " + format(timeadd) + " seconds!");
     console.log("The game simulated " + format(simulatedTicks) + " ticks while you were away! :)");
@@ -223,7 +223,7 @@ if (player.offlinetick < 1.5e12) {player.offlinetick = Date.now()}
 		resetCurrency();
 		var u = 1;
 		u *= (1 + player.researches[76]/100);
-		    if(player.upgrades[69] > 0.5){u *= Math.min(3,Decimal.pow(Decimal.log(reincarnationPointGain.add(11), 10), 0.5))};
+		    if(player.upgrades[69] > 0.5){u *= Math.min(3,Decimal.pow(Decimal.log(reincarnationPointGain.add(11), 10), 0.5))}
 
 		player.researchPoints += Math.floor((1 + player.researches[64]) * u * player.obtainiumtimer / (60 - player.researches[62] - player.researches[63]));
 		var a = player.obtainiumtimer % (60 - player.researches[62] - player.researches[63]);

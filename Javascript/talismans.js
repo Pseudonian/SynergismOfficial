@@ -250,7 +250,7 @@ function changeTalismanModifier(i){
         mirrorTalismanStats[i] = (1);
         el.textContent = runeName[i] + ": Positive";
         el.style.border = "2px solid limegreen";
-    };
+    }
 
     let checkSum = mirrorTalismanStats.reduce(function(a, b) { 
         return a + b;
@@ -262,7 +262,7 @@ function changeTalismanModifier(i){
     }
     else {
     document.getElementById("confirmTalismanRespec").style.display = "none";
-    };
+    }
 
 }
 
@@ -309,13 +309,13 @@ function buyTalismanLevels(i){
     let checkSum = 0;
     let priceMult = talismanLevelCostMultiplier[i]
 
-    if(player.talismanShards >= priceMult * Math.max(0, Math.floor(1 + 1/8 * Math.pow(player.talismanLevels[i],3)))){checkSum++};
-    if(player.commonFragments >= priceMult * Math.max(0, Math.floor(1 + 1/32 * Math.pow(player.talismanLevels[i] - 30,3)))){checkSum++};
-    if(player.uncommonFragments >= priceMult * Math.max(0, Math.floor(1 + 1/384 * Math.pow(player.talismanLevels[i] - 60,3)))){checkSum++};
-    if(player.rareFragments >= priceMult * Math.max(0, Math.floor(1 + 1/250 * Math.pow(player.talismanLevels[i] - 90,3)))){checkSum++};
-    if(player.epicFragments >= priceMult * Math.max(0, Math.floor(1 + 1/125 * Math.pow(player.talismanLevels[i] - 120,3)))){checkSum++};
-    if(player.legendaryFragments >= priceMult * Math.max(0, Math.floor(1 + 1/64 * Math.pow(player.talismanLevels[i] - 150,3)))){checkSum++};
-    if(player.mythicalFragments >= priceMult * Math.max(0, Math.floor(1 + 1/128 * Math.pow(player.talismanLevels[i] - 150,3)))){checkSum++};
+    if(player.talismanShards >= priceMult * Math.max(0, Math.floor(1 + 1/8 * Math.pow(player.talismanLevels[i],3)))){checkSum++}
+    if(player.commonFragments >= priceMult * Math.max(0, Math.floor(1 + 1/32 * Math.pow(player.talismanLevels[i] - 30,3)))){checkSum++}
+    if(player.uncommonFragments >= priceMult * Math.max(0, Math.floor(1 + 1/384 * Math.pow(player.talismanLevels[i] - 60,3)))){checkSum++}
+    if(player.rareFragments >= priceMult * Math.max(0, Math.floor(1 + 1/250 * Math.pow(player.talismanLevels[i] - 90,3)))){checkSum++}
+    if(player.epicFragments >= priceMult * Math.max(0, Math.floor(1 + 1/125 * Math.pow(player.talismanLevels[i] - 120,3)))){checkSum++}
+    if(player.legendaryFragments >= priceMult * Math.max(0, Math.floor(1 + 1/64 * Math.pow(player.talismanLevels[i] - 150,3)))){checkSum++}
+    if(player.mythicalFragments >= priceMult * Math.max(0, Math.floor(1 + 1/128 * Math.pow(player.talismanLevels[i] - 150,3)))){checkSum++}
 
 
     if (checkSum == 7 && player.talismanLevels[i] < (player.talismanRarity[i] * 30)){

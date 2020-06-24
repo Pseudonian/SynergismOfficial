@@ -147,11 +147,11 @@
         // recycleMult accounted for all recycle chance, but inversed so it's a multiplier instead
         let recycleMult = 1/(1 - 0.05 * player.achievements[80] - 0.05 * player.achievements[87] - 0.05 * player.achievements[94] - 0.05 * player.achievements[101] - 0.05 * player.achievements[108] - 0.05 * player.achievements[115] - 0.075 * player.achievements[122] - 0.075 * player.achievements[129] - 0.05 * player.upgrades[61] - Math.min(0.25,rune4level/800));
     
-        if (runeIndex == 0){res1mult = (1 + player.researches[78]/250);};
-        if (runeIndex == 1){res1mult = (1 + player.researches[80]/250);};
-        if (runeIndex == 2){res1mult = (1 + player.researches[79]/250);};
-        if (runeIndex == 3){res1mult = (1 + player.researches[77]/250);};
-        if (runeIndex == 4){res1mult = 1; SIMult1 = (1 + player.researches[83]/50);};
+        if (runeIndex == 0){res1mult = (1 + player.researches[78]/250);}
+        if (runeIndex == 1){res1mult = (1 + player.researches[80]/250);}
+        if (runeIndex == 2){res1mult = (1 + player.researches[79]/250);}
+        if (runeIndex == 3){res1mult = (1 + player.researches[77]/250);}
+        if (runeIndex == 4){res1mult = 1; SIMult1 = (1 + player.researches[83]/50);}
         if (player.runeshards >= 1) {
             // s stores the value of the currently being upgraded rune as additional exp for completing particle upgrade 3x1
             var s = 0;
@@ -176,8 +176,8 @@
                 for (let runeToUpdate = 0; runeToUpdate < 5; ++runeToUpdate)	{
                     // r stores the decrease in thrift costs from tax+ challenge, or the decrease in speed/dup costs from m/a-- challenge
                     let r = 1;
-                    if (player.challengecompletions.six > 0.5 && runeToUpdate == 3) {r -= 0.02 * player.challengecompletions.six};
-                    if (player.challengecompletions.seven > 0.5 && (runeToUpdate == 0 || runeToUpdate == 1)) {r -= 0.02 * player.challengecompletions.seven};
+                    if (player.challengecompletions.six > 0.5 && runeToUpdate == 3) {r -= 0.02 * player.challengecompletions.six}
+                    if (player.challengecompletions.seven > 0.5 && (runeToUpdate == 0 || runeToUpdate == 1)) {r -= 0.02 * player.challengecompletions.seven}
                     while (player.runeexp[runeToUpdate] >= (runeexpbase[runeToUpdate] * Math.pow(player.runelevels[runeToUpdate], 3) * ((4 * player.runelevels[runeToUpdate]) + 100)/500 * r) * Math.max(1, (player.runelevels[runeToUpdate] - 500)/25) * Math.max(1, (player.runelevels[runeToUpdate] - 600)/30) * Math.max(1, (player.runelevels[runeToUpdate]-700)/25) * Math.max(1, Math.pow(1.03, player.runelevels[runeToUpdate] - 750)) && player.runelevels[runeToUpdate] < (500 + increaseMaxLevel[runeToUpdate] + increaseMaxLevel2[runeToUpdate])){
                         player.runelevels[runeToUpdate] += 1;
                     }

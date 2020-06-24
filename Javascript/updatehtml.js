@@ -2,72 +2,72 @@ function revealStuff() {
     var c1 = document.getElementsByClassName("coinunlock1");
     for (var i = 0; i < c1.length; i++) {
       c1[i].style.display = "none";
-    };
+    }
     var c2 = document.getElementsByClassName("coinunlock2");
       for (var i = 0; i < c2.length; i++) {
     c2[i].style.display = "none";
-      };
+      }
       var c3 = document.getElementsByClassName("coinunlock3");
       for (var i = 0; i < c3.length; i++) {
     c3[i].style.display = "none";
-      };
+      }
       var c4 = document.getElementsByClassName("coinunlock4");
       for (var i = 0; i < c4.length; i++) {
     c4[i].style.display = "none";
-      };
+      }
 
     var a = document.getElementsByClassName("prestigeunlock");
       for (var i = 0; i < a.length; i++) {
     a[i].style.display = "none";
-  };
+  }
     var b = document.getElementsByClassName("generationunlock");
     for (var i = 0; i < b.length; i++) {
     b[i].style.display = "none";
-    };
+    }
     var c = document.getElementsByClassName("transcendunlock");
       for (var i = 0; i < c.length; i++) {
     c[i].style.display = "none";
-  };
+  }
     var d = document.getElementsByClassName("reincarnationunlock");
       for (var i = 0; i < d.length; i++) {
     d[i].style.display = "none";
-};
+}
     var e = document.getElementsByClassName("auto");
     for (var i = 0; i < e.length; i++) {
     e[i].style.display = "none";
-    };
+    }
     var f = document.getElementsByClassName("reinrow1");
     for (var i = 0; i < f.length; i++) {
     f[i].style.display = "none";
-    };
+    }
     var g = document.getElementsByClassName("reinrow2");
     for (var i = 0; i < g.length; i++) {
     g[i].style.display = "none";
-    };
+    }
     var h = document.getElementsByClassName("reinrow3");
     for (var i = 0; i < h.length; i++) {
     h[i].style.display = "none";
-    };
+    }
     var j = document.getElementsByClassName("reinrow4");
     for (var i = 0; i < j.length; i++) {
     j[i].style.display = "none";
-    };
+    }
     var k = document.getElementsByClassName("chal7");
     for (var i = 0; i < k.length; i++) {
     k[i].style.display = "none"
-    };
+    }
     let l = document.getElementsByClassName("chal8");
     for (var i = 0; i < l.length; i++){
     l[i].style.display = "none"
-    };
+    }
     let m = document.getElementsByClassName("chal9");
     for (var i = 0; i < m.length; i++){
     m[i].style.display = "none"
-    };
+    }
     let n = document.getElementsByClassName("chal10");
     for (var i = 0; i < n.length; i++){
     n[i].style.display = "none"
-    };
+    }
 
 
 document.getElementById("rune2area").style.display = "none"

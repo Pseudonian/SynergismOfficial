@@ -349,7 +349,7 @@ function boostAccelerator(automated) {
 	var buyamount = 1;
 	if (player.upgrades[46] == 1) {
 	buyamount = player.coinbuyamount;
-	if (automated == true) {buyamount = 9999};
+	if (automated == true) {buyamount = 9999}
 	}
 		while(player.prestigePoints.greaterThanOrEqualTo(player.acceleratorBoostCost) && ticker < buyamount) {
 				if (player.prestigePoints.greaterThanOrEqualTo(player.acceleratorBoostCost)) {

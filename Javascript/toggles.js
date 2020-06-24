@@ -167,7 +167,7 @@ function toggleResearchBuy() {
 function toggleAutoResearch() {
     let el = document.getElementById("toggleautoresearch")
     if (player.autoResearchToggle){player.autoResearchToggle = false; el.textContent = "Automatic: OFF"; player.autoResearch = 0;}
-    else {player.autoResearchToggle = true; el.textContent = "Automatic: ON"};
+    else {player.autoResearchToggle = true; el.textContent = "Automatic: ON"}
 
 
     if(!player.autoResearchToggle){
@@ -216,7 +216,7 @@ function toggleRuneScreen(){
         document.getElementById("runecontainer2").style.display = "none";
         document.getElementById("togglerunesubtab").textContent = "GO TO TALISMANS"
         document.getElementById("togglerunesubtab").style.border = "2px solid grey"
-    };
+    }
 }
 function toggleSettingScreen(){
     if (settingscreen == "settings"){
@@ -230,7 +230,7 @@ function toggleSettingScreen(){
         document.getElementById("settingsubtab").style.display = "block";
         document.getElementById("creditssubtab").style.display = "none";
         document.getElementById("switchsettingtab").textContent = "Credits & Acknowledgements"
-    };
+    }
 }
 
 function toggleShopConfirmation(){
