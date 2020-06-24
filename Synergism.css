@@ -1729,7 +1729,7 @@ button:focus {
   color: white
 }
 
-.layerhotkeys {
+.hotkeys {
   position: absolute;
   padding: 5px;
   top: 460px;
@@ -3291,18 +3291,6 @@ button:focus {
   width: 900px;
   left: 50%;
   margin-left: -450px;
-}
-
-#researchhotkeys {
-  position: absolute;
-  padding: 5px;
-  top: 460px;
-  left: 50%;
-  width: 1200px;
-  margin-left: -600px;
-  height: 20px;
-  color: plum;
-  text-align: center;
 }
 
 #automaticobtainium {
