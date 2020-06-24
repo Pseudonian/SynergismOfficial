@@ -2169,21 +2169,7 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvents']('befo
 	}
 });
 
-document['addEventListener' in document ? 'addEventListener' : 'attachEvent']('keydown', function (event) {
-	// activeElement is the focused element on page
-	// if the autoprestige input is focused, hotkeys shouldn't work
-	// fixes https://github.com/Pseudo-Corp/Synergism-Issue-Tracker/issues/2
-	if(
-		document.querySelector('#prestigeamount') === document.activeElement ||
-		document.querySelector('#transcendamount') === document.activeElement ||
-		document.querySelector('#reincarnationamount') === document.activeElement 
-	) {
-		// https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation
-		// finally fixes the bug where hotkeys would be activated when typing in an input field
-		event.stopPropagation();
-		return;
-	}
-
+function handleHotkeyPress(key) {
 	var type = ""
 	var pos = ""
 	var num = 0
@@ -2219,6 +2205,24 @@ document['addEventListener' in document ? 'addEventListener' : 'attachEvent']('k
 	if ((event.key === "T") || event.key === "t") {resetCheck('transcend')}
 	if ((event.key === "R") || event.key === "r") {resetCheck('reincarnate')}
 	if ((event.key === "E" || event.key === "e") && player.currentChallenge !== "") {resetCheck('challenge')}	
+}
+
+document['addEventListener' in document ? 'addEventListener' : 'attachEvent']('keydown', function (event) {
+	// activeElement is the focused element on page
+	// if the autoprestige input is focused, hotkeys shouldn't work
+	// fixes https://github.com/Pseudo-Corp/Synergism-Issue-Tracker/issues/2
+	if(
+		document.querySelector('#prestigeamount') === document.activeElement ||
+		document.querySelector('#transcendamount') === document.activeElement ||
+		document.querySelector('#reincarnationamount') === document.activeElement 
+	) {
+		// https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation
+		// finally fixes the bug where hotkeys would be activated when typing in an input field
+		event.stopPropagation();
+		return;
+	}
+
+	handleHotkeyPress(event.key)
 	
 	// (might) fix https://github.com/Pseudo-Corp/Synergism-Issue-Tracker/issues/18
 	// prevent the default action from occurring when pressing arrow keys, so smaller
