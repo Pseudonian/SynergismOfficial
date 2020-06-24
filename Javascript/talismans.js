@@ -280,7 +280,6 @@ function respecTalismanConfirm(i){
     showTalismanEffect(i);
     calculateRuneLevels();
     }
-    else{}
 }
 
 function respecTalismanCancel(i){
