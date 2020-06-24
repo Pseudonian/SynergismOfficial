@@ -11,9 +11,6 @@ body {
   transform-origin: 0 0;
   overflow-x: hidden;
   overflow-y: hidden;
-}
-
-body {
   color: black;
   margin: 0;
   box-sizing: border-box;
@@ -46,9 +43,9 @@ select,
 textarea {
   font-size: 12px;
   padding: 0.05em;
-  margin: 0 0 0.0em 0;
+  margin: 0 0 0.0em;
   box-sizing: border-box;
-  border: 0px solid #ccc;
+  border: 0 solid #ccc;
 }
 
 input:disabled {
@@ -75,12 +72,6 @@ button:focus {
   border-color: #171717;
   cursor: pointer;
 }
-
-a {
-  color: white;
-}
-
-
 
 #resourcesrow {
   position: relative;
@@ -143,7 +134,7 @@ a {
   top: 20px;
   left: 11%;
   border-collapse: collapse;
-  padding: 0px;
+  padding: 0;
 }
 
 #resetrow {
@@ -156,7 +147,7 @@ a {
 
 #resettable {
   position: absolute;
-  font-size: 0px;
+  font-size: 0;
 }
 
 #resetrequirements {
@@ -331,15 +322,15 @@ a {
   position: absolute;
 
   position: relative;
-  padding: 0px;
+  padding: 0;
   border: 1px solid gold;
   top: 118px;
 }
 
 #buyamountcoin {
   position: absolute;
-  padding: 0px;
-  font-size: 0px;
+  padding: 0;
+  font-size: 0;
   left: 80%;
   top: 194.5px;
 }
@@ -415,7 +406,7 @@ a {
 #buildingtext {
   position: relative;
   top: 118px;
-  padding: 0px;
+  padding: 0;
 }
 
 #buildtext1 {
@@ -817,7 +808,7 @@ a {
 #shoptogglecoin {
   position: absolute;
   width: 80px;
-  padding: 0px;
+  padding: 0;
   height: 30px;
   top: 25.5px;
   left: 8.4%;
@@ -827,7 +818,7 @@ a {
 #shoptoggleprestige {
   position: absolute;
   width: 80px;
-  padding: 0px;
+  padding: 0;
   height: 30px;
   top: 25.5px;
   left: 23.3%;
@@ -837,7 +828,7 @@ a {
 #shoptoggletranscend {
   position: absolute;
   width: 80px;
-  padding: 0px;
+  padding: 0;
   height: 30px;
   top: 25.5px;
   left: 38.2%;
@@ -847,7 +838,7 @@ a {
 #shoptogglegenerator {
   position: absolute;
   width: 80px;
-  padding: 0px;
+  padding: 0;
   height: 30px;
   top: 25.5px;
   left: 53.1%;
@@ -889,7 +880,7 @@ a {
 #settings {
   position: relative;
   top: 118px;
-  padding: 0px;
+  padding: 0;
   text-align: center;
   border: 1px solid white
 }
@@ -897,7 +888,7 @@ a {
 
 #settingtitle2 {
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 500px;
   left: 25%;
   margin-left: -250px;
@@ -905,7 +896,7 @@ a {
 
 #settingtitle3 {
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 500px;
   left: 75%;
   margin-left: -250px;
@@ -1086,7 +1077,7 @@ a {
 #toggle1 {
   position: absolute;
   width: 80px;
-  padding: 0px;
+  padding: 0;
   height: 30px;
   top: 25.5px;
   left: 47%;
@@ -1362,11 +1353,11 @@ a {
 
 #exporttext {
   position: absolute;
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   top: 180px;
   left: 13324px;
-  margin-left: 0px
+  margin-left: 0
 }
 
 #importinfo {
@@ -1400,7 +1391,7 @@ a {
 #statistics {
   position: relative;
   text-align: center;
-  padding: 0px;
+  padding: 0;
   top: 118px;
   color: whitesmoke;
 }
@@ -1408,7 +1399,7 @@ a {
 #achievements {
   position: relative;
   text-align: center;
-  padding: 0px;
+  padding: 0;
   border: 1px solid white
 }
 
@@ -1511,49 +1502,42 @@ a {
   text-align: center;
 }
 
-#prestige {
-  position: relative;
-  padding: 0px;
-  top: 118px;
-  border: 1px solid cyan
-}
-
 #buyamountcrystal {
   position: absolute;
-  padding: 0px;
-  font-size: 0px;
+  padding: 0;
+  font-size: 0;
   left: 80%;
   top: 20px;
 }
 
 #buyamountoffering {
   position: absolute;
-  padding: 0px;
-  font-size: 0px;
+  padding: 0;
+  font-size: 0;
   left: 80%;
   top: 20px;
 }
 
 #buyamounttalisman {
   position: absolute;
-  padding: 0px;
-  font-size: 0px;
+  padding: 0;
+  font-size: 0;
   left: 80%;
   top: 20px;
 }
 
 #buyamountmythos {
   position: absolute;
-  padding: 0px;
-  font-size: 0px;
+  padding: 0;
+  font-size: 0;
   left: 80%;
   top: 20px;
 }
 
 #buyamountparticle {
   position: absolute;
-  padding: 0px;
-  font-size: 0px;
+  padding: 0;
+  font-size: 0;
   left: 80%;
   top: 20px;
 }
@@ -1610,7 +1594,7 @@ a {
 
 #prestigeshardinfo {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 20px;
   width: 700px;
   left: 50%;
@@ -1782,7 +1766,7 @@ a {
 
 #prestige {
   position: relative;
-  padding: 0px;
+  padding: 0;
   top: 118px;
   border: 1px solid cyan
 }
@@ -1790,7 +1774,7 @@ a {
 #crystalupgradestable {
   position: absolute;
   top: 81px;
-  padding: 0px;
+  padding: 0;
   left: 75%;
   margin-left: -100px;
 }
@@ -1798,7 +1782,7 @@ a {
 #crystalupgradedescription {
   position: absolute;
   top: 110px;
-  padding: 0px;
+  padding: 0;
   left: 75%;
   margin-left: -100px;
   width: 300px;
@@ -1809,9 +1793,9 @@ a {
 #crystalupgradeslevel {
   position: absolute;
   top: 244px;
-  padding: 0px;
+  padding: 0;
   left: 75%;
-  margin-left: 0px;
+  margin-left: 0;
   width: 100px;
   height: 30px;
   border: 1px solid plum;
@@ -1820,7 +1804,7 @@ a {
 #crystalupgradescost {
   position: absolute;
   top: 212px;
-  padding: 0px;
+  padding: 0;
   left: 75%;
   margin-left: -70px;
   width: 240px;
@@ -1831,7 +1815,7 @@ a {
 #prestigeamount {
   position: absolute;
   top: 418px;
-  padding: 0px;
+  padding: 0;
   left: 50%;
   width: 100px;
   margin-left: -50px;
@@ -1843,7 +1827,7 @@ a {
 #autoprestige {
   position: absolute;
   top: 420px;
-  padding: 0px;
+  padding: 0;
   left: 50%;
   width: 750px;
   margin-left: -375px;
@@ -1865,7 +1849,7 @@ a {
 
 #runes {
   position: relative;
-  padding: 0px;
+  padding: 0;
   top: 118px;
   border: 1px solid cyan;
 }
@@ -1905,7 +1889,7 @@ a {
 
 #rune1 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 145px;
   left: 20%;
   margin-left: -33px;
@@ -1913,7 +1897,7 @@ a {
 
 #rune2 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 145px;
   left: 35%;
   margin-left: -33px;
@@ -1921,7 +1905,7 @@ a {
 
 #rune3 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 145px;
   left: 50%;
   margin-left: -33px;
@@ -1929,7 +1913,7 @@ a {
 
 #rune4 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 145px;
   left: 65%;
   margin-left: -33px;
@@ -1937,7 +1921,7 @@ a {
 
 #rune5 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 145px;
   left: 80%;
   margin-left: -33px;
@@ -1945,7 +1929,7 @@ a {
 
 #rune1level {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 193px;
   left: 20%;
   width: 200px;
@@ -1956,7 +1940,7 @@ a {
 
 #rune2level {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 193px;
   left: 35%;
   width: 200px;
@@ -1967,7 +1951,7 @@ a {
 
 #rune3level {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 193px;
   left: 50%;
   width: 200px;
@@ -1978,7 +1962,7 @@ a {
 
 #rune4level {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 193px;
   left: 65%;
   width: 200px;
@@ -1989,7 +1973,7 @@ a {
 
 #rune5level {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 193px;
   left: 80%;
   width: 200px;
@@ -2000,7 +1984,7 @@ a {
 
 #rune1exp {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 212px;
   left: 20%;
   width: 200px;
@@ -2011,7 +1995,7 @@ a {
 
 #rune2exp {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 212px;
   left: 35%;
   width: 200px;
@@ -2022,7 +2006,7 @@ a {
 
 #rune3exp {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 212px;
   left: 50%;
   width: 200px;
@@ -2033,7 +2017,7 @@ a {
 
 #rune4exp {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 212px;
   left: 65%;
   width: 200px;
@@ -2044,7 +2028,7 @@ a {
 
 #rune5exp {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 212px;
   left: 80%;
   width: 200px;
@@ -2133,7 +2117,7 @@ a {
 
 #speedrune {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 103px;
   left: 20%;
   width: 130px;
@@ -2143,7 +2127,7 @@ a {
 
 #duplicationrune {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 103px;
   left: 35%;
   width: 130px;
@@ -2153,7 +2137,7 @@ a {
 
 #prismrune {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 103px;
   left: 50%;
   width: 130px;
@@ -2163,7 +2147,7 @@ a {
 
 #thriftrune {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 103px;
   left: 65%;
   width: 130px;
@@ -2173,7 +2157,7 @@ a {
 
 #intellectrune {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 103px;
   left: 80%;
   width: 130px;
@@ -2883,14 +2867,14 @@ a {
 
 #transcension {
   position: relative;
-  padding: 0px;
+  padding: 0;
   top: 118px;
   border: 1px solid plum
 }
 
 #transcendshardinfo {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 20px;
   width: 700px;
   left: 50%;
@@ -3059,7 +3043,7 @@ a {
 #transcendamount {
   position: absolute;
   top: 418px;
-  padding: 0px;
+  padding: 0;
   left: 50%;
   width: 100px;
   margin-left: -50px;
@@ -3071,7 +3055,7 @@ a {
 #autotranscend {
   position: absolute;
   top: 420px;
-  padding: 0px;
+  padding: 0;
   left: 50%;
   width: 750px;
   margin-left: -375px;
@@ -3113,7 +3097,7 @@ a {
 
 #challenges {
   position: relative;
-  padding: 0px;
+  padding: 0;
   top: 118px;
   border: 1px solid plum;
 }
@@ -3121,8 +3105,8 @@ a {
 #challengeIntroduction {
   position: absolute;
   text-align: center;
-  padding: 0px;
-  top: 0px;
+  padding: 0;
+  top: 0;
   color: white;
   width: 1000px;
   font-size: 1.2em;
@@ -3133,7 +3117,7 @@ a {
 #challengeIcons {
   position: absolute;
   font-size: 0;
-  padding: 0px;
+  padding: 0;
   top: 50px;
   margin-left: -342px;
   left: 50%;
@@ -3142,7 +3126,7 @@ a {
 #challengeDetails {
   position: absolute;
   text-align: left;
-  padding: 0px;
+  padding: 0;
   top: 120px;
   width: 1000px;
   margin-left: -500px;
@@ -3170,7 +3154,7 @@ a {
 #challengeName {
   position: absolute;
   color: white;
-  top: 0px;
+  top: 0;
   left: 38%;
 }
 
@@ -3293,14 +3277,14 @@ a {
 
 #reincarnation {
   position: relative;
-  padding: 0px;
+  padding: 0;
   top: 118px;
   border: 1px solid green
 }
 
 #reincarnationshardinfo {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 20px;
   width: 1000px;
   left: 38%;
@@ -3485,7 +3469,7 @@ a {
 #autoreincarnate {
   position: absolute;
   top: 420px;
-  padding: 0px;
+  padding: 0;
   left: 50%;
   width: 750px;
   margin-left: -375px;
@@ -3496,7 +3480,7 @@ a {
 #reincarnationamount {
   position: absolute;
   top: 418px;
-  padding: 0px;
+  padding: 0;
   left: 50%;
   width: 100px;
   margin-left: -50px;
@@ -3524,7 +3508,7 @@ a {
 #research {
   position: relative;
   top: 118px;
-  padding: 0px;
+  padding: 0;
   border: 1px solid green
 }
 
@@ -3538,12 +3522,12 @@ a {
 
 #researchtable {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 75px;
   left: 50%;
   margin-left: -340px;
   border-collapse: collapse;
-  font-size: 0px;
+  font-size: 0;
 }
 
 #researchinfo2 {
@@ -3649,7 +3633,7 @@ a {
   position: absolute;
 
   position: relative;
-  padding: 0px;
+  padding: 0;
   border: 1px solid limegreen;
   top: 118px;
   text-align: center
@@ -3657,7 +3641,7 @@ a {
 
 #shoptop {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 50%;
   width: 600px;
   margin-left: -300px;
@@ -3757,7 +3741,7 @@ a {
   position: absolute;
 
   position: relative;
-  padding: 0px;
+  padding: 0;
   border: 1px solid brown;
   top: 118px;
   text-align: center
@@ -3765,7 +3749,7 @@ a {
 
 #antwelcome {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 10px;
   width: 500px;
   text-align: center;
@@ -3776,7 +3760,7 @@ a {
 
 #antdescription {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 50px;
   width: 500px;
   text-align: center;
@@ -3786,7 +3770,7 @@ a {
 
 #antrow1 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 100px;
   width: 500px;
   text-align: center;
@@ -3796,7 +3780,7 @@ a {
 
 #crumbcount {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 120px;
   width: 1000px;
   left: 50%;
@@ -3808,7 +3792,7 @@ a {
 
 #antrow2 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 150px;
   width: 750px;
   text-align: center;
@@ -3818,7 +3802,7 @@ a {
 
 #anttierdescription {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   width: 750px;
   text-align: center;
   left: 50%;
@@ -3827,7 +3811,7 @@ a {
 
 #antprice {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 20px;
   width: 750px;
   text-align: center;
@@ -3837,7 +3821,7 @@ a {
 
 #antquantity {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 40px;
   width: 750px;
   text-align: center;
@@ -3847,7 +3831,7 @@ a {
 
 #generateant {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 60px;
   width: 750px;
   text-align: center;
@@ -3859,7 +3843,7 @@ a {
 
 #antrow3 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 260px;
   width: 1000px;
   text-align: center;
@@ -3869,7 +3853,7 @@ a {
 
 #antspecies {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: -5px;
   width: 1000px;
   text-align: center;
@@ -3879,7 +3863,7 @@ a {
 
 #antupgradedescription {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 25px;
   width: 1000px;
   text-align: center;
@@ -3889,7 +3873,7 @@ a {
 
 #antupgradecost {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 55px;
   width: 1000px;
   text-align: center;
@@ -3899,7 +3883,7 @@ a {
 
 #antupgradeeffect {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 85px;
   width: 1000px;
   text-align: center;
@@ -3909,7 +3893,7 @@ a {
 
 #antrow4 {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 410px;
   width: 1000px;
   text-align: center;
@@ -3919,7 +3903,7 @@ a {
 
 #antSacrificeTimer {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   width: 300px;
   margin-left: -118px;
   top: 30px;
@@ -3929,7 +3913,7 @@ a {
 
 #antSacrifice {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   top: 70px;
   text-align: center;
   left: 70%;
@@ -3938,7 +3922,7 @@ a {
 
 #antSacrificeSummary {
   position: absolute;
-  padding: 0px;
+  padding: 0;
   width: 300px;
   top: 30px;
   text-align: center;
@@ -3968,8 +3952,8 @@ a {
   position: absolute;
   top: 102px;
   left: 100px;
-  padding: 0px;
-  border-spacing: 0px;
+  padding: 0;
+  border-spacing: 0;
 }
 
 #switchsettingtab {
