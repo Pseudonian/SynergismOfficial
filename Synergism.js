@@ -1924,6 +1924,36 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvents']('befo
 	}
 });
 
+function handleNumHotkeyPress(num) {
+  let pos = ordinals[num - 1]
+  let type
+  switch (currentTab) {
+    case "buildings":
+      type = "Coin"
+      break;
+    case "prestige":
+      type = "Diamonds";
+      num = 1 / 2 * (Math.pow(num, 2) + num)
+      break;
+    case "transcension":
+      type = "Mythos";
+      num = 1 / 2 * (Math.pow(num, 2) + num)
+      break;
+    case "reincarnation":
+      buyParticleBuilding(pos)
+      break;
+    case "challenges":
+      toggleChallenges(cardinals[num - 1])
+      break;
+    case "runes":
+      redeemshards(num)
+      break;
+  }
+  if (typeof type === "string") {
+    buyProducer(pos, type, num)
+  }
+}
+
 function handleHotkeyPress(key) {
   key = key.toLowerCase()
 
@@ -1955,51 +1985,20 @@ function handleHotkeyPress(key) {
   } else {
     num = parseInt(key)
     switch (num) {
-      // Producers
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-        let pos = ordinals[num - 1]
-        let type
-        switch (currentTab) {
-          case "buildings":
-            type = "Coin"
-            break;
-          case "prestige":
-            type = "Diamonds";
-            num = 1 / 2 * (Math.pow(num, 2) + num)
-            break;
-          case "transcension":
-            type = "Mythos";
-            num = 1 / 2 * (Math.pow(num, 2) + num)
-            break;
-          case "reincarnation":
-            buyParticleBuilding(pos)
-            break;
-          case "challenges":
-            toggleChallenges(cardinals[num - 1])
-            break;
-          case "runes":
-            redeemshards(num)
-            break;
-        }
-        if (typeof type === "string") {
-          buyProducer(pos, type, num)
-        }
+      // Crystal upgrades
+      case 6:
+      case 7:
+      case 8:
+      case 9:
+        buyCrystalUpgrades(num - 5)
+        break;
+      case 0:
+        buyCrystalUpgrades(5)
+        break;
+      // Others (Producer, Challenge, Rune)
+      default:
+				handleNumHotkeyPress(num)
 				break;
-
-        // Crystal upgrades
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-          buyCrystalUpgrades(num - 5)
-          break;
-        case 0:
-          buyCrystalUpgrades(5)
-          break;
     }
   }
 }
