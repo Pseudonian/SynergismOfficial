@@ -208,53 +208,13 @@ function() { return "Epic 5x Ants!"},
 function() { return "Ant Speed Multiplier: x" + format((Decimal.pow(1.005 + 5/100000 * player.researches[96], player.firstOwnedAnts + player.secondOwnedAnts + player.thirdOwnedAnts + player.fourthOwnedAnts + player.fifthOwnedAnts + player.sixthOwnedAnts + player.seventhOwnedAnts + player.eighthOwnedAnts)),3)},
 function() { return "Look above please lol"},
 function() { return "You will gain +10% rewards =)"},
-function() { return "Ant Elo +75 if this upgrade is purchased."},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"},
-function() { return "All you need to know is right above this message!"}
-]
-    function upgradeeffects(i) {
-        document.getElementById("upgradeeffect").innerHTML = "Effect: " + upgradetexts[i]()
-     }
+function() { return "Ant Elo +75 if this upgrade is purchased."}].concat(
+  new Array(40).fill(function() { return "All you need to know is right above this message!"})
+)
 
-
+function upgradeeffects(i) {
+  document.getElementById("upgradeeffect").innerHTML = "Effect: " + upgradetexts[i]()
+}
 
 function upgradedescriptions(i) {
     var x = "upgdesc" + i
