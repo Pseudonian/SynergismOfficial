@@ -193,12 +193,12 @@ function resetdetails(i) {
         document.getElementById("resetcurrency2").textContent = ""
         document.getElementById("resetobtainium2").textContent = ""
         if (player.currentChallengeRein !== "") {
-            if (player[goal].greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[s] * Math.min(Math.pow(1.3797, player.challengecompletions[s]),Math.pow(1 + player.challengecompletions[s], 2))))) {
+            if (reincarnationChallengeBeaten()) {
                 document.getElementById("resetinfo").style.color = "limegreen"
             } else {
                 document.getElementById("resetinfo").style.color = "crimson"
             }
-            document.getElementById("resetinfo").textContent = "Are you done or tired of being in your challenge? Click to leave challenge " + s + ". Progress: " + format(player[goal]) + "/" + format(Decimal.pow(10, challengebaserequirementsrein[s] * Math.min(Math.pow(1.3797, player.challengecompletions[s]),Math.pow(1 + player.challengecompletions[s], 2)))) + goaldesc + ". TIME SPENT: " + format(player.reincarnationcounter) + " Seconds."
+            document.getElementById("resetinfo").textContent = "Are you done or tired of being in your challenge? Click to leave challenge " + s + ". Progress: " + format(player[goal]) + "/" + format(getCurrentReincarnationChallengeGoal()) + goaldesc + ". TIME SPENT: " + format(player.reincarnationcounter) + " Seconds."
         }
         if (player.currentChallengeRein == "") {
             document.getElementById("resetinfo").textContent = "You're not in a reincarnation challenge right now. Why would you need to leave it?"

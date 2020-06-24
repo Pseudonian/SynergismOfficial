@@ -1621,36 +1621,53 @@ function reincarnateCheck(manual) {
   }
 }
 
+function updatePostReincarnationChallenge() {
+  player.currentChallengeRein = "";
+  updateChallengeDisplay();
+  calculateRuneLevels();
+  calculateAnts();
+  document.getElementById("currentchallenge").textContent = "Current Challenge: None"
+}
+
+function getCurrentReincarnationChallengeGoal() {
+  var q = player.currentChallengeRein
+  return Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]), Math.pow(1 + player.challengecompletions[q], 2)))
+}
+
+function reincarnationChallengeBeaten() {
+  if (player.challengecompletions[q] >= 25) return false  
+  var q = player.currentChallengeRein
+  switch (q) {
+    case "six":
+    case "seven":
+    case "eight":
+      return player.transcendShards.greaterThanOrEqualTo(getCurrentReincarnationChallengeGoal())
+    case "nine":
+    case "ten":
+      return player.coins.greaterThanOrEqualTo(getCurrentReincarnationChallengeGoal())
+  }
+}
+
 function exitReincarnationChallenge(manual) {
   if (player.currentChallengeRein !== "") {
-    var q = player.currentChallengeRein;
-    //var s = player.currentChallenge
-    if (player.currentChallenge !== "") {
-      player.currentChallenge = ""
+    var q = player.currentChallengeRein
+    player.currentChallenge = ""
+
+    if (reincarnationChallengeBeaten()) {
+      player.challengecompletions[q] += 1
     }
-    if (q == "six" || q == "seven" || q == "eight") {
-      if (player.transcendShards.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]), Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
-        player.challengecompletions[q] += 1
-      }
-    }
-    if (q == "nine" || q == "ten") {
-      if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]), Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
-        player.challengecompletions[q] += 1
-      }
-    }
+
     reset(3);
     challengeachievementcheck(q);
     player.reincarnationCount -= 1;
+
     if (player.challengecompletions[q] > player.highestchallengecompletions[q]) {
       player.highestchallengecompletions[q] += 1;
       player.worlds += player.highestchallengecompletions[q]
     }
+
     if (!player.retrychallenges || manual || player.challengecompletions[q] > 24) {
-      player.currentChallengeRein = "";
-      updateChallengeDisplay();
-      calculateRuneLevels();
-      calculateAnts();
-      document.getElementById("currentchallenge").textContent = "Current Challenge: None"
+      updatePostReincarnationChallenge()
     }
   }
 }
