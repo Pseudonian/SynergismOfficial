@@ -1994,117 +1994,82 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvents']('befo
 });
 
 function handleHotkeyPress(key) {
-	key = key.toLowerCase()
-	
-  var type = ""
-  var pos = ""
-	var num = 0
-	
-	// Producers
-	// FIXME: Omg it's so repetitive
-  if (key === "1") {
-    pos = "first";
-    num += 1;
-    if (currentTab == "challenges") {
-      toggleChallenges('one')
-    }
-    if (currentTab == "runes") {
-      redeemshards(1)
-    }
-  }
-  if (key === "2") {
-    pos = "second";
-    num += 2;
-    if (currentTab == "challenges") {
-      toggleChallenges('two')
-    }
-    if (currentTab == "runes") {
-      redeemshards(2)
-    }
-  }
-  if (key === "3") {
-    pos = "third";
-    num += 3;
-    if (currentTab == "challenges") {
-      toggleChallenges('three')
-    }
-    if (currentTab == "runes") {
-      redeemshards(3)
-    }
-  }
-  if (key === "4") {
-    pos = "fourth";
-    num += 4;
-    if (currentTab == "challenges") {
-      toggleChallenges('four')
-    }
-    if (currentTab == "runes") {
-      redeemshards(4)
-    }
-  }
-  if (key === "5") {
-    pos = "fifth";
-    num += 5;
-    if (currentTab == "challenges") {
-      toggleChallenges('five')
-    }
-    if (currentTab == "runes") {
-      redeemshards(5)
-    }
-  }
-  if (currentTab == "buildings") {
-    type = "Coin"
-  }
-  if (currentTab == "prestige") {
-    type = "Diamonds";
-    num = 1 / 2 * (Math.pow(num, 2) + num)
-  }
-  if (currentTab == "transcension") {
-    type = "Mythos";
-    num = 1 / 2 * (Math.pow(num, 2) + num)
-  }
-  if (currentTab == "reincarnation" && (key === "1" || key === "2" || key === "3" || key === "4" || key === "5")) {
-    buyParticleBuilding(pos)
-  }
-  if ((key === "1" || key === "2" || key === "3" || key === "4" || key === "5") && player.currentTab !== "reincarnation") {
-    buyProducer(pos, type, num)
-	}
-	
+  key = key.toLowerCase()
 
-	// Crystal upgrades
-	if (key === "6") buyCrystalUpgrades(1)
-  if (key === "7") buyCrystalUpgrades(2)
-  if (key === "8") buyCrystalUpgrades(3)
-  if (key === "9") {
-    buyCrystalUpgrades(4)
-  }
-  if (key === "0") {
-    buyCrystalUpgrades(5)
-  }
+  if (isNaN(key)) {
+    // Accel and Mult
+    if (key === "a" && currentTab == "buildings") {
+      buyAccelerator()
+    }
+    if (key === "b" && currentTab == "buildings") {
+      boostAccelerator()
+    }
+    if (key === "m" && currentTab == "buildings") {
+      buyMultiplier()
+    }
 
-	// Accel and Mult
-  if (key === "a" && currentTab == "buildings") {
-    buyAccelerator()
-  }
-  if (key === "b" && currentTab == "buildings") {
-    boostAccelerator()
-  }
-  if (key === "m" && currentTab == "buildings") {
-    buyMultiplier()
-	}
-	
-	// Resets
-  if (key === "p") {
-    resetCheck('prestige')
-  }
-  if (key === "t") {
-    resetCheck('transcend')
-  }
-  if (key === "r") {
-    resetCheck('reincarnate')
-  }
-  if (key === "e" && player.currentChallenge !== "") {
-    resetCheck('challenge')
+    // Resets
+    if (key === "p") {
+      resetCheck('prestige')
+    }
+    if (key === "t") {
+      resetCheck('transcend')
+    }
+    if (key === "r") {
+      resetCheck('reincarnate')
+    }
+    if (key === "e" && player.currentChallenge !== "") {
+      resetCheck('challenge')
+    }
+  } else {
+    num = parseInt(key)
+    switch (num) {
+      // Producers
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+        let pos = ordinals[num - 1]
+        let type
+        switch (currentTab) {
+          case "buildings":
+            type = "Coin"
+            break;
+          case "prestige":
+            type = "Diamonds";
+            num = 1 / 2 * (Math.pow(num, 2) + num)
+            break;
+          case "transcension":
+            type = "Mythos";
+            num = 1 / 2 * (Math.pow(num, 2) + num)
+            break;
+          case "reincarnation":
+            buyParticleBuilding(pos)
+            break;
+          case "challenges":
+            toggleChallenges(cardinals[num - 1])
+            break;
+          case "runes":
+            redeemshards(num)
+            break;
+        }
+        if (typeof type === "string") {
+          buyProducer(pos, type, num)
+        }
+				break;
+
+        // Crystal upgrades
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+          buyCrystalUpgrades(num - 5)
+          break;
+        case 0:
+          buyCrystalUpgrades(5)
+          break;
+    }
   }
 }
 
