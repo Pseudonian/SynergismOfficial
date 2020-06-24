@@ -656,16 +656,7 @@ function loadSynergy() {
 	}
 
 	if (!data.loaded1009 || data.loaded1009 === undefined || data.loaded1009hotfix1 === null || data.shopUpgrades.offeringPotion === undefined) {
-		player.firstOwnedParticles = 0;
-		player.secondOwnedParticles = 0;
-		player.thirdOwnedParticles = 0;
-		player.fourthOwnedParticles = 0;
-		player.fifthOwnedParticles = 0;
-		player.firstCostParticles = new Decimal("1");
-		player.secondCostParticles = new Decimal("1e2");
-		player.thirdCostParticles = new Decimal("1e4");
-		player.fourthCostParticles = new Decimal("1e8");
-		player.fifthCostParticles = new Decimal("1e16");
+		resetAtomProducers(false)
 		player.autoSacrificeToggle = false;
 		player.autoResearchToggle = false;
 		player.autoResearch = 0;
@@ -685,18 +676,9 @@ function loadSynergy() {
 		};
 	} 
 	if (!data.loaded1009hotfix1 || data.loaded1009hotfix1 === undefined || data.loaded1009hotfix1 === null) {
+		resetAtomProducers(false)
 		player.loaded1009hotfix1 = true;
 		player.offerpromo19used = true;
-		player.firstOwnedParticles = 0;
-		player.secondOwnedParticles = 0;
-		player.thirdOwnedParticles = 0;
-		player.fourthOwnedParticles = 0;
-		player.fifthOwnedParticles = 0;
-		player.firstCostParticles = new Decimal("1");
-		player.secondCostParticles = new Decimal("1e2");
-		player.thirdCostParticles = new Decimal("1e4");
-		player.fourthCostParticles = new Decimal("1e8");
-		player.fifthCostParticles = new Decimal("1e16");
 	}
 	if (data.offerpromo19used === undefined || data.loaded10091 === undefined || !data.loaded10091 || player.researches[86] > 100 || player.researches[87] > 100 || player.researches[88] > 100 || player.researches[89] > 100 || player.researches[90] > 10){
 		player.offerpromo19used = false;

@@ -733,3 +733,17 @@ function resetTalismans(){
     player.talismanSix = [null, 1, 1, 1, -1, -1];
     player.talismanSeven = [null, -1, 1, -1, 1, 1];
 }
+
+function resetAtomProducers(resetAtom = true) {
+    player.firstOwnedParticles = 0;
+    player.secondOwnedParticles = 0;
+    player.thirdOwnedParticles = 0;
+    player.fourthOwnedParticles = 0;
+    player.fifthOwnedParticles = 0;
+    player.firstCostParticles = new Decimal("1");
+    player.secondCostParticles = new Decimal("1e2");
+    player.thirdCostParticles = new Decimal("1e4");
+    player.fourthCostParticles = new Decimal("1e8");
+    player.fifthCostParticles = new Decimal("1e16");
+    if (resetAtom) player.reincarnationShards = new Decimal(0)
+}
