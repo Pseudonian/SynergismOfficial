@@ -775,12 +775,12 @@ function updateChallengeDisplay() {
   //Sets background colors on load/challenge initiation
   let el = ""
   for (var k = 0; k < 10; k++) {
-    el = document.getElementById("challenge" + ordinals[k])
+    el = document.getElementById("challenge" + cardinals[k])
     el.style.backgroundColor = "#171717"
-    if (player.currentChallenge == ordinals[k]) {
+    if (player.currentChallenge == cardinals[k]) {
       el.style.backgroundColor = "plum"
     }
-    if (player.currentChallengeRein == ordinals[k]) {
+    if (player.currentChallengeRein == cardinals[k]) {
       el.style.backgroundColor = "plum"
     }
 
