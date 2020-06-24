@@ -162,46 +162,23 @@ function showTalismanEffect(i){
     if(player.talismanRarity[i] !== 6){h.textContent = "Get Max Enhance for a Mythical bonus effect!"}
 }
 
-function showTalismanPrices(i){
-    document.getElementById("talismanEffect").style.display = "none"
-    document.getElementById("talismanlevelup").style.display = "block"
-    document.getElementById("talismanrespec").style.display = "none"
-    let a = document.getElementById("talismanShardCost")
-    let b = document.getElementById("talismanCommonFragmentCost")
-    let c = document.getElementById("talismanUncommonFragmentCost")
-    let d = document.getElementById("talismanRareFragmentCost")
-    let e = document.getElementById("talismanEpicFragmentCost")
-    let f = document.getElementById("talismanLegendaryFragmentCost")
-    let g = document.getElementById("talismanMythicalFragmentCost")
+// NOTICE: Not tested
+function showTalismanPrices(i, enhance = false) {
+  document.getElementById("talismanEffect").style.display = "none"
+  document.getElementById("talismanlevelup").style.display = "block"
+  document.getElementById("talismanrespec").style.display = "none"
+  let a = document.getElementById("talismanShardCost")
+  let b = document.getElementById("talismanCommonFragmentCost")
+  let c = document.getElementById("talismanUncommonFragmentCost")
+  let d = document.getElementById("talismanRareFragmentCost")
+  let e = document.getElementById("talismanEpicFragmentCost")
+  let f = document.getElementById("talismanLegendaryFragmentCost")
+  let g = document.getElementById("talismanMythicalFragmentCost")
 
-    document.getElementById("talismanLevelUpSummary").textContent = "-=-=- Resources Required to Level Up -=-=-"
-    document.getElementById("talismanLevelUpSummary").style.color = "silver"
+  document.getElementById("talismanLevelUpSummary").textContent = `-=-=- Resources Required to ${enhance ? "ENHANCE": "Level Up"} -=-=-`
+  document.getElementById("talismanLevelUpSummary").style.color = enhance ? "gold" : "silver"
 
-    let m = talismanLevelCostMultiplier[i]
-    a.textContent = format(m * Math.max(0, Math.floor(1 + 1/8 * Math.pow(player.talismanLevels[i],3))));
-    b.textContent = format(m * Math.max(0, Math.floor(1 + 1/32 * Math.pow(player.talismanLevels[i] - 30,3))));
-    c.textContent = format(m * Math.max(0, Math.floor(1 + 1/384 * Math.pow(player.talismanLevels[i] - 60,3))));
-    d.textContent = format(m * Math.max(0, Math.floor(1 + 1/250 * Math.pow(player.talismanLevels[i] - 90,3))));
-    e.textContent = format(m * Math.max(0, Math.floor(1 + 1/125 * Math.pow(player.talismanLevels[i] - 120,3))));
-    f.textContent = format(m * Math.max(0, Math.floor(1 + 1/64 * Math.pow(player.talismanLevels[i] - 150,3))));
-    g.textContent = format(m * Math.max(0, Math.floor(1 + 1/128 * Math.pow(player.talismanLevels[i] - 150,3))));
-}
-
-function showEnhanceTalismanPrices(i){
-    document.getElementById("talismanEffect").style.display = "none"
-    document.getElementById("talismanlevelup").style.display = "block"
-    document.getElementById("talismanrespec").style.display = "none"
-    let a = document.getElementById("talismanShardCost")
-    let b = document.getElementById("talismanCommonFragmentCost")
-    let c = document.getElementById("talismanUncommonFragmentCost")
-    let d = document.getElementById("talismanRareFragmentCost")
-    let e = document.getElementById("talismanEpicFragmentCost")
-    let f = document.getElementById("talismanLegendaryFragmentCost")
-    let g = document.getElementById("talismanMythicalFragmentCost")
-
-    document.getElementById("talismanLevelUpSummary").textContent = "=-=-= Resources Required to ENHANCE =-=-="
-    document.getElementById("talismanLevelUpSummary").style.color = "gold"
-
+  if (enhance) {
     let array = [null, commonTalismanEnhanceCost, uncommonTalismanEnchanceCost, rareTalismanEnchanceCost, epicTalismanEnhanceCost, legendaryTalismanEnchanceCost, mythicalTalismanEnchanceCost]
     let index = player.talismanRarity[i];
     let costArray = array[index];
@@ -213,6 +190,16 @@ function showEnhanceTalismanPrices(i){
     e.textContent = format(m * costArray[5]);
     f.textContent = format(m * costArray[6]);
     g.textContent = format(m * costArray[7]);
+  } else {
+    let m = talismanLevelCostMultiplier[i]
+    a.textContent = format(m * Math.max(0, Math.floor(1 + 1 / 8 * Math.pow(player.talismanLevels[i], 3))));
+    b.textContent = format(m * Math.max(0, Math.floor(1 + 1 / 32 * Math.pow(player.talismanLevels[i] - 30, 3))));
+    c.textContent = format(m * Math.max(0, Math.floor(1 + 1 / 384 * Math.pow(player.talismanLevels[i] - 60, 3))));
+    d.textContent = format(m * Math.max(0, Math.floor(1 + 1 / 250 * Math.pow(player.talismanLevels[i] - 90, 3))));
+    e.textContent = format(m * Math.max(0, Math.floor(1 + 1 / 125 * Math.pow(player.talismanLevels[i] - 120, 3))));
+    f.textContent = format(m * Math.max(0, Math.floor(1 + 1 / 64 * Math.pow(player.talismanLevels[i] - 150, 3))));
+    g.textContent = format(m * Math.max(0, Math.floor(1 + 1 / 128 * Math.pow(player.talismanLevels[i] - 150, 3))));
+  }
 }
 
 function showRespecInformation(i){
