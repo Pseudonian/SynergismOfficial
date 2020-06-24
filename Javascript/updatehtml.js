@@ -771,20 +771,26 @@ if(player.antPoints.greaterThanOrEqualTo(player.eighthCostAnts)){document.getEle
 }
 }
 
-function updateChallengeDisplay(){
+function updateChallengeDisplay() {
   //Sets background colors on load/challenge initiation
-  let ordinals = [null,'one','two','three','four','five','six','seven','eight','nine','ten']
   let el = ""
-  for (var k = 1; k <= 10; k++){
-    el = document.getElementById("challenge"+ordinals[k])
+  for (var k = 0; k < 10; k++) {
+    el = document.getElementById("challenge" + ordinals[k])
     el.style.backgroundColor = "#171717"
-    if (player.currentChallenge == ordinals[k]){el.style.backgroundColor = "plum"}
-    if (player.currentChallengeRein == ordinals[k]){el.style.backgroundColor = "plum"}
+    if (player.currentChallenge == ordinals[k]) {
+      el.style.backgroundColor = "plum"
+    }
+    if (player.currentChallengeRein == ordinals[k]) {
+      el.style.backgroundColor = "plum"
+    }
 
-}
+  }
   //Corrects HTML on retry challenges button
-  if(player.retrychallenges){document.getElementById("retryChallenge").textContent = "Retry Challenges: ON"}
-  else{document.getElementById("retryChallenge").textContent = "Retry Challenges: OFF"}
+  if (player.retrychallenges) {
+    document.getElementById("retryChallenge").textContent = "Retry Challenges: ON"
+  } else {
+    document.getElementById("retryChallenge").textContent = "Retry Challenges: OFF"
+  }
 }
 
 function updateAchievementBG(){
