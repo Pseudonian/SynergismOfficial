@@ -1994,31 +1994,107 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvents']('befo
 });
 
 function handleHotkeyPress(key) {
-	var type = ""
-	var pos = ""
-	var num = 0
-	if (key === "1") {pos = "first"; num += 1; if (currentTab == "challenges") {toggleChallenges('one')} if (currentTab == "runes"){redeemshards(1)}}
-	if (key === "2") {pos = "second"; num += 2; if (currentTab == "challenges") {toggleChallenges('two')} if (currentTab == "runes"){redeemshards(2)}}
-	if (key === "3") {pos = "third"; num += 3; if (currentTab == "challenges") {toggleChallenges('three')} if (currentTab == "runes"){redeemshards(3)}}
-	if (key === "4") {pos = "fourth"; num += 4; if (currentTab == "challenges") {toggleChallenges('four')} if (currentTab == "runes"){redeemshards(4)}}
-	if (key === "5") {pos = "fifth"; num += 5; if (currentTab == "challenges") {toggleChallenges('five')} if(currentTab == "runes"){redeemshards(5)}}
-	if (key === "6") {buyCrystalUpgrades(1)}
-	if (key === "7") {buyCrystalUpgrades(2)}
-	if (key === "8") {buyCrystalUpgrades(3)}
-	if (key === "9") {buyCrystalUpgrades(4)}
-	if (key === "0") {buyCrystalUpgrades(5)}
-	if (currentTab == "buildings") {type = "Coin"}
-	if (currentTab == "prestige") {type = "Diamonds"; num = 1/2 * (Math.pow(num, 2) + num)}
-	if (currentTab == "transcension") {type = "Mythos"; num = 1/2 * (Math.pow(num, 2) + num)}
-	if (currentTab == "reincarnation" && (key === "1" || key === "2" || key === "3" || key === "4" || key === "5")) {buyParticleBuilding(pos)}
-	if ((key === "1" || key === "2" || key === "3" || key === "4" || key === "5") && player.currentTab !== "reincarnation") {buyProducer(pos, type, num)}
-	if ((key === "A" || key === "a") && currentTab == "buildings") {buyAccelerator()}
-	if ((key === "B" || key === "b") && currentTab == "buildings") {boostAccelerator()}
-	if ((key === "M" || key === "m") && currentTab == "buildings") {buyMultiplier()}
-	if ((key === "P") || key === "p") {resetCheck('prestige')}
-	if ((key === "T") || key === "t") {resetCheck('transcend')}
-	if ((key === "R") || key === "r") {resetCheck('reincarnate')}
-	if ((key === "E" || key === "e") && player.currentChallenge !== "") {resetCheck('challenge')}	
+  key = key.toLowerCase()
+  var type = ""
+  var pos = ""
+  var num = 0
+  if (key === "1") {
+    pos = "first";
+    num += 1;
+    if (currentTab == "challenges") {
+      toggleChallenges('one')
+    }
+    if (currentTab == "runes") {
+      redeemshards(1)
+    }
+  }
+  if (key === "2") {
+    pos = "second";
+    num += 2;
+    if (currentTab == "challenges") {
+      toggleChallenges('two')
+    }
+    if (currentTab == "runes") {
+      redeemshards(2)
+    }
+  }
+  if (key === "3") {
+    pos = "third";
+    num += 3;
+    if (currentTab == "challenges") {
+      toggleChallenges('three')
+    }
+    if (currentTab == "runes") {
+      redeemshards(3)
+    }
+  }
+  if (key === "4") {
+    pos = "fourth";
+    num += 4;
+    if (currentTab == "challenges") {
+      toggleChallenges('four')
+    }
+    if (currentTab == "runes") {
+      redeemshards(4)
+    }
+  }
+  if (key === "5") {
+    pos = "fifth";
+    num += 5;
+    if (currentTab == "challenges") {
+      toggleChallenges('five')
+    }
+    if (currentTab == "runes") {
+      redeemshards(5)
+    }
+  }
+  if (key === "6") buyCrystalUpgrades(1)
+  if (key === "7") buyCrystalUpgrades(2)
+  if (key === "8") buyCrystalUpgrades(3)
+  if (key === "9") {
+    buyCrystalUpgrades(4)
+  }
+  if (key === "0") {
+    buyCrystalUpgrades(5)
+  }
+  if (currentTab == "buildings") {
+    type = "Coin"
+  }
+  if (currentTab == "prestige") {
+    type = "Diamonds";
+    num = 1 / 2 * (Math.pow(num, 2) + num)
+  }
+  if (currentTab == "transcension") {
+    type = "Mythos";
+    num = 1 / 2 * (Math.pow(num, 2) + num)
+  }
+  if (currentTab == "reincarnation" && (key === "1" || key === "2" || key === "3" || key === "4" || key === "5")) {
+    buyParticleBuilding(pos)
+  }
+  if ((key === "1" || key === "2" || key === "3" || key === "4" || key === "5") && player.currentTab !== "reincarnation") {
+    buyProducer(pos, type, num)
+  }
+  if (key === "a" && currentTab == "buildings") {
+    buyAccelerator()
+  }
+  if (key === "b" && currentTab == "buildings") {
+    boostAccelerator()
+  }
+  if (key === "m" && currentTab == "buildings") {
+    buyMultiplier()
+  }
+  if (key === "p") {
+    resetCheck('prestige')
+  }
+  if (key === "t") {
+    resetCheck('transcend')
+  }
+  if (key === "r") {
+    resetCheck('reincarnate')
+  }
+  if (key === "e" && player.currentChallenge !== "") {
+    resetCheck('challenge')
+  }
 }
 
 document['addEventListener' in document ? 'addEventListener' : 'attachEvent']('keydown', function (event) {
