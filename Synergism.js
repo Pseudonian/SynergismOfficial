@@ -1958,30 +1958,29 @@ function handleHotkeyPress(key) {
   key = key.toLowerCase()
 
   if (isNaN(key)) {
-    // Accel and Mult
-    if (key === "a" && currentTab == "buildings") {
-      buyAccelerator()
-    }
-    if (key === "b" && currentTab == "buildings") {
-      boostAccelerator()
-    }
-    if (key === "m" && currentTab == "buildings") {
-      buyMultiplier()
-    }
+		// Accel and Mult
+		if (currentTab == "buildings") {
+			switch (key) {
+				case "a":
+					buyAccelerator()
+					break;
+				case "b":
+					boostAccelerator()
+					break;
+				case "m":
+					buyMultiplier()
+					break;
+			}
+		}
 
     // Resets
-    if (key === "p") {
-      resetCheck('prestige')
-    }
-    if (key === "t") {
-      resetCheck('transcend')
-    }
-    if (key === "r") {
-      resetCheck('reincarnate')
-    }
-    if (key === "e" && player.currentChallenge !== "") {
-      resetCheck('challenge')
-    }
+		let keyToLayerName = {
+			"p": "prestige",
+			"t": "transcend",
+			"r": "reincarnate",
+			"e": "challenge"
+		}
+    resetCheck(keyToLayerName[key])
   } else {
     num = parseInt(key)
     switch (num) {
