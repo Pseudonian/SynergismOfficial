@@ -480,24 +480,28 @@ Object.defineProperty(player, 'version', {
 });
 
 function saveSynergy(button) {
-	   player.offlinetick = Date.now()
-	   player.loaded1009 = true;
-	   player.loaded1009hotfix1 = true;
-	   
-   	const p = player; // temp hold
-	delete p.version; // don't save
-   	localStorage.setItem("Synergysave2", btoa(JSON.stringify(p)));	
+	player.offlinetick = Date.now()
+	player.loaded1009 = true;
+	player.loaded1009hotfix1 = true;
 
-   	if (button) {
-		let el = document.getElementById("saveinfo").textContent;
-		el = "Game saved successfully!"
+	const p = player; // temp hold
+	delete p.version; // don't save
+	localStorage.setItem("Synergysave2", btoa(JSON.stringify(p)));
+
+	if (button) {
+		document.getElementById("saveinfo").textContent = "Game saved successfully!";
 		setTimeout(function() {
-			el = '';
+			document.getElementById("saveinfo").textContent = "";
 		}, 4000);
-   	}
+	}
 }
 
-
+function isDecimal(o) {
+	if(!(o instanceof Object)) {
+		return false;
+	}
+	return Object.keys(o).length === 2 && Object.keys(o).every(function(v) { return ['mantissa', 'exponent'].indexOf(v) > -1 });
+}
 
 function loadSynergy() {
    const string = localStorage.getItem("Synergysave2");
@@ -505,13 +509,6 @@ function loadSynergy() {
 
 
    if (data) {
-	   function isDecimal(o) {
-		   if(!(o instanceof Object)) {
-			   return false;
-		   }
-		   return Object.keys(o).length === 2 && Object.keys(o).every(function(v) { return ['mantissa', 'exponent'].indexOf(v) > -1 });
-	   }
-
 	   if(data.version) {
 		   delete data.version;
 	   }
@@ -952,14 +949,15 @@ revealStuff();
 toggleauto();
 
 
-
+/*
 var m = 1;
 m *= effectiveLevelMult
 
-/* document.getElementById("runeshowpower1").textContent = "Speed Rune Bonus: " + "+" + format(Math.floor(rune1level * m)) + " Accelerators, +" + (rune1level/2  * m).toPrecision(2) +"% Accelerators, +" + format(Math.floor(rune1level/10 * m)) + " Accelerator Boosts."
+document.getElementById("runeshowpower1").textContent = "Speed Rune Bonus: " + "+" + format(Math.floor(rune1level * m)) + " Accelerators, +" + (rune1level/2  * m).toPrecision(2) +"% Accelerators, +" + format(Math.floor(rune1level/10 * m)) + " Accelerator Boosts."
 if (player.achievements[38] == 1)document.getElementById("runeshowpower2").textContent = "Duplication Rune Bonus: " + "+" + Math.floor(rune2level * m / 10) * Math.floor(10 + rune2level * m /10) / 2 + " +" + m *rune2level/2 +"% Multipliers, -" + (100 * (1 - Math.pow(10, - rune2level/500))).toPrecision(4)  + "% Tax Growth.";
 if (player.achievements[44] == 1)document.getElementById("runeshowpower3").textContent = "Prism Rune Bonus: " + "All Crystal Producer production multiplied by " + format(Decimal.pow(rune3level * m, 2).times(Decimal.pow(2, rune3level * m - 8).add(1))) + ", gain +" + format(Math.floor(rune3level/10 * m)) + " free crystal levels.";
-if (player.achievements[102] == 1)document.getElementById("runeshowpower4").textContent = "Thrift Rune Bonus: " + "Delay all producer cost increases by " + (rune4level/4 * m).toPrecision(3) + "% buildings. Increase offering recycling chance: " + rune4level/8 + "%."; */
+if (player.achievements[102] == 1)document.getElementById("runeshowpower4").textContent = "Thrift Rune Bonus: " + "Delay all producer cost increases by " + (rune4level/4 * m).toPrecision(3) + "% buildings. Increase offering recycling chance: " + rune4level/8 + "%.";
+*/
 
 
 
@@ -1733,7 +1731,6 @@ function resetCheck(i,manual) {
 				reset(1);
 			}
 		}
-		else {}
 	}
 	if (i == 'transcend') {
 		if ((player.coinsThisTranscension.greaterThanOrEqualTo(1e100) || transcendPointGain.greaterThanOrEqualTo(0.5)) && player.currentChallenge == "") {
@@ -1798,7 +1795,7 @@ function resetCheck(i,manual) {
 			if (q == "eight"){y = 8}
 			if (q == "nine"){y = 9}
 			if (q == "ten"){y = 10}
-			var s = player.currentChallenge
+		//var s = player.currentChallenge
 		if (player.currentChallenge !== "") {
 			player.currentChallenge = ""
 			}
