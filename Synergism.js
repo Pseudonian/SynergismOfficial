@@ -1540,148 +1540,180 @@ function resetCurrency() {
 	reincarnationPointGain = Decimal.floor(Decimal.pow(player.transcendShards.dividedBy(1e300), 0.01));
 	if (player.achievements[50] == 1){reincarnationPointGain = reincarnationPointGain.times(2)}
 	if (player.upgrades[65] > 0.5) {reincarnationPointGain = reincarnationPointGain.times(5)}
-	}
+}
 
-function resetCheck(i,manual) {
-	manual = (manual === null || manual === undefined) ? true : manual;
-	if (i == 'prestige') {
-		if (player.coinsThisPrestige.greaterThanOrEqualTo(1e16) || prestigePointGain.greaterThanOrEqualTo(100)) {
-			if (manual) {
-				resetConfirmation('prestige');
-			} else {
-				resetachievementcheck(1);
-				reset(1);
-			}
-		}
-	}
-	if (i == 'transcend') {
-		if ((player.coinsThisTranscension.greaterThanOrEqualTo(1e100) || transcendPointGain.greaterThanOrEqualTo(0.5)) && player.currentChallenge == "") {
-			if (manual) {
-			resetConfirmation('transcend');
-			}
-			if (!manual) {
-			resetachievementcheck(2);
-			reset(2);
-			}
-		}
-	}
-	if (i == 'challenge') {
-		var q = player.currentChallenge;
-			var x = 0
-			if (q == "one") {x = 66}
-			if (q == "two") {x = 67}
-			if (q == "three") {x = 68}
-			if (q == "four") {x = 69}
-			if (q == "five") {x = 70} 
-		if (player.currentChallenge !== "") {
-			console.log(player.coinsThisTranscension.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirements[q] * Math.pow(1 + player.challengecompletions[q], 2) * Math.pow(1.5, Math.max(0, player.challengecompletions[q] - 75)))) && player.challengecompletions[q] < (25 + player.researches[x] + 925 * player.researches[105]))
+function prestigeCheck(manual) {
+  if (player.coinsThisPrestige.greaterThanOrEqualTo(1e16) || prestigePointGain.greaterThanOrEqualTo(100)) {
+    if (manual) {
+      resetConfirmation('prestige');
+    } else {
+      resetachievementcheck(1);
+      reset(1);
+    }
+  }
+}
 
-			if (player.coinsThisTranscension.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirements[q] * Math.pow(1 + player.challengecompletions[q], 2) * Math.pow(1.5, Math.max(0, player.challengecompletions[q] - 75)))) && player.challengecompletions[q] < (25 + player.researches[x] + 925 * player.researches[105])) {
-			player.challengecompletions[q] += 1;
-			var y = x - 65
-			challengeDisplay(y,true)
-			}
-			if (player.challengecompletions[q] > player.highestchallengecompletions[q]) {
-				player.highestchallengecompletions[q] += 1;
-				var y = x - 65;
-				challengeDisplay(y,true)
-				player.worlds += (1 + Math.floor(player.highestchallengecompletions[q]/10)) * 100/100}
+function transcendCheck(manual) {
+  if ((player.coinsThisTranscension.greaterThanOrEqualTo(1e100) || transcendPointGain.greaterThanOrEqualTo(0.5)) && player.currentChallenge == "") {
+    if (manual) {
+      resetConfirmation('transcend');
+    }
+    if (!manual) {
+      resetachievementcheck(2);
+      reset(2);
+    }
+  }
+}
 
-			
-			challengeachievementcheck(q);
-			reset(2);
-			player.transcendCount -= 1;
-			}
-			if (!player.retrychallenges || manual  || player.challengecompletions[q] >= (25 + player.researches[x] + 925 * player.researches[105])) {
-			player.currentChallenge = "";
-			updateChallengeDisplay();
-			}
-		}
-	
-	if (i == "reincarnate") {
-		if (reincarnationPointGain > 0.5 && player.currentChallenge == "" && player.currentChallengeRein == "") {
-			if (manual) {
-			resetConfirmation('reincarnate');
-			}
-			if (!manual) {
-			resetachievementcheck(3);
-			reset(3);
-			}
-		}
-	}
-	if (i == "reincarnationchallenge"){
-		if (player.currentChallengeRein !== ""){
-		var q = player.currentChallengeRein;
-		//var s = player.currentChallenge
-		if (player.currentChallenge !== "") {
-			player.currentChallenge = ""
-			}
-		if(q == "six" || q == "seven" || q == "eight"){
-		if (player.transcendShards.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]) , Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
-			player.challengecompletions[q] += 1
-		}
-		}
-		if (q == "nine" || q == "ten"){
-		if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]) , Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
-			player.challengecompletions[q] += 1
-		}
-		}
-		reset(3);
-		challengeachievementcheck(q);
-		player.reincarnationCount -= 1;
-		if (player.challengecompletions[q] > player.highestchallengecompletions[q]) {player.highestchallengecompletions[q] += 1; player.worlds += player.highestchallengecompletions[q]}
-		if (!player.retrychallenges || manual || player.challengecompletions[q] > 24) {
-		player.currentChallengeRein = "";
-		updateChallengeDisplay();
-		calculateRuneLevels();
-		calculateAnts();
-		document.getElementById("currentchallenge").textContent = "Current Challenge: None"
-		}
-	}	
-	}
-}	
+function exitChallenge() {
+  var q = player.currentChallenge;
+  var x = 0
+  if (q == "one") {
+    x = 66
+  }
+  if (q == "two") {
+    x = 67
+  }
+  if (q == "three") {
+    x = 68
+  }
+  if (q == "four") {
+    x = 69
+  }
+  if (q == "five") {
+    x = 70
+  }
+  if (player.currentChallenge !== "") {
+    console.log(player.coinsThisTranscension.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirements[q] * Math.pow(1 + player.challengecompletions[q], 2) * Math.pow(1.5, Math.max(0, player.challengecompletions[q] - 75)))) && player.challengecompletions[q] < (25 + player.researches[x] + 925 * player.researches[105]))
+
+    if (player.coinsThisTranscension.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirements[q] * Math.pow(1 + player.challengecompletions[q], 2) * Math.pow(1.5, Math.max(0, player.challengecompletions[q] - 75)))) && player.challengecompletions[q] < (25 + player.researches[x] + 925 * player.researches[105])) {
+      player.challengecompletions[q] += 1;
+      var y = x - 65
+      challengeDisplay(y, true)
+    }
+    if (player.challengecompletions[q] > player.highestchallengecompletions[q]) {
+      player.highestchallengecompletions[q] += 1;
+      var y = x - 65;
+      challengeDisplay(y, true)
+      player.worlds += (1 + Math.floor(player.highestchallengecompletions[q] / 10)) * 100 / 100
+    }
+
+
+    challengeachievementcheck(q);
+    reset(2);
+    player.transcendCount -= 1;
+  }
+  if (!player.retrychallenges || manual || player.challengecompletions[q] >= (25 + player.researches[x] + 925 * player.researches[105])) {
+    player.currentChallenge = "";
+    updateChallengeDisplay();
+  }
+}
+
+function reincarnateCheck(manual) {
+  if (reincarnationPointGain > 0.5 && player.currentChallenge == "" && player.currentChallengeRein == "") {
+    if (manual) {
+      resetConfirmation('reincarnate');
+    }
+    if (!manual) {
+      resetachievementcheck(3);
+      reset(3);
+    }
+  }
+}
+
+function exitReincarnationChallenge(manual) {
+  if (player.currentChallengeRein !== "") {
+    var q = player.currentChallengeRein;
+    //var s = player.currentChallenge
+    if (player.currentChallenge !== "") {
+      player.currentChallenge = ""
+    }
+    if (q == "six" || q == "seven" || q == "eight") {
+      if (player.transcendShards.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]), Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
+        player.challengecompletions[q] += 1
+      }
+    }
+    if (q == "nine" || q == "ten") {
+      if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]), Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
+        player.challengecompletions[q] += 1
+      }
+    }
+    reset(3);
+    challengeachievementcheck(q);
+    player.reincarnationCount -= 1;
+    if (player.challengecompletions[q] > player.highestchallengecompletions[q]) {
+      player.highestchallengecompletions[q] += 1;
+      player.worlds += player.highestchallengecompletions[q]
+    }
+    if (!player.retrychallenges || manual || player.challengecompletions[q] > 24) {
+      player.currentChallengeRein = "";
+      updateChallengeDisplay();
+      calculateRuneLevels();
+      calculateAnts();
+      document.getElementById("currentchallenge").textContent = "Current Challenge: None"
+    }
+  }
+}
+
+function resetCheck(i, manual) {
+  manual = (manual === null || manual === undefined) ? true : manual;
+  switch (i) {
+    case "prestige":
+      prestigeCheck(manual)
+      break;
+    case "transcend":
+      transcendCheck(manual)
+      break;
+    case "challenge":
+      exitChallenge(manual)
+      break;
+    case "reincarnate":
+      reincarnateCheck(manual)
+      break;
+    case "reincarnationchallenge":
+      exitReincarnationChallenge(manual)
+      break;
+  }
+}
 
 function resetConfirmation(i) {
-	if (i == 'prestige') {
-		if (player.toggles.twentyeight == true) {
-			var r = confirm("Prestige will reset coin upgrades, coin producers AND crystals. The first prestige unlocks new features. Would you like to prestige? [Toggle this message in settings.]")
-				if (r == true) {
-					resetachievementcheck(1);
-					reset(1);
-				}
-		}
-		else {
-			resetachievementcheck(1);
-			reset(1);
-		}
-	}
-	if (i == 'transcend') {
-		if (player.toggles.twentynine == true) {
-			var z = confirm("Transcends will reset coin and prestige upgrades, coin producers, crystal producers AND diamonds. The first transcension unlocks new features. Would you like to prestige? [Toggle this message in settings.]")
-				if (z == true) {
-					resetachievementcheck(2);
-					reset(2);
-				}
-		}
-		else {
-			resetachievementcheck(2);
-			reset(2);
-		}
-	}
-	if (i == 'reincarnate') {
-		if (player.toggles.thirty == true) {
-			var z = confirm("Reincarnating will reset EVERYTHING but in return you will get extraordinarily powerful Particles, and unlock some very strong upgrades and some new features. would you like to Reincarnate? [Disable this message in settings]")
-				if (z == true) {
-					resetachievementcheck(3);
-					reset(3);
-				}
-		}
-		else {
-			resetachievementcheck(3);
-			reset(3);
-		}
-	}
-	}
+  if (i == 'prestige') {
+    if (player.toggles.twentyeight == true) {
+      var r = confirm("Prestige will reset coin upgrades, coin producers AND crystals. The first prestige unlocks new features. Would you like to prestige? [Toggle this message in settings.]")
+      if (r == true) {
+        resetachievementcheck(1);
+        reset(1);
+      }
+    } else {
+      resetachievementcheck(1);
+      reset(1);
+    }
+  }
+  if (i == 'transcend') {
+    if (player.toggles.twentynine == true) {
+      var z = confirm("Transcends will reset coin and prestige upgrades, coin producers, crystal producers AND diamonds. The first transcension unlocks new features. Would you like to prestige? [Toggle this message in settings.]")
+      if (z == true) {
+        resetachievementcheck(2);
+        reset(2);
+      }
+    } else {
+      resetachievementcheck(2);
+      reset(2);
+    }
+  }
+  if (i == 'reincarnate') {
+    if (player.toggles.thirty == true) {
+      var z = confirm("Reincarnating will reset EVERYTHING but in return you will get extraordinarily powerful Particles, and unlock some very strong upgrades and some new features. would you like to Reincarnate? [Disable this message in settings]")
+      if (z == true) {
+        resetachievementcheck(3);
+        reset(3);
+      }
+    } else {
+      resetachievementcheck(3);
+      reset(3);
+    }
+  }
+}
 
 // Functions which update the game each, roughly each tick. [Lines 1330 - 1766] <-- FIXME: Update line number
 
