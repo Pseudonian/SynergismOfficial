@@ -147,9 +147,8 @@ function buyAntUpgrade(i,auto) {
     }
 }
 
-
-function showSacrifice(){
-    calculateAntSacrificeELO();
+// NOTICE: Not tested
+function calculateAntSacrificeMult() {
     let mult = 1; 
     mult *= (1 + 2 * (1 - Math.pow(2, -(player.antUpgrades[11] + bonusant11)/125)))
     mult *= (1 + player.researches[103]/50)
@@ -161,6 +160,12 @@ function showSacrifice(){
     mult *= (1 + 1/100 * player.researches[122])
     mult *= (1 + 1/10 * player.upgrades[79])
     mult *= (1 + 0.09 * player.upgrades[40])
+    return mult
+}
+
+function showSacrifice(){
+    calculateAntSacrificeELO()
+    let mult = calculateAntSacrificeMult()
 
     let timeMultiplier = Math.min(1, Math.pow(player.antSacrificeTimer / 900, 2)) * Math.max(1, Math.pow(player.antSacrificeTimer/900, 0.75))
     document.getElementById("antSacrificeSummary").style.display = "block"
@@ -190,17 +195,7 @@ function showSacrifice(){
 function sacrificeAnts(){
     let p = true
     let timeMultiplier = Math.min(1, Math.pow(player.antSacrificeTimer / 900, 2)) * Math.max(1, Math.pow(player.antSacrificeTimer/900, 0.75))
-    let mult = 1; 
-    mult *= (1 + 2 * (1 - Math.pow(2, -(player.antUpgrades[11] + bonusant11)/125)));
-    mult *= (1 + player.researches[103]/50)
-    mult *= (1 + player.researches[104]/50)
-    if(player.achievements[132] == 1){mult *= 1.25}
-    if(player.achievements[137] == 1){mult *= 1.25}
-    mult *= divineBlessing3
-    mult *= (1 + 1/50 * player.challengecompletions.ten)
-    mult *= (1 + 1/100 * player.researches[122])
-    mult *= (1 + 1/10 * player.upgrades[79])
-    mult *= (1 + 0.09 * player.upgrades[40])
+    let mult = calculateAntSacrificeMult()
 
     if (player.antPoints.greaterThanOrEqualTo("1e40")){
     p = confirm("This resets your Crumbs, Ants and Ant Upgrades in exchange for some multiplier and resources. Continue?")
