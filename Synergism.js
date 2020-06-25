@@ -250,7 +250,7 @@ const player = {
   maxobtainiumpersecond: 0,
   maxobtainium: 0,
   // Ignore the first index. The other 25 are shaped in a 5x5 grid similar to the production appearance
-  researches: Array(1 + 5 * 5 * 5).fill(0),
+  researches: arrayFill(1 + 5 * 5 * 5),
 
   unlocks: {
     coinone: false,
@@ -266,7 +266,7 @@ const player = {
     rrow3: false,
     rrow4: false
   },
-  achievements: Array(1 + 7 * 26).fill(0),
+  achievements: arrayFill(1 + 7 * 26),
   achievementPoints: 0,
 
   prestigenomultiplier: true,

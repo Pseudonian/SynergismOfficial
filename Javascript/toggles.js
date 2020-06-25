@@ -41,45 +41,20 @@ function toggleChallenges(i) {
 
 function toggleBuyAmount(quantity, type) {
   player[type + 'buyamount'] = quantity
-  let a = ""
-  if (quantity == 1) {
-    a = "one"
-  }
-  if (quantity == 10) {
-    a = "ten"
-  }
-  if (quantity == 100) {
-    a = "hundred"
-  }
-  if (quantity == 1000) {
-    a = "thousand"
-  }
+  
+  document.getElementById(type + decimalPlaces[quantity]).style.backgroundColor = "Green";
 
-
-  let c = type + a
-  let d = ""
-  d = d + c
-
-  document.getElementById(d).style.backgroundColor = "Green";
   if (quantity !== 1) {
-    a = "one"
-    d = type + a
-    document.getElementById(d).style.backgroundColor = "Black"
+    document.getElementById(`${type}one`).style.backgroundColor = "Black"
   }
   if (quantity !== 10) {
-    a = "ten"
-    d = type + a
-    document.getElementById(d).style.backgroundColor = "Black"
+    document.getElementById(`${type}ten`).style.backgroundColor = "Black"
   }
   if (quantity !== 100) {
-    a = "hundred"
-    d = type + a
-    document.getElementById(d).style.backgroundColor = "Black"
+    document.getElementById(`${type}hundred`).style.backgroundColor = "Black"
   }
   if (quantity !== 1000) {
-    a = "thousand"
-    d = type + a
-    document.getElementById(d).style.backgroundColor = "Black"
+    document.getElementById(`${type}thousand`).style.backgroundColor = "Black"
   }
 }
 
@@ -118,7 +93,7 @@ function toggleShops(i) {
 function keyboardtabchange(i) {
   var q = 3;
   if (player.unlocks.coinfour == true) {
-    q += 1
+    q++
   }
   if (player.unlocks.prestige == true) {
     q += 2
