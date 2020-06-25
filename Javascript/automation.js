@@ -125,20 +125,10 @@ function autoUpgrades() {
 }
 
 function autobuyBuildingTab() {
-  if (player.toggles.one == true && player.upgrades[81] == 1 && player.coins.greaterThanOrEqualTo(player.firstCostCoin)) {
-    buyMax('first', 'Coin', 1, 100)
-  }
-  if (player.toggles.two == true && player.upgrades[82] == 1 && player.coins.greaterThanOrEqualTo(player.secondCostCoin)) {
-    buyMax('second', 'Coin', 2, 2e3)
-  }
-  if (player.toggles.three == true && player.upgrades[83] == 1 && player.coins.greaterThanOrEqualTo(player.thirdCostCoin)) {
-    buyMax('third', 'Coin', 3, 4e4)
-  }
-  if (player.toggles.four == true && player.upgrades[84] == 1 && player.coins.greaterThanOrEqualTo(player.fourthCostCoin)) {
-    buyMax('fourth', 'Coin', 4, 8e5)
-  }
-  if (player.toggles.five == true && player.upgrades[85] == 1 && player.coins.greaterThanOrEqualTo(player.fifthCostCoin)) {
-    buyMax('fifth', 'Coin', 5, 1.6e7)
+  for (let i = 0; i < 5; i++) {
+    if (player.toggles[cardinals[i]] && player.upgrades[81+i] && player.coins.greaterThanOrEqualTo(player[`${ordinals[i]}CostCoin`])) {
+      buyMax(ordinals[i], "Coin", i+1, coinProducerInitCosts[i])
+    }
   }
   if (player.toggles.six == true && player.upgrades[86] == 1 && player.coins.greaterThanOrEqualTo(player.acceleratorCost)) {
     buyAccelerator(true);
