@@ -59,64 +59,75 @@ function buyAutobuyers(i, state) {
   }
 }
 
-function autoGenerators() {
-  if (player.upgrades[90] && player.shoptoggles.generators) {
-    for (let i = 1; i < 6; i++) {
-      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
-        buyGenerator(i, true, true)
-      }
+function buyAllGeneratorUpgrades() {
+  for (let i = 1; i < 6; i++) {
+    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
+      buyGenerator(i, true, true)
     }
-    for (let i = 6; i < 11; i++) {
-      if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
-        buyGenerator(i, true, true)
-      }
+  }
+  for (let i = 6; i < 11; i++) {
+    if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
+      buyGenerator(i, true, true)
     }
-    for (let i = 11; i < 16; i++) {
-      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
-        buyGenerator(i, true, true)
-      }
+  }
+  for (let i = 11; i < 16; i++) {
+    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
+      buyGenerator(i, true, true)
     }
-    for (let i = 16; i < 21; i++) {
-      if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
-        buyGenerator(i, true, true)
-      }
+  }
+  for (let i = 16; i < 21; i++) {
+    if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
+      buyGenerator(i, true, true)
+    }
+  }
+}
+
+function buyAllCoinUpgrades() {
+  for (let i = 1; i < 21; i++) {
+    if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
+      buyUpgrades('coin', i, true)
+    }
+  }
+}
+
+function buyAllPrestigeUpgrades() {
+  for (let i = 21; i < 38; i++) {
+    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
+      buyUpgrades('prestige', i, true)
+    }
+  }
+  if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 50000)) && player.challengecompletions.seven > 0) {
+    buyUpgrades('prestige', 38, true)
+  }
+  if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 100000)) && player.challengecompletions.eight > 0) {
+    buyUpgrades('prestige', 39, true)
+  }
+  if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 200000)) && player.challengecompletions.nine > 0) {
+    buyUpgrades('prestige', 40, true)
+  }
+}
+
+function buyAllTranscendUpgrades() {
+  for (let i = 41; i < 61; i++) {
+    if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
+      buyUpgrades('transcend', i, true)
     }
   }
 }
 
 function autoUpgrades() {
-  autoGenerators()
+  if (player.upgrades[90] && player.shoptoggles.generators) {
+    buyAllGeneratorUpgrades()
+  }
   if (player.upgrades[91] && player.shoptoggles.coin) {
-    for (let i = 1; i < 21; i++) {
-      if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
-        buyUpgrades('coin', i, true)
-      }
-    }
+    buyAllCoinUpgrades()
   }
   if (player.upgrades[92] && player.shoptoggles.prestige) {
-    for (let i = 21; i < 38; i++) {
-      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
-        buyUpgrades('prestige', i, true)
-      }
-    }
-    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 50000)) && player.challengecompletions.seven > 0) {
-      buyUpgrades('prestige', 38, true)
-    }
-    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 100000)) && player.challengecompletions.eight > 0) {
-      buyUpgrades('prestige', 39, true)
-    }
-    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 200000)) && player.challengecompletions.nine > 0) {
-      buyUpgrades('prestige', 40, true)
-    }
+    buyAllPrestigeUpgrades()
   }
   if (player.upgrades[99] && player.shoptoggles.transcend) {
-    for (let i = 41; i < 61; i++) {
-      if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
-        buyUpgrades('transcend', i, true)
-      }
-    }
+    buyAllTranscendUpgrades()
   }
-
 }
 
 function autobuyBuildingTab() {
