@@ -86,33 +86,32 @@ function autoGenerators() {
 
 function autoUpgrades() {
   autoGenerators()
-  if (player.upgrades[91] > 0.5) {
+  if (player.upgrades[91] && player.shoptoggles.coin) {
     for (let i = 1; i < 21; i++) {
-      if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i])) && player.shoptoggles.coin == true) {
+      if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
         buyUpgrades('coin', i, true)
       }
     }
   }
-  if (player.upgrades[92] > 0.5) {
+  if (player.upgrades[92] && player.shoptoggles.prestige) {
     for (let i = 21; i < 38; i++) {
-      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i])) && player.shoptoggles.prestige == true) {
+      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
         buyUpgrades('prestige', i, true)
       }
     }
-    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 50000)) && player.shoptoggles.prestige == true && player.challengecompletions.seven > 0) {
+    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 50000)) && player.challengecompletions.seven > 0) {
       buyUpgrades('prestige', 38, true)
     }
-    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 100000)) && player.shoptoggles.prestige == true && player.challengecompletions.eight > 0) {
+    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 100000)) && player.challengecompletions.eight > 0) {
       buyUpgrades('prestige', 39, true)
     }
-    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 200000)) && player.shoptoggles.prestige == true && player.challengecompletions.nine > 0) {
+    if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, 200000)) && player.challengecompletions.nine > 0) {
       buyUpgrades('prestige', 40, true)
     }
-
   }
-  if (player.upgrades[99] > 0.5) {
+  if (player.upgrades[99] && player.shoptoggles.transcend) {
     for (let i = 41; i < 61; i++) {
-      if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i])) && player.shoptoggles.transcend == true) {
+      if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i]))) {
         buyUpgrades('transcend', i, true)
       }
     }
