@@ -496,6 +496,31 @@ function buildingAchievementCheck() {
   }
 }
 
+function antAchievementCheck() {
+  const sacrificeMult = Math.pow(1 + player.antSacrificePoints / 5000, 2)
+  if (sacrificeMult > 2 && player.secondOwnedAnts > 0 && player.achievements[176] == 0) {
+    achievementaward(176)
+  }
+  if (sacrificeMult > 6 && player.thirdOwnedAnts > 0 && player.achievements[177] == 0) {
+    achievementaward(177)
+  }
+  if (sacrificeMult > 20 && player.fourthOwnedAnts > 0 && player.achievements[178] == 0) {
+    achievementaward(178)
+  }
+  if (sacrificeMult > 100 && player.fifthOwnedAnts > 0 && player.achievements[179] == 0) {
+    achievementaward(179)
+  }
+  if (sacrificeMult > 500 && player.sixthOwnedAnts > 0 && player.achievements[180] == 0) {
+    achievementaward(180)
+  }
+  if (sacrificeMult > 6666 && player.seventhOwnedAnts > 0 && player.achievements[181] == 0) {
+    achievementaward(181)
+  }
+  if (sacrificeMult > 77777 && player.eighthOwnedAnts > 0 && player.achievements[182] == 0) {
+    achievementaward(182)
+  }
+}
+
 function achievementdescriptions(i) {
   var x = "adesc" + i
   var y = window[x]
