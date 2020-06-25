@@ -466,7 +466,7 @@ function resetAchievementCheck(i) {
   }
 }
 
-function challengeachievementcheck(id, auto) {
+function challengeAchievementCheck(id, auto) {
   const generatorcheck = Math.max(player.upgrades[101] + player.upgrades[102] + player.upgrades[103] + player.upgrades[104] + player.upgrades[105])
   const num = cardinals.indexOf(id) + 1
 
