@@ -318,3 +318,5 @@ var divineBlessing4 = 1;
 var divineBlessing5 = 0;
 
 var triggerChallenge = ""
+
+var diamondProducerInitCosts = [1e2, 1e5, 1e15, 1e40, 1e100]

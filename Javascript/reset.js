@@ -307,23 +307,13 @@ function reset(i, fast) {
   if (i > 1.5) {
     resetUpgrades(2, fast);
     player.coinsThisTranscension = new Decimal("100");
-    player.firstOwnedDiamonds = 0;
-    player.firstCostDiamonds = new Decimal("100");
-    player.secondOwnedDiamonds = 0;
-    player.secondCostDiamonds = new Decimal("1e5");
-    player.thirdOwnedDiamonds = 0;
-    player.thirdCostDiamonds = new Decimal("1e15");
-    player.fourthOwnedDiamonds = 0;
-    player.fourthCostDiamonds = new Decimal("1e40");
-    player.fifthOwnedDiamonds = 0;
-    player.fifthCostDiamonds = new Decimal("1e100");
-    player.firstGeneratedMythos = new Decimal("0");
-    player.secondGeneratedMythos = new Decimal("0");
-    player.thirdGeneratedMythos = new Decimal("0");
-    player.fourthGeneratedMythos = new Decimal("0");
-    player.fifthGeneratedMythos = new Decimal("0");
     player.acceleratorBoostBought = 0;
     player.acceleratorBoostCost = new Decimal("1e3");
+    for (let i = 0; i < 5; i++) {
+      player[`${ordinals[i]}CostDiamonds`] = new Decimal(diamondProducerInitCosts[i])
+      player[`${ordinals[i]}OwnedDiamonds`] = 0
+      player[`${ordinals[i]}GeneratedMythos`] = new Decimal("0")
+    }
 
     player.transcendCount += 1;
 

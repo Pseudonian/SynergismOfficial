@@ -152,20 +152,10 @@ function autobuyBuildingTab() {
 }
 
 function autobuyCrystalProducers() {
-  if (player.toggles.ten == true && player.achievements[78] == 1 && player.prestigePoints.greaterThanOrEqualTo(player.firstCostDiamonds)) {
-    buyMax('first', 'Diamonds', 1, 1e2)
-  }
-  if (player.toggles.eleven == true && player.achievements[85] == 1 && player.prestigePoints.greaterThanOrEqualTo(player.secondCostDiamonds)) {
-    buyMax('second', 'Diamonds', 3, 1e5)
-  }
-  if (player.toggles.twelve == true && player.achievements[92] == 1 && player.prestigePoints.greaterThanOrEqualTo(player.thirdCostDiamonds)) {
-    buyMax('third', 'Diamonds', 6, 1e15)
-  }
-  if (player.toggles.thirteen == true && player.achievements[99] == 1 && player.prestigePoints.greaterThanOrEqualTo(player.fourthCostDiamonds)) {
-    buyMax('fourth', 'Diamonds', 10, 1e40)
-  }
-  if (player.toggles.fourteen == true && player.achievements[106] == 1 && player.prestigePoints.greaterThanOrEqualTo(player.fifthCostDiamonds)) {
-    buyMax('fifth', 'Diamonds', 15, 1e100)
+  for (let i = 0; i < 5; i++) {
+    if (player.toggles[cardinals[9+i]] && player.achievements[78+7*i] && player.prestigePoints.greaterThanOrEqualTo(player[`${ordinals[i]}CostDiamonds`])) {
+      buyMax(ordinals[i], "Diamonds", 1 / 2 * (Math.pow(i + 1, 2) + i + 1), diamondProducerInitCosts[i])
+    }
   }
 }
 
