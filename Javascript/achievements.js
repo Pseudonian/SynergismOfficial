@@ -325,11 +325,15 @@ var areward181 = "Unlock Tier 7 Ant autobuy, and autobuy Praemoenio ants! Add +2
 var areward182 = "Unlock Tier 8 Ant autobuy, and autobuy Scientia and Phylacterium ants! Add +3% Base Ant ELO."
 
 var acceleratorChallengeGoals = [5, 25, 100, 666, 2000, 12500, 100000]
+
 var challengeCompletionGoals = [1, 3, 5, 10, 20, 50, 75]
 var reincarnationChallengeCompletionGoals = [1, 2, 3, 5, 10, 15, 25]
 var challengeNoGenCoinGoals = [null, "1e1000", "1e1000", "1e99999"]
+
 var coinProducerAmountGoals = [1, 10, 100, 1000, 5000, 10000, 20000]
 var alchemyAmountGoals = [1, 10, 66, 666, 6666, 17777, 42777]
+
+var antSacrificeMultGoal = [2, 6, 20, 100, 500, 6666, 77777]
 
 function prestigeAchievementCheck() {
   if (player.prestigenoaccelerator === true) {
@@ -498,26 +502,10 @@ function buildingAchievementCheck() {
 
 function antAchievementCheck() {
   const sacrificeMult = Math.pow(1 + player.antSacrificePoints / 5000, 2)
-  if (sacrificeMult > 2 && player.secondOwnedAnts > 0 && player.achievements[176] == 0) {
-    achievementaward(176)
-  }
-  if (sacrificeMult > 6 && player.thirdOwnedAnts > 0 && player.achievements[177] == 0) {
-    achievementaward(177)
-  }
-  if (sacrificeMult > 20 && player.fourthOwnedAnts > 0 && player.achievements[178] == 0) {
-    achievementaward(178)
-  }
-  if (sacrificeMult > 100 && player.fifthOwnedAnts > 0 && player.achievements[179] == 0) {
-    achievementaward(179)
-  }
-  if (sacrificeMult > 500 && player.sixthOwnedAnts > 0 && player.achievements[180] == 0) {
-    achievementaward(180)
-  }
-  if (sacrificeMult > 6666 && player.seventhOwnedAnts > 0 && player.achievements[181] == 0) {
-    achievementaward(181)
-  }
-  if (sacrificeMult > 77777 && player.eighthOwnedAnts > 0 && player.achievements[182] == 0) {
-    achievementaward(182)
+  for (let i = 0; i < 7; i++) {
+    if (sacrificeMult > antSacrificeMultGoal[i] && player[`${ordinals[i+1]}OwnedAnts`] > 0) {
+      achievementaward(176+i)
+    }
   }
 }
 
