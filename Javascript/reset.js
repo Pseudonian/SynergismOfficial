@@ -229,7 +229,7 @@ function resetdetails(i) {
 
 function updateAutoReset(i) {
   if (i == 1) {
-    var t = document.getElementById("prestigeamount").value
+    const t = document.getElementById("prestigeamount").value
     if (t >= 0) {
       player.prestigeamount = t;
     } else {
@@ -237,7 +237,7 @@ function updateAutoReset(i) {
     }
   }
   if (i == 2) {
-    var u = document.getElementById("transcendamount").value
+    const u = document.getElementById("transcendamount").value
     if (u >= 0) {
       player.transcendamount = u;
     } else {
@@ -245,7 +245,7 @@ function updateAutoReset(i) {
     }
   }
   if (i == 3) {
-    var v = document.getElementById("reincarnationamount").value
+    const v = document.getElementById("reincarnationamount").value
     if (v >= 0) {
       player.reincarnationamount = v;
     } else {
@@ -286,7 +286,7 @@ function reset(i, fast) {
   player.acceleratorCost = new Decimal("500");
   player.acceleratorBought = 0;
 
-  player.prestigeCount += 1;
+  player.prestigeCount++
 
   player.prestigePoints = player.prestigePoints.add(prestigePointGain);
   player.prestigeShards = new Decimal("0");
@@ -407,7 +407,7 @@ function reset(i, fast) {
     player.fourthGeneratedParticles = new Decimal("0");
     player.fifthGeneratedParticles = new Decimal("0");
 
-    player.reincarnationCount += 1;
+    player.reincarnationCount++
 
     player.transcendPoints = new Decimal("0");
     player.reincarnationPoints = player.reincarnationPoints.add(reincarnationPointGain);
@@ -562,7 +562,7 @@ function resetUpgrades(i) {
   }
 
   if (i > 1.5) {
-    var k
+    let k
     for (k = 21; k < 41; k++) {
       player.upgrades[k] = 0;
     }
@@ -578,7 +578,7 @@ function resetUpgrades(i) {
     player.crystalUpgrades = [0, 0, 0, 0, 0, 0, 0, 0]
     player.crystalUpgradesCost = [7, 15, 20, 40, 100, 200, 500, 1000]
 
-    var m = 0;
+    let m = 0;
     m += Math.floor(rune3level * effectiveLevelMult / 10) * 100 / 100
     if (player.upgrades[73] > 0.5 && player.currentChallengeRein !== "") {
       m += 10

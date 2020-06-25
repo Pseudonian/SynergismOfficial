@@ -144,26 +144,21 @@ function buyShopUpgrades(i) {
 }
 
 function useConsumable(i) {
-  let p = true
-  if (shopConfirmation) {
-    p = confirm("Would you like to use this potion?")
-  }
+  if ((i == 1 && player.shopUpgrades.offeringPotion < 1) || (i == 2 && player.shopUpgrades.obtainiumPotion < 1)) return false
+  const p = shopConfirmation ? confirm('Would you like to use this potion?') : true
   if (p) {
     switch (i) {
       case 1:
-        if (player.shopUpgrades.offeringPotion > 0.5) {
-          player.shopUpgrades.offeringPotion -= 1;
-          player.runeshards += Math.floor(7200 * player.offeringpersecond);
-        }
+        player.shopUpgrades.offeringPotion -= 1;
+        player.runeshards += Math.floor(7200 * player.offeringpersecond);
         break;
       case 2:
-        if (player.shopUpgrades.obtainiumPotion > 0.5) {
-          player.shopUpgrades.obtainiumPotion -= 1;
-          player.researchPoints += Math.floor(7200 * player.obtainiumpersecond);
-        }
+        player.shopUpgrades.obtainiumPotion -= 1;
+        player.researchPoints += Math.floor(7200 * player.obtainiumpersecond);
         break;
     }
   }
+  return true
 }
 
 function resetShopUpgrades() {

@@ -32,28 +32,12 @@ function buyAccelerator(autobuyer) {
   player.transcendnoaccelerator = false;
   player.reincarnatenoaccelerator = false;
   updateAllTick();
-  if (player.acceleratorBought >= 5 && player.achievements[148] == 0) {
-    achievementaward(148)
-  }
-  if (player.acceleratorBought >= 25 && player.achievements[149] == 0) {
-    achievementaward(149)
-  }
-  if (player.acceleratorBought >= 100 && player.achievements[150] == 0) {
-    achievementaward(150)
-  }
-  if (player.acceleratorBought >= 666 && player.achievements[151] == 0) {
-    achievementaward(151)
-  }
-  if (player.acceleratorBought >= 2000 && player.achievements[152] == 0) {
-    achievementaward(152)
-  }
-  if (player.acceleratorBought >= 12500 && player.achievements[153] == 0) {
-    achievementaward(153)
-  }
-  if (player.acceleratorBought >= 100000 && player.achievements[154] == 0) {
-    achievementaward(154)
-  }
 
+  for (let i = 0; i < 8; i++) {
+    if (player.acceleratorBought >= acceleratorChallengeGoals[i]) {
+      achievementaward(148+i)
+    }
+  }
 }
 
 function buyMultiplier(autobuyer) {

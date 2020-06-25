@@ -324,17 +324,20 @@ var areward180 = "Unlock Tier 6 Ant autobuy, and autobuy Hic and Experientia ant
 var areward181 = "Unlock Tier 7 Ant autobuy, and autobuy Praemoenio ants! Add +2% Base Ant ELO."
 var areward182 = "Unlock Tier 8 Ant autobuy, and autobuy Scientia and Phylacterium ants! Add +3% Base Ant ELO."
 
-
+var acceleratorChallengeGoals = [5, 25, 100, 666, 2000, 12500, 100000]
+var challengeCompletionGoals = [1, 3, 5, 10, 20, 50, 75]
+var reincarnationChallengeCompletionGoals = [1, 2, 3, 5, 10, 15, 25]
+var challengeNoGenCoinGoals = [null, "1e1000", "1e1000", "1e99999"]
 
 function resetachievementcheck(i) {
-  if (i == 1) {
-    if (player.prestigenoaccelerator == true) {
+  if (i === 1) {
+    if (player.prestigenoaccelerator === true) {
       achievementaward(60)
     }
-    if (player.prestigenomultiplier == true) {
+    if (player.prestigenomultiplier === true) {
       achievementaward(57)
     }
-    if (player.prestigenocoinupgrades == true) {
+    if (player.prestigenocoinupgrades === true) {
       achievementaward(64)
     }
     if (prestigePointGain.greaterThanOrEqualTo(1)) {
@@ -366,23 +369,23 @@ function resetachievementcheck(i) {
 
     }
   }
-  if (i == 2) {
-    if (player.transcendnoaccelerator == true) {
+  if (i === 2) {
+    if (player.transcendnoaccelerator === true) {
       achievementaward(61)
     }
-    if (player.transcendnomultiplier == true) {
+    if (player.transcendnomultiplier === true) {
       achievementaward(58)
     }
-    if (player.transcendnocoinupgrades == true) {
+    if (player.transcendnocoinupgrades === true) {
       achievementaward(65)
     }
-    if (player.transcendnocoinorprestigeupgrades == true) {
+    if (player.transcendnocoinorprestigeupgrades === true) {
       achievementaward(66)
     }
-    if (player.transcendnoaccelerator == true) {
+    if (player.transcendnoaccelerator === true) {
       achievementaward(61)
     }
-    if (player.transcendnomultiplier == true) {
+    if (player.transcendnomultiplier === true) {
       achievementaward(58)
     }
     if (transcendPointGain.greaterThanOrEqualTo(1)) {
@@ -407,23 +410,23 @@ function resetachievementcheck(i) {
       achievementaward(49)
     }
   }
-  if (i == 3) {
-    if (player.reincarnatenoaccelerator == true) {
+  if (i === 3) {
+    if (player.reincarnatenoaccelerator === true) {
       achievementaward(62)
     }
-    if (player.reincarnatenomultiplier == true) {
+    if (player.reincarnatenomultiplier === true) {
       achievementaward(59)
     }
-    if (player.reincarnatenocoinupgrades == true) {
+    if (player.reincarnatenocoinupgrades === true) {
       achievementaward(67)
     }
-    if (player.reincarnatenocoinorprestigeupgrades == true) {
+    if (player.reincarnatenocoinorprestigeupgrades === true) {
       achievementaward(68)
     }
-    if (player.reincarnatenocoinprestigeortranscendupgrades == true) {
+    if (player.reincarnatenocoinprestigeortranscendupgrades === true) {
       achievementaward(69)
     }
-    if (player.reincarnatenocoinprestigetranscendorgeneratorupgrades == true) {
+    if (player.reincarnatenocoinprestigetranscendorgeneratorupgrades === true) {
       achievementaward(70)
     }
     if (reincarnationPointGain.greaterThanOrEqualTo(1)) {
@@ -457,258 +460,22 @@ function resetachievementcheck(i) {
   }
 }
 
+function challengeachievementcheck(id, auto) {
+  const generatorcheck = Math.max(player.upgrades[101] + player.upgrades[102] + player.upgrades[103] + player.upgrades[104] + player.upgrades[105])
+  const num = cardinals.indexOf(id) + 1
 
-function challengeachievementcheck(i, auto) {
-  var generatorcheck = Math.max(player.upgrades[101] + player.upgrades[102] + player.upgrades[103] + player.upgrades[104] + player.upgrades[105])
-  if (i == 'one') {
-    if (player.challengecompletions.one > 0.5) {
-      achievementaward(78)
+  for (let i = 0; i < 7; i++) {
+    if (player.challengecompletions[id] >= (num > 5 ? challengeCompletionGoals : reincarnationChallengeCompletionGoals)[i]) {
+      achievementaward(71+7*id+i)
     }
-    if (player.challengecompletions.one > 2.5) {
-      achievementaward(79)
-    }
-    if (player.challengecompletions.one > 4.5) {
-      achievementaward(80)
-    }
-    if (player.challengecompletions.one > 9.5) {
-      achievementaward(81)
-    }
-    if (player.challengecompletions.one > 19.5) {
-      achievementaward(82)
-    }
-    if (player.challengecompletions.one > 49.5) {
-      achievementaward(83)
-    }
-    if (player.challengecompletions.one > 74.5) {
-      achievementaward(84)
-    }
+  }
 
-    if (!auto) {
-      if (player.coinsThisTranscension.greaterThanOrEqualTo("1e1000") && generatorcheck == 0) {
-        achievementaward(75)
-      }
-    }
-  }
-  if (i == 'two') {
-    if (player.challengecompletions.two > 0.5) {
-      achievementaward(85)
-    }
-    if (player.challengecompletions.two > 2.5) {
-      achievementaward(86)
-    }
-    if (player.challengecompletions.two > 4.5) {
-      achievementaward(87)
-    }
-    if (player.challengecompletions.two > 9.5) {
-      achievementaward(88)
-    }
-    if (player.challengecompletions.two > 19.5) {
-      achievementaward(89)
-    }
-    if (player.challengecompletions.two > 49.5) {
-      achievementaward(90)
-    }
-    if (player.challengecompletions.two > 74.5) {
-      achievementaward(91)
-    }
-    if (!auto) {
-      if (player.coinsThisTranscension.greaterThanOrEqualTo("1e1000") && generatorcheck == 0) {
-        achievementaward(76)
-      }
-    }
-  }
-  if (i == 'three') {
-    if (!auto) {
-      if (player.coinsThisTranscension.greaterThanOrEqualTo("1e99999") && generatorcheck == 0) {
-        achievementaward(77)
-      }
-    }
-    if (player.challengecompletions.three > 0.5) {
-      achievementaward(92)
-    }
-    if (player.challengecompletions.three > 2.5) {
-      achievementaward(93)
-    }
-    if (player.challengecompletions.three > 4.5) {
-      achievementaward(94)
-    }
-    if (player.challengecompletions.three > 9.5) {
-      achievementaward(95)
-    }
-    if (player.challengecompletions.three > 19.5) {
-      achievementaward(96)
-    }
-    if (player.challengecompletions.three > 49.5) {
-      achievementaward(97)
-    }
-    if (player.challengecompletions.three > 74.5) {
-      achievementaward(98)
-    }
-  }
-  if (i == 'four') {
-    if (player.challengecompletions.four > 0.5) {
-      achievementaward(99)
-    }
-    if (player.challengecompletions.four > 2.5) {
-      achievementaward(100)
-    }
-    if (player.challengecompletions.four > 4.5) {
-      achievementaward(101)
-    }
-    if (player.challengecompletions.four > 9.5) {
-      achievementaward(102)
-    }
-    if (player.challengecompletions.four > 19.5) {
-      achievementaward(103)
-    }
-    if (player.challengecompletions.four > 49.5) {
-      achievementaward(104)
-    }
-    if (player.challengecompletions.four > 74.5) {
-      achievementaward(105)
-    }
-  }
-  if (i == 'five') {
-    if (!auto) {
-      if (player.coinsThisTranscension.greaterThanOrEqualTo("1e120000")) {
-        achievementaward(63)
-      }
-    }
-    if (player.challengecompletions.five > 0.5) {
-      achievementaward(106)
-    }
-    if (player.challengecompletions.five > 2.5) {
-      achievementaward(107)
-    }
-    if (player.challengecompletions.five > 4.5) {
-      achievementaward(108)
-    }
-    if (player.challengecompletions.five > 9.5) {
-      achievementaward(109)
-    }
-    if (player.challengecompletions.five > 19.5) {
-      achievementaward(110)
-    }
-    if (player.challengecompletions.five > 49.5) {
-      achievementaward(111)
-    }
-    if (player.challengecompletions.five > 74.5) {
-      achievementaward(112)
-    }
-  }
-  if (i == 'six') {
-    if (player.challengecompletions.six > 0.5) {
-      achievementaward(113)
-    }
-    if (player.challengecompletions.six > 1.5) {
-      achievementaward(114)
-    }
-    if (player.challengecompletions.six > 2.5) {
-      achievementaward(115)
-    }
-    if (player.challengecompletions.six > 4.5) {
-      achievementaward(116)
-    }
-    if (player.challengecompletions.six > 9.5) {
-      achievementaward(117)
-    }
-    if (player.challengecompletions.six > 14.5) {
-      achievementaward(118)
-    }
-    if (player.challengecompletions.six > 24.5) {
-      achievementaward(119)
-    }
-  }
-  if (i == 'seven') {
-    if (player.challengecompletions.seven > 0.5) {
-      achievementaward(120)
-    }
-    if (player.challengecompletions.seven > 1.5) {
-      achievementaward(121)
-    }
-    if (player.challengecompletions.seven > 2.5) {
-      achievementaward(122)
-    }
-    if (player.challengecompletions.seven > 4.5) {
-      achievementaward(123)
-    }
-    if (player.challengecompletions.seven > 9.5) {
-      achievementaward(124)
-    }
-    if (player.challengecompletions.seven > 14.5) {
-      achievementaward(125)
-    }
-    if (player.challengecompletions.seven > 24.5) {
-      achievementaward(126)
-    }
-  }
-  if (i == 'eight') {
-    if (player.challengecompletions.eight > 0.5) {
-      achievementaward(127)
-    }
-    if (player.challengecompletions.eight > 1.5) {
-      achievementaward(128)
-    }
-    if (player.challengecompletions.eight > 2.5) {
-      achievementaward(129)
-    }
-    if (player.challengecompletions.eight > 4.5) {
-      achievementaward(130)
-    }
-    if (player.challengecompletions.eight > 9.5) {
-      achievementaward(131)
-    }
-    if (player.challengecompletions.eight > 14.5) {
-      achievementaward(132)
-    }
-    if (player.challengecompletions.eight > 24.5) {
-      achievementaward(133)
-    }
-  }
-  if (i == 'nine') {
-    if (player.challengecompletions.nine > 0.5) {
-      achievementaward(134)
-    }
-    if (player.challengecompletions.nine > 1.5) {
-      achievementaward(135)
-    }
-    if (player.challengecompletions.nine > 2.5) {
-      achievementaward(136)
-    }
-    if (player.challengecompletions.nine > 4.5) {
-      achievementaward(137)
-    }
-    if (player.challengecompletions.nine > 9.5) {
-      achievementaward(138)
-    }
-    if (player.challengecompletions.nine > 14.5) {
-      achievementaward(139)
-    }
-    if (player.challengecompletions.nine > 24.5) {
-      achievementaward(140)
-    }
-  }
-  if (i == 'ten') {
-    if (player.challengecompletions.ten > 0.5) {
-      achievementaward(141)
-    }
-    if (player.challengecompletions.ten > 1.5) {
-      achievementaward(142)
-    }
-    if (player.challengecompletions.ten > 2.5) {
-      achievementaward(143)
-    }
-    if (player.challengecompletions.ten > 4.5) {
-      achievementaward(144)
-    }
-    if (player.challengecompletions.ten > 9.5) {
-      achievementaward(145)
-    }
-    if (player.challengecompletions.ten > 14.5) {
-      achievementaward(146)
-    }
-    if (player.challengecompletions.ten > 24.5) {
-      achievementaward(147)
+  if (!auto) {
+    if (num < 4 && player.coinsThisTranscension.greaterThanOrEqualTo(challengeNoGenCoinGoals[num]) && generatorcheck === 0) {
+      achievementaward(74+num)
+    }
+    if (num === 5 && player.coinsThisTranscension.greaterThanOrEqualTo("1e120000") && player.acceleratorBought + player.acceleratorBoostBought < 1) {
+      achievementaward(63)
     }
   }
 }

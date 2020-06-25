@@ -7,13 +7,13 @@ function resettimers() {
 function displayruneinformation(i, updatelevelup) {
   updatelevelup = (updatelevelup === null || updatelevelup === undefined) ? true : updatelevelup;
 
-  var m = effectiveLevelMult
-  let antmult = Math.pow(1.01, player.antUpgrades[8] + bonusant8)
-  let SIMult1 = (1 + player.researches[83] / 50);
-  let SILevelMult = (1 + player.researches[84] / 1000)
-  let mult1 = (1 + player.researches[91] / 100);
-  let mult2 = (1 + player.researches[92] / 100);
-  let recycleMult = 1 / (1 - 0.05 * player.achievements[80] - 0.05 * player.achievements[87] - 0.05 * player.achievements[94] - 0.05 * player.achievements[101] - 0.05 * player.achievements[108] - 0.05 * player.achievements[115] - 0.075 * player.achievements[122] - 0.075 * player.achievements[129] - 0.05 * player.upgrades[61] - Math.min(0.25, rune4level / 800))
+  const m = effectiveLevelMult
+  const antmult = Math.pow(1.01, player.antUpgrades[8] + bonusant8)
+  const SIMult1 = (1 + player.researches[83] / 50);
+  const SILevelMult = (1 + player.researches[84] / 1000)
+  const mult1 = (1 + player.researches[91] / 100);
+  const mult2 = (1 + player.researches[92] / 100);
+  const recycleMult = 1 / (1 - 0.05 * player.achievements[80] - 0.05 * player.achievements[87] - 0.05 * player.achievements[94] - 0.05 * player.achievements[101] - 0.05 * player.achievements[108] - 0.05 * player.achievements[115] - 0.075 * player.achievements[122] - 0.075 * player.achievements[129] - 0.05 * player.upgrades[61] - Math.min(0.25, rune4level / 800))
   let s = 0;
   if (player.upgrades[71] == 1 && i == 1) {
     s = player.runelevels[0]
