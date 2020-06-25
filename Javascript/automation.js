@@ -59,45 +59,42 @@ function buyAutobuyers(i, state) {
   }
 }
 
-function autoUpgrades() {
-  if (player.upgrades[90] > 0.5 && player.shoptoggles.generators == true) {
-
-    var i;
-    for (i = 1; i < 6; i++) {
-      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)])) && player.shoptoggles.generators == true) {
+function autoGenerators() {
+  if (player.upgrades[90] && player.shoptoggles.generators) {
+    for (let i = 1; i < 6; i++) {
+      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
         buyGenerator(i, true, true)
       }
     }
-    var j;
-    for (j = 6; j < 11; j++) {
-      if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + j)])) && player.shoptoggles.generators == true) {
-        buyGenerator(j, true, true)
+    for (let i = 6; i < 11; i++) {
+      if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
+        buyGenerator(i, true, true)
       }
     }
-    var k;
-    for (k = 11; k < 16; k++) {
-      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + k)])) && player.shoptoggles.generators == true) {
-        buyGenerator(k, true, true)
+    for (let i = 11; i < 16; i++) {
+      if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
+        buyGenerator(i, true, true)
       }
     }
-    var l;
-    for (l = 16; l < 21; l++) {
-      if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + l)])) && player.shoptoggles.generators == true) {
-        buyGenerator(l, true, true)
+    for (let i = 16; i < 21; i++) {
+      if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[(100 + i)]))) {
+        buyGenerator(i, true, true)
       }
     }
   }
+}
+
+function autoUpgrades() {
+  autoGenerators()
   if (player.upgrades[91] > 0.5) {
-    var i;
-    for (i = 1; i < 21; i++) {
+    for (let i = 1; i < 21; i++) {
       if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i])) && player.shoptoggles.coin == true) {
         buyUpgrades('coin', i, true)
       }
     }
   }
   if (player.upgrades[92] > 0.5) {
-    var i;
-    for (i = 21; i < 38; i++) {
+    for (let i = 21; i < 38; i++) {
       if (player.prestigePoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i])) && player.shoptoggles.prestige == true) {
         buyUpgrades('prestige', i, true)
       }
@@ -114,8 +111,7 @@ function autoUpgrades() {
 
   }
   if (player.upgrades[99] > 0.5) {
-    var i;
-    for (i = 41; i < 61; i++) {
+    for (let i = 41; i < 61; i++) {
       if (player.transcendPoints.greaterThanOrEqualTo(Decimal.pow(10, upgradeCosts[i])) && player.shoptoggles.transcend == true) {
         buyUpgrades('transcend', i, true)
       }
