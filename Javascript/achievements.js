@@ -331,134 +331,138 @@ var challengeNoGenCoinGoals = [null, "1e1000", "1e1000", "1e99999"]
 var coinProducerAmountGoals = [1, 10, 100, 1000, 5000, 10000, 20000]
 var alchemyAmountGoals = [1, 10, 66, 666, 6666, 17777, 42777]
 
-function resetachievementcheck(i) {
-  if (i === 1) {
-    if (player.prestigenoaccelerator === true) {
-      achievementaward(60)
-    }
-    if (player.prestigenomultiplier === true) {
-      achievementaward(57)
-    }
-    if (player.prestigenocoinupgrades === true) {
-      achievementaward(64)
-    }
-    if (prestigePointGain.greaterThanOrEqualTo(1)) {
-      achievementaward(36)
-
-    }
-    if (prestigePointGain.greaterThanOrEqualTo(1e6)) {
-      achievementaward(37)
-
-    }
-    if (prestigePointGain.greaterThanOrEqualTo(1e100)) {
-      achievementaward(38)
-
-    }
-    if (prestigePointGain.greaterThanOrEqualTo("1e1000")) {
-      achievementaward(39)
-
-    }
-    if (prestigePointGain.greaterThanOrEqualTo("1e10000")) {
-      achievementaward(40)
-
-    }
-    if (prestigePointGain.greaterThanOrEqualTo("1e77777")) {
-      achievementaward(41)
-
-    }
-    if (prestigePointGain.greaterThanOrEqualTo("1e250000")) {
-      achievementaward(42)
-
-    }
+function prestigeAchievementCheck() {
+  if (player.prestigenoaccelerator === true) {
+    achievementaward(60)
   }
-  if (i === 2) {
-    if (player.transcendnoaccelerator === true) {
-      achievementaward(61)
-    }
-    if (player.transcendnomultiplier === true) {
-      achievementaward(58)
-    }
-    if (player.transcendnocoinupgrades === true) {
-      achievementaward(65)
-    }
-    if (player.transcendnocoinorprestigeupgrades === true) {
-      achievementaward(66)
-    }
-    if (player.transcendnoaccelerator === true) {
-      achievementaward(61)
-    }
-    if (player.transcendnomultiplier === true) {
-      achievementaward(58)
-    }
-    if (transcendPointGain.greaterThanOrEqualTo(1)) {
-      achievementaward(43)
-    }
-    if (transcendPointGain.greaterThanOrEqualTo(1e6)) {
-      achievementaward(44)
-    }
-    if (transcendPointGain.greaterThanOrEqualTo(1e50)) {
-      achievementaward(45)
-    }
-    if (transcendPointGain.greaterThanOrEqualTo(1e308)) {
-      achievementaward(46)
-    }
-    if (transcendPointGain.greaterThanOrEqualTo("1e1500")) {
-      achievementaward(47)
-    }
-    if (transcendPointGain.greaterThanOrEqualTo("1e25000")) {
-      achievementaward(48)
-    }
-    if (transcendPointGain.greaterThanOrEqualTo("1e100000")) {
-      achievementaward(49)
-    }
+  if (player.prestigenomultiplier === true) {
+    achievementaward(57)
   }
-  if (i === 3) {
-    if (player.reincarnatenoaccelerator === true) {
-      achievementaward(62)
-    }
-    if (player.reincarnatenomultiplier === true) {
-      achievementaward(59)
-    }
-    if (player.reincarnatenocoinupgrades === true) {
-      achievementaward(67)
-    }
-    if (player.reincarnatenocoinorprestigeupgrades === true) {
-      achievementaward(68)
-    }
-    if (player.reincarnatenocoinprestigeortranscendupgrades === true) {
-      achievementaward(69)
-    }
-    if (player.reincarnatenocoinprestigetranscendorgeneratorupgrades === true) {
-      achievementaward(70)
-    }
-    if (reincarnationPointGain.greaterThanOrEqualTo(1)) {
-      achievementaward(50)
+  if (player.prestigenocoinupgrades === true) {
+    achievementaward(64)
+  }
+  if (prestigePointGain.greaterThanOrEqualTo(1)) {
+    achievementaward(36)
 
-    }
-    if (reincarnationPointGain.greaterThanOrEqualTo(1e5)) {
-      achievementaward(51)
+  }
+  if (prestigePointGain.greaterThanOrEqualTo(1e6)) {
+    achievementaward(37)
 
-    }
-    if (reincarnationPointGain.greaterThanOrEqualTo(1e30)) {
-      achievementaward(52)
+  }
+  if (prestigePointGain.greaterThanOrEqualTo(1e100)) {
+    achievementaward(38)
 
-    }
-    if (reincarnationPointGain.greaterThanOrEqualTo(1e200)) {
-      achievementaward(53)
+  }
+  if (prestigePointGain.greaterThanOrEqualTo("1e1000")) {
+    achievementaward(39)
 
-    }
-    if (reincarnationPointGain.greaterThanOrEqualTo("1e1500")) {
-      achievementaward(54)
+  }
+  if (prestigePointGain.greaterThanOrEqualTo("1e10000")) {
+    achievementaward(40)
 
-    }
-    if (reincarnationPointGain.greaterThanOrEqualTo("1e5000")) {
-      achievementaward(55)
+  }
+  if (prestigePointGain.greaterThanOrEqualTo("1e77777")) {
+    achievementaward(41)
 
-    }
-    if (reincarnationPointGain.greaterThanOrEqualTo("1e7777")) {
-      achievementaward(56)
+  }
+  if (prestigePointGain.greaterThanOrEqualTo("1e250000")) {
+    achievementaward(42)
 
-    }
+  }
+}
+
+function transcendAchievementCheck() {
+  if (player.transcendnoaccelerator === true) {
+    achievementaward(61)
+  }
+  if (player.transcendnomultiplier === true) {
+    achievementaward(58)
+  }
+  if (player.transcendnocoinupgrades === true) {
+    achievementaward(65)
+  }
+  if (player.transcendnocoinorprestigeupgrades === true) {
+    achievementaward(66)
+  }
+  if (player.transcendnoaccelerator === true) {
+    achievementaward(61)
+  }
+  if (player.transcendnomultiplier === true) {
+    achievementaward(58)
+  }
+  if (transcendPointGain.greaterThanOrEqualTo(1)) {
+    achievementaward(43)
+  }
+  if (transcendPointGain.greaterThanOrEqualTo(1e6)) {
+    achievementaward(44)
+  }
+  if (transcendPointGain.greaterThanOrEqualTo(1e50)) {
+    achievementaward(45)
+  }
+  if (transcendPointGain.greaterThanOrEqualTo(1e308)) {
+    achievementaward(46)
+  }
+  if (transcendPointGain.greaterThanOrEqualTo("1e1500")) {
+    achievementaward(47)
+  }
+  if (transcendPointGain.greaterThanOrEqualTo("1e25000")) {
+    achievementaward(48)
+  }
+  if (transcendPointGain.greaterThanOrEqualTo("1e100000")) {
+    achievementaward(49)
+  }
+}
+
+function reincarnationAchievementCheck() {
+  if (player.reincarnatenoaccelerator === true) {
+    achievementaward(62)
+  }
+  if (player.reincarnatenomultiplier === true) {
+    achievementaward(59)
+  }
+  if (player.reincarnatenocoinupgrades === true) {
+    achievementaward(67)
+  }
+  if (player.reincarnatenocoinorprestigeupgrades === true) {
+    achievementaward(68)
+  }
+  if (player.reincarnatenocoinprestigeortranscendupgrades === true) {
+    achievementaward(69)
+  }
+  if (player.reincarnatenocoinprestigetranscendorgeneratorupgrades === true) {
+    achievementaward(70)
+  }
+  if (reincarnationPointGain.greaterThanOrEqualTo(1)) {
+    achievementaward(50)
+  }
+  if (reincarnationPointGain.greaterThanOrEqualTo(1e5)) {
+    achievementaward(51)
+  }
+  if (reincarnationPointGain.greaterThanOrEqualTo(1e30)) {
+    achievementaward(52)
+  }
+  if (reincarnationPointGain.greaterThanOrEqualTo(1e200)) {
+    achievementaward(53)
+  }
+  if (reincarnationPointGain.greaterThanOrEqualTo("1e1500")) {
+    achievementaward(54)
+  }
+  if (reincarnationPointGain.greaterThanOrEqualTo("1e5000")) {
+    achievementaward(55)
+  }
+  if (reincarnationPointGain.greaterThanOrEqualTo("1e7777")) {
+    achievementaward(56)
+  }
+}
+
+function resetAchievementCheck(i) {
+  switch(i) {
+    case 1:
+      return prestigeAchievementCheck()
+    case 2:
+      return transcendAchievementCheck()
+    case 3:
+      return reincarnationAchievementCheck()
   }
 }
 

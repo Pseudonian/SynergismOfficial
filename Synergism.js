@@ -1833,7 +1833,7 @@ function prestigeCheck(manual) {
     if (manual) {
       resetConfirmation('prestige');
     } else {
-      resetachievementcheck(1);
+      resetAchievementCheck(1);
       reset(1);
     }
   }
@@ -1845,7 +1845,7 @@ function transcendCheck(manual) {
       resetConfirmation('transcend');
     }
     if (!manual) {
-      resetachievementcheck(2);
+      resetAchievementCheck(2);
       reset(2);
     }
   }
@@ -1901,7 +1901,7 @@ function reincarnateCheck(manual) {
       resetConfirmation('reincarnate');
     }
     if (!manual) {
-      resetachievementcheck(3);
+      resetAchievementCheck(3);
       reset(3);
     }
   }
@@ -1984,11 +1984,11 @@ function resetConfirmation(i) {
     if (player.toggles.twentyeight == true) {
       var r = confirm("Prestige will reset coin upgrades, coin producers AND crystals. The first prestige unlocks new features. Would you like to prestige? [Toggle this message in settings.]")
       if (r == true) {
-        resetachievementcheck(1);
+        resetAchievementCheck(1);
         reset(1);
       }
     } else {
-      resetachievementcheck(1);
+      resetAchievementCheck(1);
       reset(1);
     }
   }
@@ -1996,11 +1996,11 @@ function resetConfirmation(i) {
     if (player.toggles.twentynine == true) {
       var z = confirm("Transcends will reset coin and prestige upgrades, coin producers, crystal producers AND diamonds. The first transcension unlocks new features. Would you like to prestige? [Toggle this message in settings.]")
       if (z == true) {
-        resetachievementcheck(2);
+        resetAchievementCheck(2);
         reset(2);
       }
     } else {
-      resetachievementcheck(2);
+      resetAchievementCheck(2);
       reset(2);
     }
   }
@@ -2008,11 +2008,11 @@ function resetConfirmation(i) {
     if (player.toggles.thirty == true) {
       var z = confirm("Reincarnating will reset EVERYTHING but in return you will get extraordinarily powerful Particles, and unlock some very strong upgrades and some new features. would you like to Reincarnate? [Disable this message in settings]")
       if (z == true) {
-        resetachievementcheck(3);
+        resetAchievementCheck(3);
         reset(3);
       }
     } else {
-      resetachievementcheck(3);
+      resetAchievementCheck(3);
       reset(3);
     }
   }
@@ -2058,14 +2058,14 @@ function updateAll() {
 
   if (player.resettoggle2 == 1 || player.resettoggle2 == 0) {
     if (player.toggles.twentyone == true && player.upgrades[89] == 1 && transcendPointGain.greaterThanOrEqualTo(player.transcendPoints.times(Decimal.pow(10, player.transcendamount))) && player.coinsThisTranscension.greaterThanOrEqualTo(1e100) && player.currentChallenge == "") {
-      resetachievementcheck(2);
+      resetAchievementCheck(2);
       reset(2, true);
     }
   }
   if (player.resettoggle2 == 2) {
     var time = Math.max(0.25, player.transcendamount);
     if (player.toggles.twentyone == true && player.upgrades[89] == 1 && player.transcendcounter >= time && player.coinsThisTranscension.greaterThanOrEqualTo(1e100) && player.currentChallenge == "") {
-      resetachievementcheck(2);
+      resetAchievementCheck(2);
       reset(2, true);
     }
   }
@@ -2099,13 +2099,13 @@ function updateAll() {
   if (player.resettoggle3 == 2) {
     var time = Math.max(0.25, player.reincarnationamount);
     if (player.toggles.twentyseven == true && player.researches[46] > 0.5 && player.transcendShards.greaterThanOrEqualTo("1e300") && player.reincarnationcounter >= time && player.currentChallenge == "" && player.currentChallengeRein == "") {
-      resetachievementcheck(3);
+      resetAchievementCheck(3);
       reset(3, true);
     }
   }
   if (player.resettoggle3 == 1 || player.resettoggle3 == 0) {
     if (player.toggles.twentyseven == true && player.researches[46] > 0.5 && reincarnationPointGain.greaterThanOrEqualTo(player.reincarnationPoints.times(Decimal.pow(10, player.reincarnationamount))) && player.transcendShards.greaterThanOrEqualTo(1e300) && player.currentChallenge == "" && player.currentChallengeRein == "") {
-      resetachievementcheck(3);
+      resetAchievementCheck(3);
       reset(3, true)
     }
   }

@@ -172,14 +172,14 @@ function autobuyCrystalProducers() {
 function checkAutoPrestige() {
   if (player.resettoggle1 == 1 || player.resettoggle1 == 0) {
     if (player.toggles.fifteen == true && player.achievements[43] == 1 && prestigePointGain.greaterThanOrEqualTo(player.prestigePoints.times(Decimal.pow(10, player.prestigeamount))) && player.coinsThisPrestige.greaterThanOrEqualTo(1e16)) {
-      resetachievementcheck(1);
+      resetAchievementCheck(1);
       reset(1, true)
     }
   }
   if (player.resettoggle1 == 2) {
     var time = Math.max(0.25, player.prestigeamount);
     if (player.toggles.fifteen == true && player.achievements[43] == 1 && player.prestigecounter >= time && player.coinsThisPrestige.greaterThanOrEqualTo(1e16)) {
-      resetachievementcheck(1);
+      resetAchievementCheck(1);
       reset(1, true);
     }
   }
