@@ -328,6 +328,8 @@ var acceleratorChallengeGoals = [5, 25, 100, 666, 2000, 12500, 100000]
 var challengeCompletionGoals = [1, 3, 5, 10, 20, 50, 75]
 var reincarnationChallengeCompletionGoals = [1, 2, 3, 5, 10, 15, 25]
 var challengeNoGenCoinGoals = [null, "1e1000", "1e1000", "1e99999"]
+var coinProducerAmountGoals = [1, 10, 100, 1000, 5000, 10000, 20000]
+var alchemyAmountGoals = [1, 10, 66, 666, 6666, 17777, 42777]
 
 function resetachievementcheck(i) {
   if (i === 1) {
@@ -481,110 +483,12 @@ function challengeachievementcheck(id, auto) {
 }
 
 function buildingAchievementCheck() {
-  if (player.firstOwnedCoin >= 1 && player.achievements[1] < 0.5) {
-    achievementaward(1)
-  }
-  if (player.firstOwnedCoin >= 10 && player.achievements[2] < 0.5) {
-    achievementaward(2)
-  }
-  if (player.firstOwnedCoin >= 100 && player.achievements[3] < 0.5) {
-    achievementaward(3)
-  }
-  if (player.firstOwnedCoin >= 1000 && player.achievements[4] < 0.5) {
-    achievementaward(4)
-  }
-  if (player.firstOwnedCoin >= 5000 && player.achievements[5] < 0.5) {
-    achievementaward(5)
-  }
-  if (player.firstOwnedCoin >= 10000 && player.achievements[6] < 0.5) {
-    achievementaward(6)
-  }
-  if (player.firstOwnedCoin >= 20000 && player.achievements[7] < 0.5) {
-    achievementaward(7)
-  }
-  if (player.secondOwnedCoin >= 1 && player.achievements[8] < 0.5) {
-    achievementaward(8)
-  }
-  if (player.secondOwnedCoin >= 10 && player.achievements[9] < 0.5) {
-    achievementaward(9)
-  }
-  if (player.secondOwnedCoin >= 100 && player.achievements[10] < 0.5) {
-    achievementaward(10)
-  }
-  if (player.secondOwnedCoin >= 1000 && player.achievements[11] < 0.5) {
-    achievementaward(11)
-  }
-  if (player.secondOwnedCoin >= 5000 && player.achievements[12] < 0.5) {
-    achievementaward(12)
-  }
-  if (player.secondOwnedCoin >= 10000 && player.achievements[13] < 0.5) {
-    achievementaward(13)
-  }
-  if (player.secondOwnedCoin >= 20000 && player.achievements[14] < 0.5) {
-    achievementaward(14)
-  }
-  if (player.thirdOwnedCoin >= 1 && player.achievements[15] < 0.5) {
-    achievementaward(15)
-  }
-  if (player.thirdOwnedCoin >= 10 && player.achievements[16] < 0.5) {
-    achievementaward(16)
-  }
-  if (player.thirdOwnedCoin >= 100 && player.achievements[17] < 0.5) {
-    achievementaward(17)
-  }
-  if (player.thirdOwnedCoin >= 1000 && player.achievements[18] < 0.5) {
-    achievementaward(18)
-  }
-  if (player.thirdOwnedCoin >= 5000 && player.achievements[19] < 0.5) {
-    achievementaward(19)
-  }
-  if (player.thirdOwnedCoin >= 10000 && player.achievements[20] < 0.5) {
-    achievementaward(20)
-  }
-  if (player.thirdOwnedCoin >= 20000 && player.achievements[21] < 0.5) {
-    achievementaward(21)
-  }
-  if (player.fourthOwnedCoin >= 1 && player.achievements[22] < 0.5) {
-    achievementaward(22)
-  }
-  if (player.fourthOwnedCoin >= 10 && player.achievements[23] < 0.5) {
-    achievementaward(23)
-  }
-  if (player.fourthOwnedCoin >= 100 && player.achievements[24] < 0.5) {
-    achievementaward(24)
-  }
-  if (player.fourthOwnedCoin >= 1000 && player.achievements[25] < 0.5) {
-    achievementaward(25)
-  }
-  if (player.fourthOwnedCoin >= 5000 && player.achievements[26] < 0.5) {
-    achievementaward(26)
-  }
-  if (player.fourthOwnedCoin >= 10000 && player.achievements[27] < 0.5) {
-    achievementaward(27)
-  }
-  if (player.fourthOwnedCoin >= 20000 && player.achievements[28] < 0.5) {
-    achievementaward(28)
-  }
-  if (player.fifthOwnedCoin >= 1 && player.achievements[29] < 0.5) {
-    achievementaward(29)
-  }
-  if (player.fifthOwnedCoin >= 10 && player.achievements[30] < 0.5) {
-    achievementaward(30)
-  }
-  if (player.fifthOwnedCoin >= 66 && player.achievements[31] < 0.5) {
-    achievementaward(31)
-  }
-  if (player.fifthOwnedCoin >= 666 && player.achievements[32] < 0.5) {
-    achievementaward(32)
-  }
-  if (player.fifthOwnedCoin >= 6666 && player.achievements[33] < 0.5) {
-    achievementaward(33)
-  }
-  if (player.fifthOwnedCoin >= 17777 && player.achievements[34] < 0.5) {
-    achievementaward(34)
-  }
-  if (player.fifthOwnedCoin >= 42777 && player.achievements[35] < 0.5) {
-    achievementaward(35)
+  for (let i = 0; i < 5; i++) {
+    for (let n = 0; n < 7; n++) {
+      if (player[`${ordinals[i]}OwnedCoin`] >= (i == 4 ? alchemyAmountGoals : coinProducerAmountGoals)[n]) {
+        achievementaward(7*i+n+1)
+      }
+    }
   }
 }
 
