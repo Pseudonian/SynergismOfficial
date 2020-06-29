@@ -96,6 +96,43 @@ function buyMultiplier(autobuyer) {
 
 }
 
+function applyChallengeFourCostScale(cost, buyingTo, r) {
+  // you would not fucking believe how long it took me to figure this out
+  // (100*costofcurrent + 10000)^n = (((100+buyingTo)!/100!)*100^buyingTo)^n
+  cost = cost.times(Decimal.pow(new Decimal(buyingTo + 100).factorial().dividedBy(new Decimal(100).factorial()).times(Decimal.pow(100, buyingTo)), 1.25 + 1 / 4 * player.challengecompletions.four));
+  if (buyingTo >= (1000 - (10 * player.challengecompletions.four))) {
+    // and I changed this to be a summation of all the previous buys 1.25 to the sum from 1 to buyingTo 
+    cost = cost.times(Decimal.pow(1.25, (buyingTo * (buyingTo + 1) / 2)));
+  }
+
+  return cost
+}
+
+function applyChallengeTenCostScale(cost, buyingTo, r) {
+  // you would not fucking believe how long it took me to figure this out
+  // (100*costofcurrent + 10000)^n = (((100+buyingTo)!/100!)*100^buyingTo)^n
+  cost = cost.times(Decimal.pow(new Decimal(buyingTo + 100).factorial().dividedBy(new Decimal(100).factorial()).times(Decimal.pow(100, buyingTo)), 1.25 + 1 / 4 * player.challengecompletions.four));
+  if (buyingTo >= (r * 25000)) {
+    // and I changed this to be a summation of all the previous buys 1.25 to the sum from 1 to buyingTo 
+    cost = cost.times(Decimal.pow(1.25, (buyingTo * (buyingTo + 1) / 2)));
+  }
+  
+  return cost
+}
+
+function applyChallengeEightCostScale(cost, buyingTo, r) {
+  const fr = Math.floor(r * 1000 * player.challengecompletions.eight);
+  var sumBuys = (buyingTo - (1000 * player.challengecompletions.eight * r)) * ((buyingTo - (1000 * player.challengecompletions.eight * r) + 1) / 2);
+  var negBuys = (fr - (1000 * player.challengecompletions.eight * r)) * ((fr - (1000 * player.challengecompletions.eight * r) + 1) / 2);
+
+  cost = cost.times(Decimal.pow(2, sumBuys - negBuys));
+
+  // divided by same amount buying to - fr times
+  cost = cost.dividedBy(Decimal.pow((1 + 1 / 2 * player.challengecompletions.eight), buyingTo - fr));
+  
+  return cost
+}
+
 function getCost(originalCost, buyingTo, type, num, r) {
   // It's 0 indexed by mistake so you have to subtract 1 somewhere.
   --buyingTo;
@@ -109,9 +146,8 @@ function getCost(originalCost, buyingTo, type, num, r) {
   cost = cost.add(1 * buyingTo);
 
   // floored r value gets used a lot in removing calculations
-  var fr = Math.floor(r * 1000);
   if (buyingTo >= r * 1000) {
-
+    const fr = Math.floor(r * 1000);
     // Accounts for all multiplications of itself up to buyingTo, while neglecting all multiplications of itself up to r*1000
     cost = cost.times(buyingToDec.factorial().dividedBy((new Decimal(fr).factorial())));
 
@@ -122,23 +158,22 @@ function getCost(originalCost, buyingTo, type, num, r) {
     cost = cost.times(Decimal.pow(1 + num / 2, buyingTo - fr));
   }
 
-  fr = Math.floor(r * 5000);
   if (buyingTo >= r * 5000) {
+    const fr = Math.floor(r * 5000);
     cost = cost.times(buyingToDec.factorial().dividedBy(new Decimal(fr).factorial()));
     cost = cost.times(Decimal.pow(10, buyingTo - fr));
     cost = cost.times(Decimal.pow(10 + num * 10, buyingTo - fr));
   }
 
-  fr = Math.floor(r * 20000);
   if (buyingTo >= r * 20000) {
     // To truncate this expression I used Decimal.pow(Decimal.factorial(buyingTo), 3) which suprisingly (to me anyways) does actually work
     // So it takes all numbers up to buyingTo and pow3's them, then divides by all numbers up to r*20000 pow3'd 
+    const fr = Math.floor(r * 20000);
     cost = cost.times(Decimal.pow(buyingToDec.factorial(), 3)).dividedBy(Decimal.pow(new Decimal(fr).factorial(), 3));
     cost = cost.times(Decimal.pow(100000, buyingTo - fr));
     cost = cost.times(Decimal.pow(100 + num * 100, buyingTo - fr));
   }
 
-  fr = Math.floor(r * 250000);
   if (buyingTo >= r * 250000) {
     //1.03^x*1.03^y = 1.03^(x+y), we'll abuse this for this section of the algorithm
     // 1.03^(x+y-((number of terms)250000*r))
@@ -149,36 +184,18 @@ function getCost(originalCost, buyingTo, type, num, r) {
     // (1.03^(sum from 0 to buyingTo - fr)) is the multiplier
     // so (1.03^( (buyingTo-fr)(buyingTo-fr+1)/2 )
     // god damn that was hard to make an algo for
+    const fr = Math.floor(r * 250000);
     cost = cost.times(Decimal.pow(1.03, (buyingTo - fr) * ((buyingTo - fr + 1) / 2)));
   }
+
   if ((player.currentChallenge == "four") && (type == "Coin" || type == "Diamonds")) {
-    // you would not fucking believe how long it took me to figure this out
-    // (100*costofcurrent + 10000)^n = (((100+buyingTo)!/100!)*100^buyingTo)^n
-    cost = cost.times(Decimal.pow(new Decimal(buyingTo + 100).factorial().dividedBy(new Decimal(100).factorial()).times(Decimal.pow(100, buyingTo)), 1.25 + 1 / 4 * player.challengecompletions.four));
-    if (buyingTo >= (1000 - (10 * player.challengecompletions.four))) {
-      // and I changed this to be a summation of all the previous buys 1.25 to the sum from 1 to buyingTo 
-      cost = cost.times(Decimal.pow(1.25, (buyingTo * (buyingTo + 1) / 2)));
-    }
+    cost = applyChallengeFourCostScale(cost, buyingTo, r)
   }
   if ((player.currentChallengeRein == "ten") && (type == "Coin" || type == "Diamonds")) {
-    // you would not fucking believe how long it took me to figure this out
-    // (100*costofcurrent + 10000)^n = (((100+buyingTo)!/100!)*100^buyingTo)^n
-    cost = cost.times(Decimal.pow(new Decimal(buyingTo + 100).factorial().dividedBy(new Decimal(100).factorial()).times(Decimal.pow(100, buyingTo)), 1.25 + 1 / 4 * player.challengecompletions.four));
-    if (buyingTo >= (r * 25000)) {
-      // and I changed this to be a summation of all the previous buys 1.25 to the sum from 1 to buyingTo 
-      cost = cost.times(Decimal.pow(1.25, (buyingTo * (buyingTo + 1) / 2)));
-    }
+    cost = applyChallengeTenCostScale(cost, buyingTo, r)
   }
-  fr = Math.floor(r * 1000 * player.challengecompletions.eight);
   if (player.currentChallengeRein == "eight" && (type == "Coin" || type == "Diamonds" || type == "Mythos") && buyingTo >= (1000 * player.challengecompletions.eight * r)) {
-
-    var sumBuys = (buyingTo - (1000 * player.challengecompletions.eight * r)) * ((buyingTo - (1000 * player.challengecompletions.eight * r) + 1) / 2);
-    var negBuys = (fr - (1000 * player.challengecompletions.eight * r)) * ((fr - (1000 * player.challengecompletions.eight * r) + 1) / 2);
-
-    cost = cost.times(Decimal.pow(2, sumBuys - negBuys));
-
-    // divided by same amount buying to - fr times
-    cost = cost.dividedBy(Decimal.pow((1 + 1 / 2 * player.challengecompletions.eight), buyingTo - fr));
+    cost = applyChallengeEightCostScale(cost, buyingTo, r)
   }
 
   return cost;
