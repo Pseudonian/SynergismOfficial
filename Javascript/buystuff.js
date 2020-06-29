@@ -34,7 +34,7 @@ function buyAccelerator(autobuyer) {
   updateAllTick();
 
   for (let i = 0; i < 8; i++) {
-    if (player.acceleratorBought >= acceleratorChallengeGoals[i]) {
+    if (player.acceleratorBought >= acceleratorAchievementGoals[i]) {
       achievementaward(148+i)
     }
   }
@@ -431,29 +431,8 @@ function boostAccelerator(automated) {
     ticker++
   }
   ticker = 0;
-  if (player.acceleratorBoostBought >= 2 && player.achievements[162] == 0) {
-    achievementaward(162)
-  }
-  if (player.acceleratorBoostBought >= 10 && player.achievements[163] == 0) {
-    achievementaward(163)
-  }
-  if (player.acceleratorBoostBought >= 50 && player.achievements[164] == 0) {
-    achievementaward(164)
-  }
-  if (player.acceleratorBoostBought >= 200 && player.achievements[165] == 0) {
-    achievementaward(165)
-  }
-  if (player.acceleratorBoostBought >= 1000 && player.achievements[166] == 0) {
-    achievementaward(166)
-  }
-  if (player.acceleratorBoostBought >= 5000 && player.achievements[167] == 0) {
-    achievementaward(167)
-  }
-  if (player.acceleratorBoostBought >= 15000 && player.achievements[168] == 0) {
-    achievementaward(168)
-  }
 
-
+  acceleratorBoostAchievementCheck()
 }
 
 

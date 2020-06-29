@@ -324,7 +324,8 @@ var areward180 = "Unlock Tier 6 Ant autobuy, and autobuy Hic and Experientia ant
 var areward181 = "Unlock Tier 7 Ant autobuy, and autobuy Praemoenio ants! Add +2% Base Ant ELO."
 var areward182 = "Unlock Tier 8 Ant autobuy, and autobuy Scientia and Phylacterium ants! Add +3% Base Ant ELO."
 
-var acceleratorChallengeGoals = [5, 25, 100, 666, 2000, 12500, 100000]
+var acceleratorAchievementGoals = [5, 25, 100, 666, 2000, 12500, 100000]
+var acceleratorBoostAchievementGoals = [2, 10, 50, 200, 1000, 5000, 15000]
 
 var challengeCompletionGoals = [1, 3, 5, 10, 20, 50, 75]
 var reincarnationChallengeCompletionGoals = [1, 2, 3, 5, 10, 15, 25]
@@ -505,6 +506,14 @@ function antAchievementCheck() {
   for (let i = 0; i < 7; i++) {
     if (sacrificeMult > antSacrificeMultGoal[i] && player[`${ordinals[i+1]}OwnedAnts`] > 0) {
       achievementaward(176+i)
+    }
+  }
+}
+
+function acceleratorBoostAchievementCheck() {
+  for (let i = 0; i < 7; i++) {
+    if (player.acceleratorBoostBought >= acceleratorBoostAchievementGoals[i]) {
+      achievementaward(162+i)
     }
   }
 }
