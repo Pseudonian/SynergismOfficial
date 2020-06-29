@@ -477,7 +477,7 @@ function challengeAchievementCheck(id, auto) {
 
   for (let i = 0; i < 7; i++) {
     if (player.challengecompletions[id] >= (num > 5 ? challengeCompletionGoals : reincarnationChallengeCompletionGoals)[i]) {
-      achievementaward(71+7*id+i)
+      achievementaward(71+7*num+i)
     }
   }
 
