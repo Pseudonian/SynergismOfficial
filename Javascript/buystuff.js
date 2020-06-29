@@ -116,7 +116,7 @@ function applyChallengeTenCostScale(cost, buyingTo, r) {
     // and I changed this to be a summation of all the previous buys 1.25 to the sum from 1 to buyingTo 
     cost = cost.times(Decimal.pow(1.25, (buyingTo * (buyingTo + 1) / 2)));
   }
-  
+
   return cost
 }
 
@@ -133,17 +133,22 @@ function applyChallengeEightCostScale(cost, buyingTo, r) {
   return cost
 }
 
-function getCost(originalCost, buyingTo, type, num, r) {
-  // It's 0 indexed by mistake so you have to subtract 1 somewhere.
-  --buyingTo;
+function applyChallengeCostScale(cost, buyingTo, type, r) {
+  if ((player.currentChallenge == "four") && (type == "Coin" || type == "Diamonds")) {
+    cost = applyChallengeFourCostScale(cost, buyingTo, r)
+  }
+  if ((player.currentChallengeRein == "ten") && (type == "Coin" || type == "Diamonds")) {
+    cost = applyChallengeTenCostScale(cost, buyingTo, r)
+  }
+  if (player.currentChallengeRein == "eight" && (type == "Coin" || type == "Diamonds" || type == "Mythos") && buyingTo >= (1000 * player.challengecompletions.eight * r)) {
+    cost = applyChallengeEightCostScale(cost, buyingTo, r)
+  }
+  return cost
+}
 
+function applyCostReductionFactors(cost, buyingTo, num, r) {
   // Prevents multiple recreations of this variable because .factorial() is the only one that doesn't create a clone (?)
   let buyingToDec = new Decimal(buyingTo);
-  // Accounts for the multiplies by 1.25^num buyingTo times
-  let cost = originalCost.times(Decimal.pow(Math.pow(1.25, num), buyingTo));
-
-  // Accounts for the add 1s
-  cost = cost.add(1 * buyingTo);
 
   // floored r value gets used a lot in removing calculations
   if (buyingTo >= r * 1000) {
@@ -187,16 +192,23 @@ function getCost(originalCost, buyingTo, type, num, r) {
     const fr = Math.floor(r * 250000);
     cost = cost.times(Decimal.pow(1.03, (buyingTo - fr) * ((buyingTo - fr + 1) / 2)));
   }
+  
+  return cost
+}
 
-  if ((player.currentChallenge == "four") && (type == "Coin" || type == "Diamonds")) {
-    cost = applyChallengeFourCostScale(cost, buyingTo, r)
-  }
-  if ((player.currentChallengeRein == "ten") && (type == "Coin" || type == "Diamonds")) {
-    cost = applyChallengeTenCostScale(cost, buyingTo, r)
-  }
-  if (player.currentChallengeRein == "eight" && (type == "Coin" || type == "Diamonds" || type == "Mythos") && buyingTo >= (1000 * player.challengecompletions.eight * r)) {
-    cost = applyChallengeEightCostScale(cost, buyingTo, r)
-  }
+function getCost(originalCost, buyingTo, type, num, r) {
+  // It's 0 indexed by mistake so you have to subtract 1 somewhere.
+  --buyingTo;
+
+  // Accounts for the multiplies by 1.25^num buyingTo times
+  let cost = originalCost.times(Decimal.pow(Math.pow(1.25, num), buyingTo));
+
+  // Accounts for the add 1s
+  cost = cost.add(1 * buyingTo);
+
+  cost = applyCostReductionFactors(cost, buyingTo, num, r)
+
+  cost = applyChallengeCostScale(cost, buyingTo, type, r)
 
   return cost;
 }
