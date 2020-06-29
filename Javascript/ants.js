@@ -131,7 +131,7 @@ function updateAntDescription(i) {
 }
 
 function buyAnts(i) {
-  const type = "ant"
+  let type = "ant"
   const tier = ordinals[i-1]
   if (i == 1) {
     type = "reincarnation";
