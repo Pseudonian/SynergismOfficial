@@ -2,9 +2,9 @@
 The game
 
 Note to dev:
-Code is being beautified with the following options on https://beautifer.io/
+Code is PLANNED TO BE beautified with the following options on https://beautifer.io/
 {
-  "indent_size": "2",
+  "indent_size": "4",
   "indent_char": " ",
   "max_preserve_newlines": "5",
   "preserve_newlines": true,
