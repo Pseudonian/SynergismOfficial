@@ -1025,6 +1025,8 @@ updateAchievementBG();
  })();
 
 function format(input,accuracy,long){
+    // TODO: consider rewriting this function to use arbritrary precision numbers to avoid hacky rounding number solutions that don't ""properly"" work
+
 	//This function displays the numbers such as 1,234 or 1.00e1234 or 1.00e1.234M.
 
 	//Input is the number to be formatted (string or value)
