@@ -1789,41 +1789,42 @@ function resetCheck(i,manual) {
 			}
 		}
 	}
-	if (i == "reincarnationchallenge"){
+	if (i == "reincarnationchallenge") {
 		if (player.currentChallengeRein !== ""){
-		var y = ""
-		var q = player.currentChallengeRein;
-			if (q == "six"){y = 6}
-			if (q == "seven"){y = 7}
-			if (q == "eight"){y = 8}
-			if (q == "nine"){y = 9}
-			if (q == "ten"){y = 10}
-			var s = player.currentChallenge
-		if (player.currentChallenge !== "") {
-			player.currentChallenge = ""
-			}
-		if(q == "six" || q == "seven" || q == "eight"){
-		if (player.transcendShards.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]) , Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
-			player.challengecompletions[q] += 1
-		}
-		}
-		if (q == "nine" || q == "ten"){
-		if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]) , Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
-			player.challengecompletions[q] += 1
-		}
-		}
-		challengeDisplay(y,true)
-		reset(3);
-		challengeachievementcheck(q);
-		player.reincarnationCount -= 1;
-		if (player.challengecompletions[q] > player.highestchallengecompletions[q]) {player.highestchallengecompletions[q] += 1; player.worlds += player.highestchallengecompletions[q]}
-		if (!player.retrychallenges || manual || player.challengecompletions[q] > 24) {
-		player.currentChallengeRein = "";
-		updateChallengeDisplay();
-		calculateRuneLevels();
-		calculateAnts();
-		}
-	}	
+		    var y = ""
+		    var q = player.currentChallengeRein;
+		    if (q == "six"){y = 6}
+		    if (q == "seven"){y = 7}
+		    if (q == "eight"){y = 8}
+		    if (q == "nine"){y = 9}
+		    if (q == "ten"){y = 10}
+		    var s = player.currentChallenge;
+		    if (player.currentChallenge !== "") {
+		    	player.currentChallenge = ""
+		    }
+		    if(q == "six" || q == "seven" || q == "eight"){
+		        if (player.transcendShards.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]) , Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
+		        	player.challengecompletions[q] += 1
+		        }
+		    }
+		    if (q == "nine" || q == "ten"){
+		    if (player.coins.greaterThanOrEqualTo(Decimal.pow(10, challengebaserequirementsrein[q] * Math.min(Math.pow(1.3797, player.challengecompletions[q]) , Math.pow(1 + player.challengecompletions[q], 2)))) && player.challengecompletions[q] < 25) {
+		    	player.challengecompletions[q] += 1
+		    }
+            }
+            if (!player.retrychallenges || manual || player.challengecompletions[q] > 24) {
+                player.currentChallengeRein = "";
+                updateChallengeDisplay();
+                calculateRuneLevels();
+                calculateAnts();
+            }
+		    challengeDisplay(y,true)
+		    reset(3);
+		    challengeachievementcheck(q);
+		    player.reincarnationCount -= 1;
+		    if (player.challengecompletions[q] > player.highestchallengecompletions[q]) {player.highestchallengecompletions[q] += 1; player.worlds += player.highestchallengecompletions[q]}
+        
+	    }	
 	}
 	if (i == "ascend"){
 		if(player.challengecompletions.ten > 0){

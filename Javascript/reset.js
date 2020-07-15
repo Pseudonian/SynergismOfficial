@@ -410,8 +410,7 @@ function reset(i,fast) {
             nine: player.challengecompletions.nine,
             ten: player.challengecompletions.ten
         }
-
-        if (player.shopUpgrades.instantChallengeBought && player.currentChallengeRein == ""){
+        if (player.shopUpgrades.instantChallengeBought && player.currentChallengeRein == "") {
             player.challengecompletions.one = player.highestchallengecompletions.one
             player.challengecompletions.two = player.highestchallengecompletions.two
             player.challengecompletions.three = player.highestchallengecompletions.three
