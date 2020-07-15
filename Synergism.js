@@ -1535,15 +1535,15 @@ globalCrystalMultiplier = globalCrystalMultiplier.times(Decimal.pow(1.05, player
  // Function that adds to resources each tick. [Lines 928 - 989]
 
 function resourceGain(dt,fast){
-		fast = fast || false
+        fast = fast || false
 
 		calculateTotalCoinOwned();
-		calculateTotalAcceleratorBoost();
+        calculateTotalAcceleratorBoost();
 
 		updateAllTick();
 		updateAllMultiplier();
-		multipliers();
-		calculatetax(fast);
+        multipliers();
+        calculatetax(fast);
 		if (produceTotal.greaterThanOrEqualTo(0.001)) {
 			var addcoin = new Decimal.min(produceTotal.dividedBy(taxdivisor), Decimal.pow(10, maxexponent - Decimal.log(taxdivisorcheck , 10)))
 		player.coins = player.coins.add(addcoin.times(dt/0.025));
@@ -1885,16 +1885,6 @@ function resetConfirmation(i) {
 // Functions which update the game each, roughly each tick. [Lines 1330 - 1766]
 
 function updateAll() {
-		uFourteenMulti = new Decimal(1);
-		uFifteenMulti = new Decimal(1);
-
-		if (player.upgrades[14] > 0.5) {
-			uFourteenMulti = Decimal.pow(1.15, freeAccelerator)
-		}
-		if (player.upgrades[15] > 0.5) {
-			uFifteenMulti = Decimal.pow(1.15, freeAccelerator)
-		}
-
 //Autobuy "Building" Tab
 
 		if (player.toggles.one == true && player.upgrades[81] == 1 && player.coins.greaterThanOrEqualTo(player.firstCostCoin)) {buyMax('first','Coin',1,100)}
@@ -1996,7 +1986,15 @@ function updateAll() {
 		if (player.toggles.twentyseven == true && player.researches[46] > 0.5 && reincarnationPointGain.greaterThanOrEqualTo(player.reincarnationPoints.times(Decimal.pow(10, player.reincarnationamount))) && player.transcendShards.greaterThanOrEqualTo(1e300) && player.currentChallenge == "" && player.currentChallengeRein == ""){resetachievementcheck(3); reset(3,true)}
 		}
 //Generation
-
+        uFourteenMulti = new Decimal(1);
+        uFifteenMulti = new Decimal(1);
+    
+        if (player.upgrades[14] > 0.5) {
+            uFourteenMulti = Decimal.pow(1.15, freeAccelerator)
+        }
+        if (player.upgrades[15] > 0.5) {
+            uFifteenMulti = Decimal.pow(1.15, freeAccelerator)
+        }
 
 		if (player.upgrades[101] > 0.5) {player.fourthGeneratedCoin= player.fourthGeneratedCoin.add((player.fifthGeneratedCoin.add(player.fifthOwnedCoin)).times(uFifteenMulti).times(generatorPower));}
 		if (player.upgrades[102] > 0.5) {player.thirdGeneratedCoin= player.thirdGeneratedCoin.add((player.fourthGeneratedCoin.add(player.fourthOwnedCoin)).times(uFourteenMulti).times(generatorPower));}
@@ -2101,7 +2099,6 @@ function constantIntervals() {
 		setInterval(saveSynergy, 5000);
 		setInterval(autoUpgrades, 200);
 		setInterval(buttoncolorchange, 200)
-		setInterval(updateAll,50)
 		setInterval(buildingAchievementCheck, 200)
 
 		if(!timeWarp){
@@ -2223,7 +2220,8 @@ function tick() {
 		player.offlinetick = Date.now()
 	}
 	else if (dt <= 5){
-			resourceGain(dt);
+            resourceGain(dt);
+            updateAll();
 			player.prestigecounter += dt;
 			player.transcendcounter += dt;
 			player.reincarnationcounter += dt;
