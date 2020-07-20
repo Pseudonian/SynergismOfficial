@@ -10,6 +10,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "atob": "^2.1.2",
+    "btoa": "^1.2.1",
     "chai": "^4.2.0",
     "karma": "^5.1.0",
     "karma-chai": "^0.1.0",

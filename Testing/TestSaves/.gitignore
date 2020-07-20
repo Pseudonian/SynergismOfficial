@@ -1,0 +1,2 @@
+# We don't need to store both versions, and we can easily regain these by running the 'compressSaves' script.
+*.txt
