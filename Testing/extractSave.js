@@ -72,6 +72,10 @@ files.forEach(function(file) {
 
         let fileContents = fs.readFileSync("./TestSaves/" + file); //, 'base64');
         let jsonText = atob(fileContents.toString());
+
+        // TODO:  Consider advanced formatting.  Will require a fairly intricate
+        //        handwritten function, but will make extracted saves easier to
+        //        work with.
         let formattedText = JSON.stringify(JSON.parse(jsonText), null, '  ');
 
         let compressedFilename = filenameBase + ".json";
