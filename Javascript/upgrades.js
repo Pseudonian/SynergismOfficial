@@ -476,7 +476,7 @@ function researchdescriptions(i,auto) {
     var y = window[x]
     var z = ""
     var p = "res" + i
-    z = " Cost: " + (format(researchBaseCosts[i],0,true)) + " Obtainium" 
+    z = " Cost: " + (format(researchBaseCosts[i], 0, false)) + " Obtainium" 
     if (player.researches[i] == researchMaxLevels[i]) {
         document.getElementById("researchcost").style.color = "Gold"
         document.getElementById("researchinfo3").style.color = "plum"
