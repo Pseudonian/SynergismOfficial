@@ -159,6 +159,7 @@ a {color: white;}
 	width: 500px;
 	text-align: center;
 	font-size: 15px;
+	font-variant-numeric: tabular-nums;
 }
 #resetrewards {
 	position: absolute;
