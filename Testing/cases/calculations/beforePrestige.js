@@ -16,7 +16,7 @@ function setSaveFromFixture(name) {
 // This test-specification format is due to use of Mocha.  https://mochajs.org/#getting-started
 // describe - creates a named grouping of tests.  May be nested.
 // it - a single unit test.
-describe("Calculations:  before prestige", function() {
+describe.only("Calculations:  before prestige", function() {
     // Runs this code once for the entire test grouping BEFORE any tests run
     before(function(done) {
         this.timeout(3000); // 6 seconds.
@@ -153,9 +153,50 @@ describe("Calculations:  before prestige", function() {
 
     // });
 
+    it("correctly calculates accelerators, boosts, and their effects [updateAllTick()]", function() {
+        assert.equal(freeAccelerator, 0, "Unexpected free accelerator count");
+        assert.equal(totalAccelerator, 18, "Unexpected total accelerator count");
+        assert.equal(freeAcceleratorBoost, 0, "Unexpected free accelerator boost count");
+        assert.equal(totalAcceleratorBoost, 0, "Unexpected total accelerator boost count");
+        assert.isTrue(acceleratorEffect.equals_tolerance(new Decimal("5.5599731349224e0"), 0.001), "Expected " + acceleratorEffect + " to equal " + (new Decimal("5.5599731349224e0")));
+    });
 
-    
-    // TODO:  Define more cases!  Refer to Synergism.js's "updateAllMultiplier" and subsequent functions.
+    it("correctly calculates multipliers and their effects [updateAllMultipliers()]", function() {
+        assert.equal(freeMultiplier, 0, "Unexpected free multiplier count");
+        assert.equal(totalMultiplier, 8, "Unexpected total multiplier count");
+        assert.equal(freeMultiplierBoost, 0, "Unexpected free multiplier boost count");
+        assert.equal(totalMultiplierBoost, 0, "Unexpected total multiplier boost count");
+        assert.isTrue(multiplierEffect.equals_tolerance(new Decimal("2.56e2"), 0.001), "Expected " + multiplierEffect + " to equal " + (new Decimal("2.56e2")));
+    });
+
+    it("correctly calculates miscellaneous multipliers [multipliers()])", function() {
+        assert.isTrue(prestigeMultiplier.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected prestige multiplier");
+        assert.closeTo(buildingPower, 1, 0.001, "Unexpected building power value");
+        assert.isTrue(reincarnationMultiplier.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected reincarnation multiplier value");
+        assert.isTrue(antMultiplier.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected ant multiplier value");
+
+        assert.isTrue(globalCoinMultiplier.equals_tolerance(new Decimal("1.42333883225e3"), 0.001), "Unexpected global coin multiplier value");
+
+        assert.isTrue(coinOneMulti.equals_tolerance(new Decimal("6.626536111e2"), 0.001), "Unexpected 'coin one' multiplier value");
+        assert.isTrue(coinTwoMulti.equals_tolerance(new Decimal("6.626536111e2"), 0.001), "Unexpected 'coin two' multiplier value");
+        assert.isTrue(coinThreeMulti.equals_tolerance(new Decimal("6.626536111e2"), 0.001), "Unexpected 'coin three' multiplier value");
+        assert.isTrue(coinFourMulti.equals_tolerance(new Decimal("6.626536111e2"), 0.001), "Unexpected 'coin four' multiplier value");
+        assert.isTrue(coinFiveMulti.equals_tolerance(new Decimal("6.626536111e2"), 0.001), "Unexpected 'coin five' multiplier value");
+
+        assert.isTrue(globalCrystalMultiplier.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected global crystal multiplier");
+        assert.isTrue(globalMythosMultiplier.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected global mythos multiplier");
+        assert.isTrue(grandmasterMultiplier.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected grandmaster multiplier");
+        assert.isTrue(globalAntMult.equals_tolerance(new Decimal("1.00069e0"), 0.001), "Unexpected global ant (speed) multiplier");
+
+        assert.isTrue(mythosupgrade13.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected multiplier for mythos upgrade 13");
+        assert.isTrue(mythosupgrade14.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected multiplier for mythos upgrade 14");
+        assert.isTrue(mythosupgrade15.equals_tolerance(new Decimal("1e0"), 0.001), "Unexpected multiplier for mythos upgrade 15");
+    });
+
+    it("correctly calculates tax effects", function() {
+        assert.isTrue(taxdivisor.equals_tolerance(new Decimal("1.001804e0"), 0.001), "Unexpected tax divisor");
+        assert.isTrue(taxdivisorcheck.equals_tolerance(new Decimal("4.0324392229e31930"), 0.001), "Unexpected tax cap");
+    });
 
     // Also to do:  write equivalent tests for other save files!
 });
