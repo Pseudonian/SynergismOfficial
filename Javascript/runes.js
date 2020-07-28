@@ -9,14 +9,14 @@
         updatelevelup = (updatelevelup === null || updatelevelup === undefined) ? true : updatelevelup;
         
         let m = effectiveLevelMult
-        let SILevelMult = (1 + player.researches[84]/1000)
+        let SILevelMult = (1 + player.researches[84]/200)
 		let amountPerOffering = calculateRuneExpGiven(i - 1);
         if (player.upgrades[78] === 1) document.getElementById("toggleofferingbuy").innerHTML = "Toggle amount used by sacrifice, multiplied by 1000<br>due to a Reincarnation Upgrade.";
         
 
         if (i == 1) {
-            if (updatelevelup) {document.getElementById("runeshowlevelup").textContent = "+1 Accelerator, +0.5% Accelerators per level. +1 Accelerator Boost every 10 levels!"}
-            document.getElementById("runeshowpower1").childNodes[0].textContent = "Speed Rune Bonus: " + "+" + format(Math.floor(rune1level * m)) + " Accelerators, +" + (rune1level/2  * m).toPrecision(4) +"% Accelerators, +" + format(Math.floor(rune1level/10 * m)) + " Accelerator Boosts."
+            if (updatelevelup) {document.getElementById("runeshowlevelup").textContent = "+(Level/2)^2 Accelerator, +0.5% Accelerators per level. +1 Accelerator Boost every 10 levels!"}
+            document.getElementById("runeshowpower1").childNodes[0].textContent = "Speed Rune Bonus: " + "+" + format(Math.floor(Math.pow(rune1level * m/2,2))) + " Accelerators, +" + (rune1level/2  * m).toPrecision(4) +"% Accelerators, +" + format(Math.floor(rune1level/10 * m)) + " Accelerator Boosts."
         }
         if (i == 2) {
             if (updatelevelup) {document.getElementById("runeshowlevelup").textContent = "~(floor(Level/10)) Multipliers every 10 levels, +0.5% Multipliers per level. Tax growth is delayed more for each level!"}

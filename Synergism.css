@@ -870,7 +870,7 @@ margin-left: -13px
 	top: 118px;
 	padding: 0px;
 	text-align: center;
-	border: 1px solid white
+	border-top: 2px solid white
 }
 
 
@@ -1371,12 +1371,25 @@ margin-left: -13px
 }
 
 #discord {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	position: absolute;
+	top: 335px;
+	left: 50%;
+	margin-left: -150px;
+	color: gold;
+}
+#discordhref {
 	width: 100px;
 	height: 100px;
-	top: 350px;
-	left: 50%;
-	margin-left: -50px;
+	border-radius: 50%;
+}
+#discordicon {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-top: 5px;
 }
 #versionnumber{
 	position: absolute;
@@ -4043,8 +4056,18 @@ margin-left: -13px
 	width: 200px;
 	left: 50%;
 	margin-left: -100px;
-	top: 40px;
+	top: 10px;
 	border: 2px solid gold;
+}
+#switchsettingtab2 {
+	position: absolute;
+	height: 30px;
+	width: 200px;
+	left: 50%;
+	margin-left: -100px;
+	top: 40px;
+	border: 2px solid orange;
+	
 }
 #programminghelp {
 	position: absolute;
@@ -4134,4 +4157,36 @@ margin-left: -13px
 	height: 20px;
 	color: gray;
 	text-align: center;
+}
+
+#statisticsSubTab {
+	max-height: 800px;
+	padding-top: 100px;
+	flex-wrap: wrap;
+}
+.statContainer {
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-bottom: auto;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+.statPortion{
+	width: 380px;
+	height: auto;
+	margin: auto;
+	color: white;
+	text-align: left;
+	font-size: 1em;
+}
+.statPortion.indented{
+	width: 360px;
+	padding-left: 20px;
+}
+.statNumber{
+	color: yellow;
+	font-size: 0.9em;
+	float: right;
 }
