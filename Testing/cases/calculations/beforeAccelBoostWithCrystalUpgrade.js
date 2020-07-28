@@ -211,5 +211,10 @@ describe("Calculations:  AtBoostWithCrystalUpgrade", function() {
         assert.isTrue(taxdivisorcheck.equals_tolerance(new Decimal("4.0324392229e31930"), 0.001), "Unexpected tax cap");
     });
 
-    // Also to do:  write equivalent tests for other save files!
+    it("correctly computes reset currency gains", function() {
+        resetCurrency();
+        assert.isTrue(prestigePointGain.equals_tolerance(new Decimal("6.618257474224633e40"), 0.001, "Unexpected diamond (prestige currency) gain"));
+        assert.isTrue(transcendPointGain.equals_tolerance(new Decimal("0e0"), 0.001, "Unexpected mythos (transcend currency) gain"));
+        assert.isTrue(reincarnationPointGain.equals_tolerance(new Decimal("0e0"), 0.001, "Unexpected particle (reincarnation currency) gain"));
+    });
 });
