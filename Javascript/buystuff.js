@@ -332,7 +332,7 @@ function buyProducer(pos,type,num,autobuyer) {
 	let buythisamount = 0;
     var r = 1;
     var tag = ""
-	r += 1/400 * rune4level * effectiveLevelMult
+	r += 1/2000 * rune4level * effectiveLevelMult
 	r += 1/200 * (player.researches[56] + player.researches[57] + player.researches[58] + player.researches[59] + player.researches[60])
 	r += 1/200 * player.challengecompletions.four
 	r += 3/100 * player.antUpgrades[7] + 3/100 * bonusant7
@@ -381,7 +381,7 @@ function buyResearch(index,auto) {
 		else if (player.researches[p] > 0.5) {document.getElementById("res" + player.autoResearch).style.backgroundColor = "purple"}
 		else {document.getElementById("res" + player.autoResearch).style.backgroundColor = "black"}
 	}
-	if (!auto && player.autoResearchToggle && player.shopUpgrades.obtainiumAutoLevel > 0.5){player.autoResearch = index; document.getElementById("res" + index).style.backgroundColor = "orange"}
+	if (!auto && player.autoResearchToggle && player.shopUpgrades.obtainiumAutoLevel > 0.5 && player.cubeUpgrades[10] === 0){player.autoResearch = index; document.getElementById("res" + index).style.backgroundColor = "orange"}
 
     let buyamount = 1;
     let i = 1;
@@ -400,6 +400,17 @@ function buyResearch(index,auto) {
 			i++
 		}
 		if (i > 1){revealStuff()}
+	}
+
+	if(index > 0 && index <= 125){
+	if(player.researches[index] === researchMaxLevels[index]){document.getElementById("res"+index).style.backgroundColor = "green"}
+	}
+	if(auto && player.cubeUpgrades[10] == 1){
+		player.autoResearch = researchOrderByCost[player.roombaResearchIndex]
+		if(player.researches[player.autoResearch] === researchMaxLevels[player.autoResearch]){player.roombaResearchIndex += 1;}
+		if(player.roombaResearchIndex <= 125){
+		document.getElementById("res"+researchOrderByCost[player.roombaResearchIndex]).style.backgroundColor = "orange"
+		}
 	}
 	calculateRuneLevels();
 	calculateAnts();
@@ -438,18 +449,35 @@ function buyUpgrades(type, pos, state) {
 
 	}
 	
-function buyCrystalUpgrades(i) {
-	var u = i - 1
-	var c = 0
-	c += Math.floor(rune3level/10 * (1 + player.researches[5] /10) * (1 + player.researches[21]/800)) * 100/100
-	if (player.upgrades[73] > 0.5 && player.currentChallengeRein !== "") {c += 10}
-	if (player.prestigeShards.greaterThanOrEqualTo(Decimal.pow(10, (crystalUpgradesCost[u] + crystalUpgradeCostIncrement[u] * Math.floor(Math.pow(player.crystalUpgrades[u] + 0.5 - c, 2) /2))))) {
-		player.prestigeShards = player.prestigeShards.sub(Decimal.pow(10, (crystalUpgradesCost[u] + crystalUpgradeCostIncrement[u] * Math.floor(Math.pow(player.crystalUpgrades[u] + 0.5 -c, 2)/2))));
-		player.crystalUpgrades[u] += 1;
-
+	function calculateCrystalBuy(i){
+		let u = i - 1;
+		let exponent = Decimal.log(player.prestigeShards.add(1), 10);
+	
+		let toBuy = Math.floor(Math.pow(Math.max(0, 2 * (exponent - crystalUpgradesCost[u]) / crystalUpgradeCostIncrement[u] + 1/4), 1/2) + 1/2)
+		return(toBuy)
+	
 	}
-	crystalupgradedescriptions(i)
-}	
+		
+	function buyCrystalUpgrades(i,auto) {
+		auto = auto || false
+		var u = i - 1
+	
+		var c = 0
+		c += Math.floor(rune3level/40 * (1 + player.researches[5] /10) * (1 + player.researches[21]/800) * (1 + player.researches[90]/100)) * 100/100
+		if (player.upgrades[73] > 0.5 && player.currentChallengeRein !== "") {c += 10}
+	
+		let toBuy = calculateCrystalBuy(i);
+	
+		if(toBuy + c > player.crystalUpgrades[u]){
+		player.crystalUpgrades[u]  = 100/100 * (toBuy + c)
+		if(toBuy > 0){
+		player.prestigeShards = player.prestigeShards.sub(Decimal.pow(10, crystalUpgradesCost[u] +  crystalUpgradeCostIncrement[u] * (1/2 * Math.pow(toBuy - 1/2, 2) - 1/8)))
+			if(!auto){
+				crystalupgradedescriptions(i)
+			}
+		}
+		}
+	}
 function boostAccelerator(automated) {
 	var buyamount = 1;
 	if (player.upgrades[46] == 1) {
@@ -486,14 +514,78 @@ function boostAccelerator(automated) {
 
 	}
 
+	function getParticleCost(originalCost, buyTo){
+		--buyTo;
+		originalCost = new Decimal(originalCost)
+		let cost = originalCost.times(Decimal.pow(2,buyTo));
 
-	function buyParticleBuilding(i){
-		let pos = i
-		let counter = 0;
-		while(player[pos + 'CostParticles'].lessThanOrEqualTo(player.reincarnationPoints) && counter < player.particlebuyamount){
-			player.reincarnationPoints = player.reincarnationPoints.sub(player[pos + 'CostParticles']);
-			player[pos + 'CostParticles'] = player[pos + 'CostParticles'].times(2);
-			player[pos + 'OwnedParticles'] += 1;
-			counter++;
+		if(buyTo > 325000){
+			cost = cost.times(Decimal.pow(1.001, (buyTo - 325000) * ((buyTo - 325000 + 1) / 2)));
+		}
+		return(cost)
+	}
+
+	function buyParticleBuilding(pos,originalCost,autobuyer){
+		autobuyer = autobuyer || false
+		var buyTo =  player[pos + 'OwnedParticles'] + 1;
+		var cashToBuy = getParticleCost(originalCost,buyTo)
+		while (player.reincarnationPoints.greaterThanOrEqualTo(cashToBuy))
+		{
+			// then multiply by 4 until it reaches just above the amount needed
+			buyTo = buyTo * 4;
+			cashToBuy = getParticleCost(originalCost, buyTo);
+		}
+		var stepdown = Math.floor(buyTo / 8);
+		while (stepdown !== 0)
+		{
+		 
+			// if step down would push it below out of expense range then divide step down by 2
+			if (getParticleCost(originalCost, buyTo - stepdown).lessThanOrEqualTo(player.reincarnationPoints))
+			{
+				stepdown = Math.floor(stepdown/2);
+			}
+			else
+			{
+				buyTo = buyTo - stepdown;
+			}
+		}
+
+		if(!autobuyer){
+			if (player.particlebuyamount + player[pos + 'OwnedParticles'] < buyTo){
+				buyTo = player[pos + 'OwnedParticles'] + player.particlebuyamount + 1;
+			}
+		}
+
+		// go down by 7 steps below the last one able to be bought and spend the cost of 25 up to the one that you started with and stop if coin goes below requirement
+		var buyFrom = Math.max(buyTo - 7, player[pos + 'OwnedParticles'] + 1);
+		var thisCost = getParticleCost(originalCost, buyFrom);
+		while (buyFrom < buyTo  && player.reincarnationPoints.greaterThanOrEqualTo(getParticleCost(originalCost, buyFrom)))
+		{
+			player.reincarnationPoints = player.reincarnationPoints.sub(thisCost);
+			player[pos + 'OwnedParticles'] = buyFrom;
+			buyFrom = buyFrom + 1;
+			thisCost = getParticleCost(originalCost, buyFrom);
+			player[pos + 'CostParticles'] = thisCost;
 		}
 	}
+
+
+function getTesseractCost(intCost, index){
+	let buyFrom = player['ascendBuilding'+index]['owned']
+	let subCost = intCost * Math.pow(buyFrom * (buyFrom + 1) / 2, 2)
+
+	buyTo = Math.floor(-1/2 + 1/2 * Math.pow(1 + 8 * Math.pow((player.wowTesseracts + subCost)/intCost, 1/2), 1/2))
+	buyTo = Math.min(buyTo, player.tesseractbuyamount + player['ascendBuilding'+index]['owned'])
+	let actualCost = intCost * Math.pow(buyTo * (buyTo + 1) / 2, 2) - subCost
+	return [buyTo, actualCost]
+}
+
+function buyTesseractBuilding(intCost, index){
+	let buyTo = getTesseractCost(intCost, index)[0]
+	let actualCost = getTesseractCost(intCost, index)[1]
+
+	player['ascendBuilding'+index]['owned'] = buyTo;
+	player.wowTesseracts -= actualCost;
+	player['ascendBuilding'+index]['cost'] = intCost * Math.pow(1 + player['ascendBuilding'+index]['owned'], 3)
+}
+

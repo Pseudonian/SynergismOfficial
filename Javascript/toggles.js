@@ -127,7 +127,7 @@ function toggleauto() {
             }
             let u = i
             let stupidHackTime = [player.toggles.one,player.toggles.two,player.toggles.three,player.toggles.four,player.toggles.five,player.toggles.six,player.toggles.seven,player.toggles.eight,player.toggles.ten,player.toggles.eleven,player.toggles.twelve,player.toggles.thirteen,player.toggles.fourteen,player.toggles.fifteen,player.toggles.sixteen,player.toggles.seventeen,player.toggles.eighteen,player.toggles.nineteen,player.toggles.twenty,player.toggles.twentyone,player.toggles.twentytwo,player.toggles.twentythree,player.toggles.twentyfour,player.toggles.twentyfive,player.toggles.twentysix,player.toggles.twentyseven,player.toggles.nine,player.toggles.ten,player.toggles.eleven,player.toggles.nine,player.toggles.nine,player.toggles.twentyeight,player.toggles.twentynine,player.toggles.thirty]
-            console.log(stupidHackTime.length)
+            //console.log(stupidHackTime.length)
 			if (stupidHackTime[i]){b = "ON]"}
 			if (!stupidHackTime[i]) {b = "OFF]"}
 
@@ -158,6 +158,7 @@ function toggleAutoResearch() {
     else {player.autoResearchToggle = true; el.textContent = "Automatic: ON"};
 
 
+
     if(!player.autoResearchToggle){
         for (var i = 1; i <= 125; i++){
             let l = document.getElementById("res" + i)
@@ -166,6 +167,13 @@ function toggleAutoResearch() {
             if (player.researches[i] == researchMaxLevels[i]){l.style.backgroundColor = "green"}
         }
     }
+
+    if(player.autoResearchToggle && player.cubeUpgrades[10] === 1){
+        player.autoResearch = researchOrderByCost[player.roombaResearchIndex]
+        document.getElementById("res"+player.autoResearch).style.backgroundColor = "orange"
+    }
+
+
 }
 
 function toggleAutoSacrifice(index) {
@@ -200,19 +208,23 @@ function toggleBuildingScreen(input){
     let b = document.getElementById("switchToDiamondBuilding");
     let c = document.getElementById("switchToMythosBuilding");
     let d = document.getElementById("switchToParticleBuilding");
-    buildingSubTab === "Coin" ?
+    let e = document.getElementById("switchToTesseractBuilding");
+    buildingSubTab === "coin" ?
     (la.style.display = "block",a.style.backgroundColor = "crimson"):
     (la.style.display = "none",a.style.backgroundColor = "#171717");
-    buildingSubTab === "Diamonds" ?
+    buildingSubTab === "diamond" ?
     (el.style.display = "block",b.style.backgroundColor = "crimson"):
     (el.style.display = "none",b.style.backgroundColor = "#171717");
-    buildingSubTab === "Mythos" ?
+    buildingSubTab === "mythos" ?
     (ti.style.display = "block",c.style.backgroundColor = "crimson"):
     (ti.style.display = "none",c.style.backgroundColor = "#171717");
-    buildingSubTab === "Particles" ?
+    buildingSubTab === "particle" ?
     (ella.style.display = "block",d.style.backgroundColor = "crimson"):
     (ella.style.display = "none",d.style.backgroundColor = "#171717");
-}
+    buildingSubTab === "tesseract" ?
+    (ellos.style.display = "block",e.style.backgroundColor = "crimson"):
+    (ellos.style.display = "none",e.style.backgroundColor = "#171717");
+    }
 
 function toggleRuneScreen(){
     if (runescreen == "runes"){
@@ -230,19 +242,48 @@ function toggleRuneScreen(){
         document.getElementById("togglerunesubtab").style.border = "2px solid grey"
     };
 }
-function toggleSettingScreen(){
-    if (settingscreen == "settings"){
-        settingscreen = "credits";
-        document.getElementById("settingsubtab").style.display = "none";
-        document.getElementById("creditssubtab").style.display = "block";
-        document.getElementById("switchsettingtab").textContent = "Go back to Settings"
+function toggleSettingScreen(i){
+
+    document.getElementById("settingsubtab").style.display = "none"
+    document.getElementById("creditssubtab").style.display = "none"
+    document.getElementById("statisticsSubTab").style.display = "none"
+    if(i === 1){
+    (settingscreen !== "credits") ?
+        (settingscreen = "credits",
+        document.getElementById("settingsubtab").style.display = "none",
+        document.getElementById("creditssubtab").style.display = "block", 
+        document.getElementById("switchsettingtab").textContent = "Go back to Settings",
+        document.getElementById("switchsettingtab2").textContent = "Stats for Nerds"):
+    
+        (settingscreen = "settings",
+        document.getElementById("settingsubtab").style.display = "block",
+        document.getElementById("creditssubtab").style.display = "none",
+        document.getElementById("switchsettingtab").textContent = "Credits & Acknowledgements");  
     }
-    else{
-        settingscreen = "settings";
-        document.getElementById("settingsubtab").style.display = "block";
-        document.getElementById("creditssubtab").style.display = "none";
-        document.getElementById("switchsettingtab").textContent = "Credits & Acknowledgements"
-    };
+    if(i === 2){
+    (settingscreen !== "statistics") ?
+        (settingscreen = "statistics",
+        document.getElementById("settingsubtab").style.display = "none",
+        document.getElementById("statisticsSubTab").style.display = "flex",
+        document.getElementById("switchsettingtab").textContent = "Credits & Acknowledgements",
+        document.getElementById("switchsettingtab2").textContent = "Go back to Settings"):
+
+        (settingscreen = "settings",
+        document.getElementById("settingsubtab").style.display = "block",
+        document.getElementById("statisticsSubTab").style.display = "none",
+        document.getElementById("switchsettingtab2").textContent = "Stats for Nerds");
+    }
+
+    if(settingscreen === "statistics"){
+        let id = setInterval(refresh, 1000)
+        function refresh() {
+            loadStatisticsAccelerator();
+            loadStatisticsMultiplier();
+            loadStatisticsCubesPerSecond();
+            if (settingscreen !== "statistics")
+                clearInterval(id);
+        }
+    }
 }
 
 function toggleShopConfirmation(){
@@ -260,4 +301,37 @@ function toggleAntAutoSacrifice(){
     let el = document.getElementById("toggleAutoSacrificeAnt");
     if(player.autoAntSacrifice){player.autoAntSacrifice = false; el.textContent = "Auto Sacrifice Every 15 Minutes: OFF"}
     else{player.autoAntSacrifice = true; el.textContent = "Auto Sacrifice Every 15 Minutes: ON"}
+}
+function toggleMaxBuyCube(){
+    let el = document.getElementById("toggleCubeBuy")
+    if(buyMaxCubeUpgrades){buyMaxCubeUpgrades = false; el.textContent="Upgrade: 1 Level wow"}
+    else{buyMaxCubeUpgrades = true; el.textContent = "Upgrade: MAX [if possible wow]"}
+}
+function toggleCubeSubTab(i){
+    let a = document.getElementById("switchCubeSubTab1")
+    let b = document.getElementById("switchCubeSubTab2")
+    let c = document.getElementById("switchCubeSubTab3")
+    let d = document.getElementById("switchCubeSubTab4")
+
+    for(var j = 1; j <= 4; j++){
+        if(document.getElementById("cubeTab"+j).style.display === "block" && j !== i){
+            document.getElementById("cubeTab"+j).style.display = "none"
+        }
+        if(document.getElementById("cubeTab"+j).style.display === "none" && j === i){
+            document.getElementById("cubeTab"+j).style.display = "block"
+        }
+    }
+
+    i === 1 ?  
+    (a.style.backgroundColor = "crimson"):
+    (a.style.backgroundColor = "black");
+    i === 2 ?  
+    (b.style.backgroundColor = "crimson"):
+    (b.style.backgroundColor = "black");
+    i === 3 ?  
+    (c.style.backgroundColor = "crimson"):
+    (c.style.backgroundColor = "black");
+    i === 4 ?  
+    (d.style.backgroundColor = "crimson"):
+    (d.style.backgroundColor = "black");
 }

@@ -159,6 +159,7 @@ a {color: white;}
 	width: 500px;
 	text-align: center;
 	font-size: 15px;
+	font-variant-numeric: tabular-nums;
 }
 #resetrewards {
 	position: absolute;
@@ -203,9 +204,9 @@ a {color: white;}
 
 	text-align: center;
 	width: 100px;
-	left: 64%;
+	left: 80%;
 	margin-left: -50px;
-	
+
 
 	border: 1px solid white;
 
@@ -266,7 +267,7 @@ a {color: white;}
 	text-align: center;
 	width: 100px;
 	border: 1px solid white;
-	left: 72%;
+	left: 88%;
 	margin-left: -50px;
 }
 
@@ -278,6 +279,24 @@ a {color: white;}
 	left: 56%;
 	margin-left: -50px;
 
+}
+
+#cubetab{
+	position: absolute;
+	text-align: center;
+	width: 100px;
+	border: 1px solid orange;
+	left: 64%;
+	margin-left: -50px;
+}
+
+#traitstab{
+	position: absolute;
+	text-align: center;
+	width: 100px;
+	border: 1px solid orange;
+	left: 72%;
+	margin-left: -50px;
 }
 
 .buildingTabs {
@@ -315,6 +334,11 @@ a {color: white;}
 	position: absolute;
 	top: 178px;
 	left: 44.75%;
+}
+#switchToTesseractBuilding{	
+	position: absolute;	
+	top: 178px;	
+	left: 56.75%;	
 }
 #buyamountcoin {
 	position: absolute;
@@ -755,7 +779,7 @@ margin-left: -13px
 	top: 150px;
 	left: 70%;
 	margin-left: -88px;
-	
+
 }
 
 #generatortable {
@@ -775,7 +799,7 @@ margin-left: -13px
 	width: 80px;
 	padding: 0px;
 	height: 30px;
-	top: 25.5px;
+	top: 61.5px;
 	left: 8.4%;
 	margin-left: -16px;
 }
@@ -785,7 +809,7 @@ margin-left: -13px
 	width: 80px;
 	padding: 0px;
 	height: 30px;
-	top: 25.5px;
+	top: 61.5px;
 	left: 23.3%;
 	margin-left: -16px;
 }
@@ -795,7 +819,7 @@ margin-left: -13px
 	width: 80px;
 	padding: 0px;
 	height: 30px;
-	top: 25.5px;
+	top: 61.5px;
 	left: 38.2%;
 	margin-left: -16px;
 }
@@ -805,7 +829,7 @@ margin-left: -13px
 	width: 80px;
 	padding: 0px;
 	height: 30px;
-	top: 25.5px;
+	top: 61.5px;
 	left: 53.1%;
 	margin-left: -16px;
 }
@@ -819,7 +843,7 @@ margin-left: -13px
 #upgradedescription {
 	position: absolute;
 	text-align: center;
-	top: 215px;
+	top: 251px;
 	width: 1000px;
 	left: 48%;
 	margin-left: -500px;
@@ -827,7 +851,7 @@ margin-left: -13px
 
 #upgradecost {
 	position: absolute;
-	top: 235px;
+	top: 271px;
 	width: 300px;
 	left: 48%;
 	margin-left: -150px;
@@ -835,7 +859,7 @@ margin-left: -13px
 
 #upgradeeffect {
 	position: absolute;
-	top: 255px;
+	top: 291px;
 	width: 400px;
 	left: 48%;
 	margin-left: -200px;
@@ -847,7 +871,7 @@ margin-left: -13px
 	top: 118px;
 	padding: 0px;
 	text-align: center;
-	border: 1px solid white
+	border-top: 2px solid white
 }
 
 
@@ -1106,9 +1130,9 @@ margin-left: -13px
 	position:absolute;
 	height: 30px;
 	width: 130px;
-	top: 320px;
-	left: 51%;
-	margin-left: -16px;
+	top: 356px;
+	left: 48%;
+	margin-left: -65px;
 }
 
 #toggle10 {
@@ -1217,6 +1241,46 @@ margin-left: -13px
 	left: 51%;
 	margin-left: -16px;
 }
+#toggle22 {
+	position:absolute;
+	width: 80px;
+	height: 30px;
+	top: 57px;
+	left: 51%;
+	margin-left: -16px;
+}
+#toggle23 {
+	position:absolute;
+	width: 80px;
+	height: 30px;
+	top: 92px;
+	left: 51%;
+	margin-left: -16px;
+}
+#toggle24 {
+	position:absolute;
+	width: 80px;
+	height: 30px;
+	top: 127px;
+	left: 51%;
+	margin-left: -16px;
+}
+#toggle25 {
+	position:absolute;
+	width: 80px;
+	height: 30px;
+	top: 162px;
+	left: 51%;
+	margin-left: -16px;
+}
+#toggle26 {
+	position:absolute;
+	width: 80px;
+	height: 30px;
+	top: 197px;
+	left: 51%;
+	margin-left: -16px;
+}
 #toggle28 {
 	position: absolute;
 	width: 40px;
@@ -1308,12 +1372,25 @@ margin-left: -13px
 }
 
 #discord {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	position: absolute;
+	top: 335px;
+	left: 50%;
+	margin-left: -150px;
+	color: gold;
+}
+#discordhref {
 	width: 100px;
 	height: 100px;
-	top: 350px;
-	left: 50%;
-	margin-left: -50px;
+	border-radius: 50%;
+}
+#discordicon {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-top: 5px;
 }
 #versionnumber{
 	position: absolute;
@@ -1338,7 +1415,7 @@ margin-left: -13px
 	text-align: center;
 	padding: 0px;
 	border: 1px solid white
-	
+
 }
 #achievementprogress {
 	position: absolute;
@@ -1476,6 +1553,13 @@ margin-left: -13px
 	left: 80%;
 	top: 20px;
 }
+#buyAmountTesseract{	
+	position: absolute;	
+	padding: 0px;	
+	font-size: 0px;	
+	left: 80%;	
+	top: 20px;	
+}
 #togglecrystalbuy{
 	color: white;
 	position: absolute;
@@ -1521,6 +1605,15 @@ margin-left: -13px
 	top: 30px;
 	margin-left: -87px;
 }
+#toggleTesseractBuy{	
+	color: white;	
+	position: absolute;	
+	font-size: 11px;	
+	width: 220px;	
+	left: 80%;	
+	top: 30px;	
+	margin-left: -87px;	
+}
 #prestigeshardinfo {
     position: absolute;
     padding: 0px;
@@ -1529,46 +1622,47 @@ margin-left: -13px
     left: 50%;
     margin-left: -350px;
 }
- 
+
 #diamond1 {
     position: absolute;
     top: 58px;
     left: 10%;
     margin-left: -18px;
 }
- 
+
 #diamond2 {
     position: absolute;
     top: 93px;
+	
     left: 10%;
     margin-left: -18px;
- 
+
 }
- 
+
 #diamond3 {
     position: absolute;
     top: 128px;
     left: 10%;
     margin-left: -18px;
- 
+
 }
- 
+
 #diamond4 {
     position: absolute;
     top: 163px;
     left: 10%;
     margin-left: -18px;
- 
+
 }
- 
+
 #diamond5 {
     position: absolute;
     top: 198px;
     left: 10%;
     margin-left: -18px;
 }
- 
- 
+
+
 #prestigetext1 {
     position: absolute;
     top: 44px;
@@ -1609,7 +1703,7 @@ margin-left: -13px
     top: 149px;
     left: 56.5%;
 }
- 
+
 #prestigetext9 {
     position: absolute;
     top: 184px;
@@ -1620,7 +1714,7 @@ margin-left: -13px
     top: 184px;
     left: 56.5%;
 }
- 
+
 #buydiamond1 {
     position: absolute;
     width: 150px;
@@ -1630,9 +1724,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #buydiamond2 {
     position: absolute;
     width: 150px;
@@ -1642,9 +1736,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #buydiamond3 {
     position: absolute;
     width: 150px;
@@ -1654,9 +1748,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #buydiamond4 {
     position: absolute;
     width: 150px;
@@ -1666,9 +1760,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #buydiamond5 {
     position:absolute;
     width: 150px;
@@ -1678,9 +1772,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #prestigeinfo {
     color: cyan;
 }
@@ -2594,7 +2688,15 @@ margin-left: -13px
 	top: 255px;
 	text-align: center;
 }
-
+#respecAllTalismans{
+	position: absolute;
+	height: 30px;
+	left: 28%;
+	width: 80px;
+	margin-left: -41px;
+	top: 355px;
+	text-align: center;
+}
 #talismanEffect {
 	position: absolute;
 	left: 50%;
@@ -3094,7 +3196,7 @@ margin-left: -13px
     top: 118px;
     border: 1px solid green
 }
- 
+
 #reincarnationshardinfo {
     position: absolute;
     padding: 0px;
@@ -3119,46 +3221,46 @@ margin-left: -13px
     left: 50%;
     margin-left: -500px;
 }
- 
+
 #particles1 {
     position: absolute;
     top: 58px;
     left: 10%;
     margin-left: -18px;
 }
- 
+
 #particles2 {
     position: absolute;
     top: 93px;
     left: 10%;
     margin-left: -18px;
- 
+
 }
- 
+
 #particles3 {
     position: absolute;
     top: 128px;
     left: 10%;
     margin-left: -18px;
- 
+
 }
- 
+
 #particles4 {
     position: absolute;
     top: 163px;
     left: 10%;
     margin-left: -18px;
- 
+
 }
- 
+
 #particles5 {
     position: absolute;
     top: 198px;
     left: 10%;
     margin-left: -18px;
 }
- 
- 
+
+
 #reincarnationtext1 {
     position: absolute;
     top: 47px;
@@ -3199,7 +3301,7 @@ margin-left: -13px
     top: 152px;
     left: 56.5%;
 }
- 
+
 #reincarnationtext5 {
     position: absolute;
     top: 187px;
@@ -3210,7 +3312,7 @@ margin-left: -13px
     top: 187px;
     left: 56.5%;
 }
- 
+
 #buyparticles1 {
     position: absolute;
     width: 150px;
@@ -3220,9 +3322,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #buyparticles2 {
     position: absolute;
     width: 150px;
@@ -3232,9 +3334,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #buyparticles3 {
     position: absolute;
     width: 150px;
@@ -3244,9 +3346,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #buyparticles4 {
     position: absolute;
     width: 150px;
@@ -3256,9 +3358,9 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
- 
+
 #buyparticles5 {
     position:absolute;
     width: 150px;
@@ -3268,7 +3370,7 @@ margin-left: -13px
     margin-top: -15px;
     border: 1px solid white;
     border-radius: 8px;
- 
+
 }
 
 #toggle27 {
@@ -3308,7 +3410,7 @@ margin-left: -13px
 	color: white;
 	background-color: black
 }
- 
+
 #reincarnationinfo {
     color: lime;
 }
@@ -3477,7 +3579,7 @@ margin-left: -13px
 	width: 200px;
 	margin-left: -67px;
 	color: orangered;
-	font-size: 1.2em; 
+	font-size: 1.2em;
 }
 #consumablesimage{
 	position: absolute;
@@ -3773,14 +3875,254 @@ margin-left: -13px
 	padding: 0px;
 	border-spacing: 0px;
 }
+
+#cubes{
+	position:relative;
+	top: 118px;
+	padding: 0px;
+	border: 2px solid black
+}
+.cubeSwitchTabBtn{
+	position: absolute;
+	text-align: center;
+	width: 250px;
+	height: 30px;
+}
+.cubePlacement1{
+	position:absolute;
+	text-align: center;
+	top: 0px;
+	font-size: 1.2em;
+	width: 700px;
+	left: 50%;
+	margin-left: -350px;
+}
+.cubePlacement2{
+	position:absolute;
+	text-align: center;
+	top: 30px;
+	font-size: 1.0em;
+	width: 1000px;
+	left: 50%;
+	margin-left: -500px;
+}
+.cubePlacement3{
+	position:absolute;
+	text-align: center;
+	top: 50px;
+	font-size: 1.0em;
+	width: 1000px;
+	left: 50%;
+	margin-left: -500px;
+}
+.cubePlacement4{
+	position: absolute;
+	text-align: center;
+	top: 100px;
+	left: 30%;
+	margin-left: -32px;
+}
+.cubePlacement5{
+	position: absolute;
+	text-align: center;
+	top: 84px;
+	left: 40%;
+	margin-left: -96px;
+}
+.cubeBtn {
+	height: 30px;
+	width: 100px;
+	border: 1px solid gold;
+	color: white;
+	background-color: black;
+}
+#open1Cube{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: -96px;
+}
+#open20Cube{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 6px;
+}
+#open1000Cube{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 108px;
+}
+#openMostCube{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 210px;
+}
+#open1Tesseract{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: -96px;
+}
+#open20Tesseract{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 6px;
+}
+#open1000Tesseract{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 108px;
+}
+#open1Hypercube{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: -96px;
+}
+#open20Hypercube{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 6px;
+}
+#open1000Hypercube{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 108px;
+}
+#openMostHypercube{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 210px;
+}
+#openMostTesseract{
+	position: absolute;
+	text-align: center;
+	top: 128px;
+	left: 40%;
+	margin-left: 210px;
+}
+.cubeBonus{
+	position:absolute;
+	top: 170px;
+	left: 30%;
+	margin-left: -16px;
+}
+.cubeIcon{
+	position:absolute;
+	padding: 0px;
+	border-spacing: 0px;
+}
+#cube1Bonus{
+	width: 1500px;
+}
+#tesseract1Bonus{
+	width: 1500px;
+}
+#hypercube1Bonus{
+	width: 1500px;
+}
+#cubeAmount2{
+	position:absolute;
+	padding: 0px;
+	top: 20px;
+	left: 50%;
+	width: 1000px;
+	margin-left: -500px;
+	text-align: center;
+	color: white;
+}
+#cubeUpgradeTable {
+	position:absolute;
+	padding: 0px;
+	top: 75px;
+	left: 50%;
+	margin-left: -170px;
+	border-collapse:collapse;
+	font-size: 0px;
+}
+#cubeUpgradeName {
+	position:absolute;
+	top:250px;
+	width:1000px;
+	height: 42px;
+	left:50%;
+	margin-left: -500px;
+}
+
+#cubeUpgradeDescription {
+	position: absolute;
+	position:absolute;
+	top:273px;
+	width:1000px;
+	height: 42px;
+	left:50%;
+	margin-left: -500px;
+}
+
+#cubeUpgradeCost {
+	position:absolute;
+	top:296px;
+	width: 600px;
+	left: 50%;
+	margin-left: -300px;
+}
+#cubeUpgradeLevel {
+	position:absolute;
+	top:319px;
+	width: 100px;
+	left: 50%;
+	margin-left: -50px;
+}
+#toggleCubeBuy {
+	position:absolute;
+	top:374px;
+	width: 200px;
+	left: 50%;
+	margin-left: -100px;
+	height: 30px;
+}
+
+.gridImg{
+	cursor: pointer;
+}
+
 #switchsettingtab {
 	position: absolute;
 	height: 30px;
 	width: 200px;
 	left: 50%;
 	margin-left: -100px;
-	top: 40px;
+	top: 10px;
 	border: 2px solid gold;
+}
+#switchsettingtab2 {
+	position: absolute;
+	height: 30px;
+	width: 200px;
+	left: 50%;
+	margin-left: -100px;
+	top: 40px;
+	border: 2px solid orange;
+	
 }
 #programminghelp {
 	position: absolute;
@@ -3817,4 +4159,89 @@ margin-left: -13px
 	margin-left: -500px;
 	top: 280px;
 	font-size: 1.5em;
+}
+#ascension {
+	position: relative;
+	padding: 0px;
+	top: 118px;
+	border: 1px solid orange
+}
+.ascendPics{
+	color: orange;
+	border: 1px solid yellow;
+	position: absolute;
+	margin-left: -18px;
+}
+.ascendTexts {
+	color: orange;
+	position: absolute;
+}
+.tesseractBuyBtn {
+	position: absolute;
+	width: 150px;
+	height: 30px;
+	left: 37%;
+	margin-top: -15px;
+	border: 1px solid white;
+	border-radius: 8px;
+}
+
+#tesseractInfo{
+	position: absolute;
+    padding: 0px;
+    top: 240px;
+    width: 1000px;
+    left: 50%;
+    margin-left: -500px;
+}
+#ascendShardInfo{
+	position: absolute;
+    padding: 0px;
+    top: 260px;
+    width: 1000px;
+    left: 50%;
+    margin-left: -500px;
+}
+#ascendHotKeys{
+	position: absolute;
+	padding: 5px;
+	top: 460px;
+	left: 50%;
+	width: 1200px;
+	margin-left: -600px;
+	height: 20px;
+	color: gray;
+	text-align: center;
+}
+
+#statisticsSubTab {
+	max-height: 800px;
+	padding-top: 100px;
+	flex-wrap: wrap;
+}
+.statContainer {
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-bottom: auto;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+.statPortion{
+	width: 380px;
+	height: auto;
+	margin: auto;
+	color: white;
+	text-align: left;
+	font-size: 1em;
+}
+.statPortion.indented{
+	width: 360px;
+	padding-left: 20px;
+}
+.statNumber{
+	color: yellow;
+	font-size: 0.9em;
+	float: right;
 }
