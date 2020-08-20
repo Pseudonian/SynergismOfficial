@@ -944,7 +944,7 @@ for (j = 0; j <= 4; j++) {
 if (player.shoptoggles.coin == false) {document.getElementById("shoptogglecoin").textContent = "Auto: OFF"}
 if (player.shoptoggles.prestige == false) {document.getElementById("shoptoggleprestige").textContent = "Auto: OFF"}
 if (player.shoptoggles.transcend == false) {document.getElementById("shoptoggletranscend").textContent = "Auto: OFF"}
-if (player.shoptoggles.generator == false) {document.getElementById("shoptogglegenerator").textContent = "Auto: OFF"}
+if (player.shoptoggles.generators == false) {document.getElementById("shoptogglegenerator").textContent = "Auto: OFF"}
 
 getChallengeConditions();
 updateChallengeDisplay();
