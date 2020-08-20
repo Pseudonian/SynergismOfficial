@@ -1025,6 +1025,8 @@ updateAchievementBG();
  })();
 
 function format(input,accuracy,long){
+    // TODO: consider rewriting this function to use arbritrary precision numbers to avoid hacky rounding number solutions that don't ""properly"" work
+
 	//This function displays the numbers such as 1,234 or 1.00e1234 or 1.00e1.234M.
 
 	//Input is the number to be formatted (string or value)
@@ -1072,7 +1074,12 @@ function format(input,accuracy,long){
 	else if (power < 6 || (long && power < 13))
 	{
 		// Gets the standard representation of the number, safe as power is guaranteed to be > -12 and < 13
-		let standard = mantissa * Math.pow(10, power);
+        let standard = mantissa * Math.pow(10, power);
+        // Rounds up instead if it's probable that a rounding error caused the discrepency
+        if (standard - Math.floor(standard) > 0.9999999)
+		{
+			standard = Math.ceil(standard);
+		}
 		// If the power is less than 1 or format long and less than 3 apply toFixed(accuracy) to get decimal places
 		if ((power < 1 || (long && power < 3)) && accuracy > 0)
 		{
