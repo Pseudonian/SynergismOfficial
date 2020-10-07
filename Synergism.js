@@ -2016,7 +2016,8 @@ function resourceGain(dt, fast) {
     if (player.upgrades[100] === 1 && player.coinsThisTranscension.greaterThanOrEqualTo(1e100)) {
         player.transcendPoints = player.transcendPoints.add(Decimal.floor(transcendPointGain.dividedBy(4000).times(dt / 0.025)))
     }
-    if (player.cubeUpgrades[28] > 0 && player.transcendShards.greaterThanOrEqualTo(1e300)) {
+    // If particle gen cube upgrade is bought, and player is not in non-ascension challenge then generate particles
+    if (player.cubeUpgrades[28] > 0 && player.transcendShards.greaterThanOrEqualTo(1e300) && player.currentChallenge.transcension === 0 && player.currentChallenge.reincarnation === 0) {
         player.reincarnationPoints = player.reincarnationPoints.add(Decimal.floor(reincarnationPointGain.dividedBy(4000).times(dt / 0.025)))
     }
     produceFirstDiamonds = player.firstGeneratedDiamonds.add(player.firstOwnedDiamonds).times(player.firstProduceDiamonds).times(globalCrystalMultiplier)
