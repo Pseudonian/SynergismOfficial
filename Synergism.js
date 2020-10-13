@@ -1380,7 +1380,7 @@ function format(input, accuracy = 0, long = false) {
             powerFront = 1;
         }
         powerLook = powerLook.toFixed(4 - powerFront);
-        powerLook = powerLook.toString();
+        
         // Return relevant notations alongside the "look" power based on what the power actually is
         if (power < 1e9) {
             return mantissaLook + "e" + powerLook + "M";
@@ -1394,23 +1394,26 @@ function format(input, accuracy = 0, long = false) {
         if (power < 1e18) {
             return mantissaLook + "e" + powerLook + "Qa";
         }
+
+        const digits = (power / Math.pow(10, powerDigits - powerFront)).toFixed(5);
+        
         if (power < 1e21) {
-            return mantissaLook + "e" + powerLook + "Qi";
+            return "e" + digits + "Qi";
         }
         if (power < 1e24) {
-            return mantissaLook + "e" + powerLook + "Sx";
+            return "e" + digits + "Sx";
         }
         if (power < 1e27) {
-            return mantissaLook + "e" + powerLook + "Sp";
+            return "e" + digits + "Sp";
         }
         if (power < 1e30) {
-            return mantissaLook + "e" + powerLook + "Oc";
+            return "e" + digits + "Oc";
         }
         if (power < 1e33) {
-            return mantissaLook + "e" + powerLook + "No";
+            return "e" + digits + "No";
         }
         if (power < 1e36) {
-            return mantissaLook + "e" + powerLook + "Dc";
+            return "e" + digits + "Dc";
         }
         // If it doesn't fit a notation then default to mantissa e power
         return mantissa + "e" + power;
