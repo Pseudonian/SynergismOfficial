@@ -65,6 +65,7 @@ function openCube(value, max) {
     calculateCubeBlessings();
 }
 
+// TODO: move this trash to i18n
 const cubeUpgradeName = [null,
     () => "Wow! I want more Cubes.",
     () => "Wow! I want passive Offering gain too.",
@@ -133,6 +134,7 @@ const cubeMaxLevel = [null,
     2, 10, 10, 10, 10, 20, 20, 1, 1, 100000]
 
 
+// TODO: move this trash to i18n
 const cubeUpgradeDescriptions = [null,
     () => "[1x1] You got it! +14% cubes from Ascending per level.",
     () => "[1x2] Plutus grants you +1 Offering per second, no matter what, per level. Also a +0.5% Recycling chance!",

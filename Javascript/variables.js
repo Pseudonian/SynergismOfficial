@@ -185,6 +185,7 @@ var uFifteenMulti = new Decimal(1);
 var tuSevenMulti = 1;
 let currentTab = "buildings"
 
+// TODO: move this trash to i18n
 var researchfiller1 = "Hover over the grid to get details about researches!"
 var researchfiller2 = "Level: "
 

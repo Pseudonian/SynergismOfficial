@@ -1,3 +1,4 @@
+// TODO: move this trash to i18n
 let upgdesc = {
     upgdesc1: "Increase production of Workers per producer bought.", //Coin Upgrades 1-20
     upgdesc2: "Increase production of Investments per producer bought.",

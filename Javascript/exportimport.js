@@ -94,7 +94,7 @@ function promocodes() {
         player.codes.set(1, true);
         player.runeshards += 25;
         player.worlds += 50;
-        el.textContent = "Promo Code 'synergism2020' Applied! +25 Offerings, +50 Quarks"
+        el.textContent = window.tr.t('synergism2020');
     } else if (input === "reimagining" && player[Object.getOwnPropertySymbols(player)[0]] && !player.codes.get(25)) {
         player.codes.set(25, true);
         let quarkValue = 0
@@ -111,16 +111,17 @@ function promocodes() {
         if(player.challengecompletions[10] > 2 && player.ascensionCount === 0){
             quarkValue += 500
         }
-        el.textContent = "The conscience of the universe is now one. +" + format(quarkValue) + " Quarks based on your progress!"
+        const r = window.tr.t('reimagining');
+        el.textContent = r[0] + format(quarkValue) + r[1];
         player.worlds += quarkValue
     } else if (input === ":unsmith:" && player.achievements[243] < 1) {
         achievementaward(243);
-        el.textContent = "It's Spaghetti Time! [Awarded an achievement!!!]";
+        el.textContent = window.tr.t('unsmith');
     } else if (input === ":antismith:" && player.achievements[244] < 1) {
         achievementaward(244);
-        el.textContent = "Hey, isn't this just a reference to Antimatter Dimensions? Shh. [Awarded an achievement!!!]";
+        el.textContent = window.tr.t('antismith');
     } else {
-        el.textContent = "Your code is either invalid or already used. Try again!"
+        el.textContent = window.tr.t('invalidPromo');
     }
 
     setTimeout(function () {

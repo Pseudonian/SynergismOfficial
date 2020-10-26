@@ -3348,7 +3348,7 @@ document['addEventListener' in document ? 'addEventListener' : 'attachEvent']('k
 
 });
 
-window['addEventListener' in window ? 'addEventListener' : 'attachEvent']('load', function () {
+window.addEventListener('load', async () => {
     if(location.href.includes('kong')) {
         // kongregate
         const script = document.createElement('script');
@@ -3364,6 +3364,9 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvent']('load'
         localStorage.setItem('Synergysave2', btoa(dec));
         alert('Transferred save to new format successfully!');
     }
+
+    window.tr = new i18n();
+    await tr.fetch();
 
     // Make sure language is loaded first no matter what
     /* new i18n().getJSON().then(function() {

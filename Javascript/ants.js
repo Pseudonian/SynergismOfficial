@@ -1,44 +1,3 @@
-let antdesc = {
-    antdesc1: "Gain a worker ant for your everyday life. Gathers Galactic Crumbs. Essential!",
-    antdesc2: "Gain a breeder ant that produces worker ants automatically!",
-    antdesc3: "Gain a meta-breeder ant that produces breeder ants automatically!",
-    antdesc4: "Gain a mega-breeder ant that produces meta-breeder ants automatically!",
-    antdesc5: "Gain a Queen ant that produces mega-breeder ants automatically!",
-    antdesc6: "Gain a Lord Royal ant that produces Queen ants automatically!",
-    antdesc7: "Gain an ALMIGHTY ANT that produces Lord Royal ants automatically!",
-    antdesc8: "Gain a DISCIPLE OF ANT GOD that produces ALMIGHTY ANTS automatically!"
-}
-
-let antspecies = {
-    antspecies1: "Inceptus Formicidae",
-    antspecies2: "Fortunae Formicidae",
-    antspecies3: "Tributum Formicidae",
-    antspecies4: "Celeritas Formicidae",
-    antspecies5: "Multa Formicidae",
-    antspecies6: "Sacrificium Formicidae",
-    antspecies7: "Hic Formicidae",
-    antspecies8: "Experientia Formicidae",
-    antspecies9: "Praemoenio Formicidae",
-    antspecies10: "Scientia Formicidae",
-    antspecies11: "Phylacterium Formicidae",
-    antspecies12: "Mortuus Est Formicidae"
-}
-
-let antupgdesc = {
-    antupgdesc1: "Promotes romance and unity within the colony. [+12% Ant Speed / level]",
-    antupgdesc2: "Sweetens crumbs to increase their value [Each level increases Crumb --> Coin Conversion efficiency, up to ^50,000,000]",
-    antupgdesc3: "Swarms the Taxman into submission [Up to -99% taxes!]",
-    antupgdesc4: "Scares you into running faster [up to x20]",
-    antupgdesc5: "Imitates your body through magic shape-shifting powers [up to x40]",
-    antupgdesc6: "Tries to please Ant God... but fails [Additional Offerings!]",
-    antupgdesc7: "Helps you build a few things here and there [+3% Building Cost Delay / level]",
-    antupgdesc8: "Knows how to salt and pepper food [Up to 1,000x Rune EXP!]",
-    antupgdesc9: "Can make your message to Ant God a little more clear [+1 all Rune Levels / level]",
-    antupgdesc10: "Has big brain energy [Additional Obtainium!]",
-    antupgdesc11: "A valuable offering to the Ant God [Gain up to 3x Sacrifice Rewards!]",
-    antupgdesc12: "Betray Ant God increasing the fragility of your dimension [Unlocks ant talisman, Up to 2x faster timers on most things]"
-}
-
 const antUpgradeTexts = [null,
     () => "ALL Ants work at " + format(Decimal.pow(1.12 + 1 / 1000 * player.researches[101], player.antUpgrades[1] + bonusant1), 2) + "x speed.",
     () => "Crumb --> Coin exponent is ^" + format(100000 + calculateSigmoidExponential(49900000, (player.antUpgrades[2] + bonusant2) / 5000 * 500 / 499)),
@@ -70,7 +29,7 @@ function updateAntDescription(i) {
 
     let priceType = "Galactic Crumbs"
     let tier = ""
-    el.textContent = antdesc["antdesc" + i]
+    el.textContent = window.tr.t('antdesc' + i);
 
     switch (i) {
         case 1:
@@ -272,8 +231,8 @@ function antUpgradeDescription(i) {
     let ti = document.getElementById("antupgradecost")
     let me = document.getElementById("antupgradeeffect")
 
-    let content1 = antspecies["antspecies" + i];
-    let content2 = antupgdesc["antupgdesc" + i];
+    let content1 = window.tr.t("antspecies" + i);
+    let content2 = window.tr.t("antupgdesc" + i);
     let bonuslevel = window["bonusant" + i];
 
     let c11 = 0;
