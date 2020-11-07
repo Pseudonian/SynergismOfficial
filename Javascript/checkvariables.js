@@ -198,8 +198,16 @@ function checkVariablesOnLoad(data) {
         }
     }
 
-    if (player.ascStatToggles === undefined || data.ascStatToggles === undefined) {
+    if (player.ascStatToggles === undefined) {
         player.ascStatToggles = {
+            1: false,
+            2: false,
+            3: false,
+            4: false
+        };
+    }
+    if (data.ascStatToggles === undefined) {
+        data.ascStatToggles = {
             1: false,
             2: false,
             3: false,
