@@ -19,6 +19,9 @@ body {
 	margin: 0;
 	box-sizing: border-box;
 }
+main {
+    user-select: none;
+}
 btn {
 	color: #171717
 }
