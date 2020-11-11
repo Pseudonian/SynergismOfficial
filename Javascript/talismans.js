@@ -3,6 +3,7 @@ function updateCostDisplay(i) {
 
     let obtainiumCost = talismanResourceObtainiumCosts[i];
     let offeringCost = talismanResourceOfferingCosts[i]
+    let rarity = talismanRarity[i]
     let maxBuyObtainium = Math.max(1, Math.floor(player.researchPoints / obtainiumCost))
     let maxBuyOffering = Math.max(1, Math.floor(player.runeshards / (offeringCost)));
     if (offeringCost === 0) {
@@ -11,7 +12,7 @@ function updateCostDisplay(i) {
 
     let amountToBuy = Math.max(1, Math.floor(player.buyTalismanShardPercent / 100 * Math.min(maxBuyObtainium, maxBuyOffering)))
 
-    el.textContent = "Cost to buy " + format(amountToBuy) + ": " + format(obtainiumCost * amountToBuy) + " Obtainium and " + format(offeringCost * amountToBuy) + " offerings."
+el.textContent = "Cost to buy " + format(amountToBuy) + " " + rarity + (amountToBuy>1?"s":" ") ": " + format(obtainiumCost * amountToBuy) + " Obtainium and " + format(offeringCost * amountToBuy) + " offerings."
 
 
 }
