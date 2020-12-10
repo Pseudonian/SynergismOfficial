@@ -2908,20 +2908,20 @@ let lastUpdate = 0;
 //gameInterval = 0;
 
 function createTimer() {
-    lastUpdate = Date.now();
-    interval(tick, 5);
+    requestAnimationFrame(tick);
 }
 
 
-function tick() {
+function tick(timestamp) {
+    requestAnimationFrame(tick)
+    let delta = timestamp - lastUpdate
+    lastUpdate = timestamp;
 
     if (!timeWarp) {
-        let now = Date.now();
-        let dt = Math.max(0, Math.min(36000, (now - lastUpdate) / 1000));
+        let dt = Math.max(0, Math.min(36000, (delta) / 1000));
 
         dailyResetCheck();
         let timeMult = calculateTimeAcceleration();
-        lastUpdate = now;
 
         player.quarkstimer += dt
         if (player.quarkstimer >= (90000 + 45000 * player.researches[195])) {
