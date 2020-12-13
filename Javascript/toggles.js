@@ -208,7 +208,9 @@ function subTabsInMainTab(mainTab) {
                 {subTabID: "creditssubtab", unlocked: true},
                 {subTabID: "statisticsSubTab", unlocked: true},
                 {subTabID: "resetHistorySubTab", unlocked: player.unlocks.prestige},
-                {subTabID: "ascendHistorySubTab", unlocked: player.ascensionCount > 0}]
+                {subTabID: "ascendHistorySubTab", unlocked: player.ascensionCount > 0},
+                { subTabID: 'khafraSaveSubTab', unlocked: true }
+            ]
         },
         0: {subTabList: []},
         1: {
@@ -296,9 +298,9 @@ function toggleSubTab(mainTab = 1, subTab = 0) {
     if (tabs(mainTab).unlocked && subTabsInMainTab(mainTab).subTabList.length > 0) {
         if (mainTab === -1) {
             // The first getElementById makes sure that it still works if other tabs start using the subtabSwitcher class
-            let btn = document.getElementById("settings").getElementsByClassName("subtabSwitcher")[0].children[subTab]
+            let btn = document.getElementById("settings").getElementsByClassName("subtabSwitcher")[0].children[subTab];
             if (subTabsInMainTab(mainTab).subTabList[subTab].unlocked)
-                subTabsInMainTab(mainTab).tabSwitcher(subTabsInMainTab(mainTab).subTabList[subTab].subTabID, btn)
+                subTabsInMainTab(mainTab).tabSwitcher(subTabsInMainTab(mainTab).subTabList[subTab].subTabID, btn);
         } else {
             if (subTabsInMainTab(mainTab).subTabList[subTab].unlocked)
                 subTabsInMainTab(mainTab).tabSwitcher(subTabsInMainTab(mainTab).subTabList[subTab].subTabID)

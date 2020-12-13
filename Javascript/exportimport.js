@@ -85,6 +85,7 @@ async function exportSynergism() {
         document.body.removeChild(a);
     }
 
+    insertSave(save);
     document.getElementById("exportinfo").textContent = toClipboard
         ? 'Copied save to your clipboard!'
         : 'Savefile copied to file!';

@@ -4521,6 +4521,19 @@ margin-left: -13px
 	text-align: center;
 }
 
+#khafraSaveSubTab {
+	margin: 0 auto;
+}
+
+#khafraSaveSubTab table {
+	margin: auto;
+	border-collapse: collapse;
+	min-width: 100%;
+}
+
+#khafraSaveSubTab table tr:nth-child(odd) {
+	background: #262626;
+}
 
 #statisticsSubTab {
 	max-height: 800px;
