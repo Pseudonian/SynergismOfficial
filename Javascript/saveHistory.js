@@ -5,35 +5,23 @@
  */
 const insertSave = (s, r = 'export') => {
     const table = document.querySelector('#khafraSaveSubTab > div > table > tbody');
-    
     const row = table.insertRow(0);
-    const dlButton = row.insertCell(0);
-    const copyButton = row.insertCell(1);
+    
+    row.insertCell(0).innerHTML = `
+    <a href="data:text/plain;charset=utf-8,${s}" download="${saveFilename()}" id="downloadSave" style="border:2px solid orange">
+        Download Save
+    </a>
+    `;
+    row.insertCell(1).innerHTML = `
+    <a id="copyToClipboardRow" style="border:2px solid gold" onclick="onClickCopy(this)">Copy to Clipboard</a>
+    `;
     const time = row.insertCell(2);
     row.insertCell(3).textContent = getReason(r);
     row.insertCell(4).innerHTML = `<img src="https://twemoji.maxcdn.com/v/latest/72x72/1f5d1.png" onclick="removeCell(this)"></img>`;
     
-    // button handling save downloads
-    const a = document.createElement('a');
-    a.textContent = 'Download Save';
-    a.setAttribute('href', 'data:text/plain;charset=utf-8,' + s);
-    a.setAttribute('download', saveFilename());
-    a.setAttribute('id', 'downloadSave');
-    a.setAttribute('style', 'border: 2px solid green;'); // same border as export button
-
-    // button handling copy to clipboard
-    const cpy = document.createElement('a');
-    cpy.id = 'copyToClipboardRow';
-    cpy.textContent = 'Copy to Clipboard';
-    cpy.setAttribute('style', 'border: 2px solid gold');
-    cpy.addEventListener('click', onClickCopy);
-
     // time labels
     time.id = 'timeRow';
     time.setAttribute('data-time', `${Date.now()}`);
-
-    dlButton.appendChild(a);
-    copyButton.appendChild(cpy);
 
     while(table.rows.length > 10) {
         table.deleteRow(table.rows.length - 1);
@@ -51,9 +39,13 @@ const insertSave = (s, r = 'export') => {
     }
 }
 
+/**
+ * click event to handle copy to clipboard
+ * @param {HTMLTableCellElement} e
+ */
 const onClickCopy = async e => {
-    e.target.textContent = '✅';
-    setTimeout(e => e.target.textContent = 'Copy to Clipboard', 2000, e);
+    e.textContent = '✅';
+    setTimeout(e => e.textContent = 'Copy to Clipboard', 2000, e);
 
     const save = localStorage.getItem('Synergysave2');
     return navigator.clipboard.writeText(save);
@@ -66,6 +58,10 @@ const getReason = (r) => {
     }
 }
 
+/**
+ * Remove a row from the table.
+ * @param {HTMLTableCellElement} el 
+ */
 const removeCell = (el) => {
     const table = document.querySelector('#khafraSaveSubTab > div > table > tbody');
     const children = Array.from(table.childNodes);

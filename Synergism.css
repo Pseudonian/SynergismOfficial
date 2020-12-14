@@ -4531,12 +4531,28 @@ margin-left: -13px
 	min-width: 100%;
 }
 
-#khafraSaveSubTab table tr:nth-child(even) {
+#khafraSaveSubTab table tr:nth-child(odd) {
 	background: #262626;
 }
 
-#khafraSaveSubTab table tr td {
-	padding: 10px;
+#khafraSaveSubTab table tr td, th {
+	padding: 15px;
+}
+
+#kExportGame, #kImportGame {
+	background-color: red;
+	display: inline-block;
+	font-size: 14px !important;
+	height: 40px !important;
+	width: 140px;
+	vertical-align: top;
+	border-radius: 2px;
+}
+
+#kImportGame > span {
+	text-align: center;
+	vertical-align: middle;
+	line-height: 40px; 
 }
 
 #statisticsSubTab {
