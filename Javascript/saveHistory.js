@@ -6,7 +6,7 @@
 const insertSave = (s, r = 'export') => {
     const table = document.querySelector('#khafraSaveSubTab > div > table > tbody');
     const row = table.insertRow(0);
-    
+
     row.insertCell(0).innerHTML = `
     <a href="data:text/plain;charset=utf-8,${s}" download="${saveFilename()}" id="downloadSave" style="border:2px solid orange">
         Download Save
@@ -43,7 +43,7 @@ const insertSave = (s, r = 'export') => {
  * click event to handle copy to clipboard
  * @param {HTMLTableCellElement} e
  */
-const onClickCopy = async e => {
+const onClickCopy = async (e) => {
     e.textContent = '✅';
     setTimeout(e => e.textContent = 'Copy to Clipboard', 2000, e);
 
