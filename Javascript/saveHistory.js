@@ -7,9 +7,10 @@ const insertSave = (s) => {
     
     const row = table.insertRow(0);
     const dlButton = row.insertCell(0);
-    const time = row.insertCell(1);
+    const copyButton = row.insertCell(1);
+    const time = row.insertCell(2);
     
-    // create a download button
+    // button handling save downloads
     const a = document.createElement('a');
     a.textContent = 'Download Save';
     a.setAttribute('href', 'data:text/plain;charset=utf-8,' + s);
@@ -17,10 +18,19 @@ const insertSave = (s) => {
     a.setAttribute('id', 'downloadSave');
     a.setAttribute('style', 'border: 2px solid green;'); // same border as export button
 
+    // button handling copy to clipboard
+    const cpy = document.createElement('a');
+    cpy.id = 'copyToClipboardRow';
+    cpy.textContent = 'Copy to Clipboard';
+    cpy.setAttribute('style', 'border: 2px solid gold');
+    cpy.addEventListener('click', onClickCopy);
+
+    // time labels
     time.id = 'timeRow';
     time.setAttribute('data-time', `${Date.now()}`);
 
     dlButton.appendChild(a);
+    copyButton.appendChild(cpy);
 
     while(table.rows.length > 10) {
         table.deleteRow(table.rows.length - 1);
@@ -36,4 +46,12 @@ const insertSave = (s) => {
             ? 'A few seconds ago.'
             : `${Math.floor(diff).toLocaleString()} minute${Math.floor(diff) === 1 ? '' : 's'} ago.`; 
     }
+}
+
+const onClickCopy = async e => {
+    e.target.textContent = '✅';
+    setTimeout(e => e.target.textContent = 'Copy to Clipboard', 2000, e);
+
+    const save = localStorage.getItem('Synergysave2');
+    return navigator.clipboard.writeText(save);
 }

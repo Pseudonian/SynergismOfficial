@@ -4535,6 +4535,10 @@ margin-left: -13px
 	background: #262626;
 }
 
+#khafraSaveSubTab table tr td {
+	padding: 10px;
+}
+
 #statisticsSubTab {
 	max-height: 800px;
 	padding-top: 52px;
