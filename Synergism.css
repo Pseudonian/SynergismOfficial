@@ -4531,7 +4531,7 @@ margin-left: -13px
 	min-width: 100%;
 }
 
-#khafraSaveSubTab table tr:nth-child(odd) {
+#khafraSaveSubTab table tr:nth-child(even) {
 	background: #262626;
 }
 

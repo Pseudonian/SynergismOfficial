@@ -1,14 +1,17 @@
 /**
  * Insert a row into the save history.
  * @param {string} s Base64 save file 
+ * @param {string} r reason for exporting save
  */
-const insertSave = (s) => {
-    const table = document.querySelector('#khafraSaveSubTab > div > table');
+const insertSave = (s, r = 'export') => {
+    const table = document.querySelector('#khafraSaveSubTab > div > table > tbody');
     
     const row = table.insertRow(0);
     const dlButton = row.insertCell(0);
     const copyButton = row.insertCell(1);
     const time = row.insertCell(2);
+    row.insertCell(3).textContent = getReason(r);
+    row.insertCell(4).innerHTML = `<img src="https://twemoji.maxcdn.com/v/latest/72x72/1f5d1.png" onclick="removeCell(this)"></img>`;
     
     // button handling save downloads
     const a = document.createElement('a');
@@ -54,4 +57,17 @@ const onClickCopy = async e => {
 
     const save = localStorage.getItem('Synergysave2');
     return navigator.clipboard.writeText(save);
+}
+
+const getReason = (r) => {
+    switch(r) {
+        case 'export': return 'User exported save.';
+        case 'auto': return 'Auto exported save.';
+    }
+}
+
+const removeCell = (el) => {
+    const table = document.querySelector('#khafraSaveSubTab > div > table > tbody');
+    const children = Array.from(table.childNodes);
+    table.deleteRow(children.indexOf(el.parentNode.parentNode));
 }
