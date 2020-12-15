@@ -2632,27 +2632,7 @@
 
 
     </div>
-
-
     <link rel="stylesheet" href="Synergism.css">
-
-    <script>
-    document.getElementById('importfile').addEventListener('change', readFileAsString);
-    document.getElementById('kInputGame').addEventListener('change', readFileAsString); // not gonna bother touching this lol
-    function readFileAsString() {
-    var files = this.files;
-    if (files.length === 0) {
-        console.log('No file is selected');
-        return;
-    }
-    var reader = new FileReader();
-    reader.onload = function(event) {
-        importSynergism(event.target.result)
-    };
-    reader.readAsText(files[0])
-    }
-    </script>
-
 
     <script type='text/javascript'>
         if(typeof kongregateAPI !== 'undefined') {

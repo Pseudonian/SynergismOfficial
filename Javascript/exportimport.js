@@ -194,3 +194,17 @@ function promocodes() {
         el.textContent = ''
     }, 15000);
 }
+
+const fileReader = () => {
+    const readFile = (e) => {
+        const files = e.target.files;
+        if (files.length === 0) return;
+
+        const reader = new FileReader();
+        reader.addEventListener('load', e => importSynergism(e.target.result));
+        reader.readAsText(files[0]);
+    }
+
+    document.getElementById('importfile').addEventListener('change', readFile);
+    document.getElementById('kInputGame').addEventListener('change', readFile);
+}

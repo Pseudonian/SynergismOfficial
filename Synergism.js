@@ -3411,9 +3411,9 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvent']('load'
         revealStuff();
         hideStuff();
         htmlInserts();
-        // thanks Kewne
         createTimer();
         constantIntervals();
+        fileReader();
         player.version = version;
     }, 0);
 });
