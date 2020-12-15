@@ -586,7 +586,9 @@ blank_save.codes = new Map(Array.from(Array(30), (_, i) => [i + 1, false]));
  */
 const toStringMap = m => Array.from(m);
 
-const saveSynergy = async (button) => {
+const saveSynergy = async () => {
+    console.log('Saving!');
+
     player.offlinetick = Date.now();
     player.loaded1009 = true;
     player.loaded1009hotfix1 = true;
@@ -595,15 +597,14 @@ const saveSynergy = async (button) => {
     const p = Object.assign({}, player);
     p.codes = toStringMap(p.codes);
 
-    try {
-        console.log('yo');
-        await kDBWait();
-        await kDBAdd({ save: btoa(JSON.stringify(p)), time: Date.now() });
-    } catch(e) {console.log(e)}
-    // localStorage.setItem("Synergysave2", btoa(JSON.stringify(p)));
+    await kDBWait();
+    await kDBAdd({ save: btoa(JSON.stringify(p)), time: Date.now() });
 }
 
+let asi;
+
 const isDecimal = (o) /*: o is Decimal */ => 
+    o !== null && 
     typeof o === 'object' &&
     Object.keys(o).length === 2 && 
     Object.keys(o).every(k => ['mantissa', 'exponent'].includes(k));
@@ -630,7 +631,14 @@ const loadSynergy = async () => {
         }
     } else if(newest.length === 0 || !newest[0].save) return;
 
-    const data = JSON.parse(atob(newest[0].save));
+    let data; 
+    try {
+        data = JSON.parse(atob(newest[0].save));
+    } catch(e) {
+        console.log(e.toString(), newest[0].save);
+        return;
+    }
+
     const hasOwnProperty = {}.hasOwnProperty;
 
     const oldCodesUsed = Array.from(
@@ -665,6 +673,10 @@ const loadSynergy = async () => {
 
         return (player[prop] = data[prop]);
     });
+
+    player.autoSave = data.autoSave || 3;
+    document.getElementById('autoSaveTime').value = player.autoSave;
+    asi = interval(saveSynergy, 1000 * 60 * player.autoSave);
     
     if (data.offerpromo24used !== undefined) {
         player.codes.set(25, false)

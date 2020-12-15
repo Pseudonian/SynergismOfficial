@@ -52,7 +52,6 @@ const exportSynergism = async () => {
     document.getElementById('settingstab').setAttribute('full', 0);
 
     await saveSynergy();
-    await kDBWait();
 
     const toClipboard = document.getElementById('saveType').checked;
     const save = btoa(JSON.stringify(player));
@@ -94,15 +93,10 @@ const exportSynergism = async () => {
 }
 
 const resetGame = () => {
-    if (blank_save) {
-        const hold = Object.assign({}, blank_save);
-        hold.codes = toStringMap(hold.codes);
+    const hold = Object.assign({}, blank_save);
+    hold.codes = toStringMap(hold.codes);
 
-        importSynergism(btoa(JSON.stringify(hold)));
-    } else {
-        // handle this here
-        // idk lol
-    }
+    importSynergism(btoa(JSON.stringify(hold)));
 }
 
 function importSynergism(input) {
@@ -209,4 +203,12 @@ const fileReader = () => {
 
     document.getElementById('importfile').addEventListener('change', readFile);
     document.getElementById('kInputGame').addEventListener('change', readFile);
+}
+
+const autoSaveChange = (e) => {
+    console.log('Changing to ' + e.value);
+    player.autoSave = e.value || 3;
+    if(asi) clearInt(asi);
+
+    asi = interval(saveSynergy, 1000 * 60 * player.autoSave);
 }
