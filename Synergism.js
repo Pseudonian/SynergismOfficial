@@ -586,9 +586,7 @@ blank_save.codes = new Map(Array.from(Array(30), (_, i) => [i + 1, false]));
  */
 const toStringMap = m => Array.from(m);
 
-const saveSynergy = async () => {
-    console.log('Saving!');
-
+const saveSynergy = async (r = 'auto') => {
     player.offlinetick = Date.now();
     player.loaded1009 = true;
     player.loaded1009hotfix1 = true;
@@ -599,6 +597,7 @@ const saveSynergy = async () => {
 
     await kDBWait();
     await kDBAdd({ save: btoa(JSON.stringify(p)), time: Date.now() });
+    insertSave(btoa(JSON.stringify(p)), r);
 }
 
 let asi;

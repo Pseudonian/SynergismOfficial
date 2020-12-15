@@ -206,7 +206,6 @@ const fileReader = () => {
 }
 
 const autoSaveChange = (e) => {
-    console.log('Changing to ' + e.value);
     player.autoSave = e.value || 3;
     if(asi) clearInt(asi);
 
