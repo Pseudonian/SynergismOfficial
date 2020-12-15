@@ -850,12 +850,11 @@ function calculateOffline(forceTime) {
         }
         player.loadedNov13Vers = true
     }
-    saveSynergy();
+
     updateTalismanInventory();
     calculateObtainium();
     calculateAnts();
     calculateRuneLevels();
-
 }
 
 function calculateSigmoid(constant, factor, divisor) {

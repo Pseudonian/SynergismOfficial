@@ -42,7 +42,7 @@ function saveFilename() {
         .replace("$TIME12$", getRealTime(true));
 }
 
-async function exportSynergism() {
+const exportSynergism = async () => {
     player.offlinetick = Date.now();
     if (player.quarkstimer >= 3600) {
         player.worlds += (Math.floor(player.quarkstimer / 3600) * (1 + player.researches[99] + player.researches[100] + talisman7Quarks + player.researches[125] + player.researches[180] + player.researches[195]));
@@ -51,10 +51,12 @@ async function exportSynergism() {
     // set attribute to 0, turn tab back to white
     document.getElementById('settingstab').setAttribute('full', 0);
 
-    saveSynergy();
+    await saveSynergy();
+    await kDBWait();
 
     const toClipboard = document.getElementById('saveType').checked;
-    const save = localStorage.getItem('Synergysave2');
+    const save = btoa(JSON.stringify(player));
+    
     if ('clipboard' in navigator && toClipboard) {
         await navigator.clipboard.writeText(save)
             .catch(e => console.error(e));

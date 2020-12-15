@@ -47,6 +47,7 @@ const onClickCopy = async (e) => {
     e.textContent = '✅';
     setTimeout(e => e.textContent = 'Copy to Clipboard', 2000, e);
 
+    // await kDBWait();
     const save = localStorage.getItem('Synergysave2');
     return navigator.clipboard.writeText(save);
 }
