@@ -17,7 +17,7 @@ const insertSave = (s, r = 'export') => {
     `;
     const time = row.insertCell(2);
     row.insertCell(3).textContent = getReason(r);
-    row.insertCell(4).innerHTML = `<img src="https://twemoji.maxcdn.com/v/latest/72x72/1f5d1.png" onclick="removeCell(this)"></img>`;
+    row.insertCell(4).innerHTML = `<img style="max-width:22%;" src="https://twemoji.maxcdn.com/v/latest/72x72/1f5d1.png" onclick="removeCell(this)"></img>`;
     
     // time labels
     time.id = 'timeRow';
@@ -47,8 +47,10 @@ const onClickCopy = async (e) => {
     e.textContent = '✅';
     setTimeout(e => e.textContent = 'Copy to Clipboard', 2000, e);
 
-    // await kDBWait();
-    const save = localStorage.getItem('Synergysave2');
+    const parent = e.parentNode.parentNode;
+    const href = parent.querySelector('td a[href]').href;
+    const save = href.split(',').pop();
+
     return navigator.clipboard.writeText(save);
 }
 
@@ -61,10 +63,20 @@ const getReason = (r) => {
 
 /**
  * Remove a row from the table.
- * @param {HTMLTableCellElement} el 
+ * @param {HTMLTableCellElement} e
  */
-const removeCell = (el) => {
+const removeCell = async (e) => {
     const table = document.querySelector('#khafraSaveSubTab > div > table > tbody');
     const children = Array.from(table.childNodes);
-    table.deleteRow(children.indexOf(el.parentNode.parentNode));
+    table.deleteRow(children.indexOf(e.parentNode.parentNode));
+
+    const parent = e.parentNode.parentNode;
+    const href = parent.querySelector('td a[href]').href;
+    const save = href.split(',').pop();
+
+    await kDBWait();
+    const all = await kDBSortByAge();
+    const same = all.find(o => o.save === save);
+    if(same) await kDBRemove(same.time);
+    else console.log(all.some(s => s.save === save));
 }

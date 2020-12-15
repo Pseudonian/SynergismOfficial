@@ -51,7 +51,7 @@ const exportSynergism = async () => {
     // set attribute to 0, turn tab back to white
     document.getElementById('settingstab').setAttribute('full', 0);
 
-    await saveSynergy();
+    await saveSynergy('export');
 
     const toClipboard = document.getElementById('saveType').checked;
     const save = btoa(JSON.stringify(player));
@@ -86,7 +86,6 @@ const exportSynergism = async () => {
         document.body.removeChild(a);
     }
 
-    insertSave(save);
     document.getElementById("exportinfo").textContent = toClipboard
         ? 'Copied save to your clipboard!'
         : 'Savefile copied to file!';

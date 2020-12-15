@@ -58,7 +58,6 @@ const kDBReadAll = () => {
 }
 
 const kDBAdd = (o) => {
-    console.log('ADDING TO DB');
     const _req = db
         .transaction(['synergism'], 'readwrite')
         .objectStore('synergism')
