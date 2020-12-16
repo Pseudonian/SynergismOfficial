@@ -23,7 +23,7 @@ const insertSave = (s, r = 'export') => {
     time.id = 'timeRow';
     time.setAttribute('data-time', `${Date.now()}`);
 
-    while(table.rows.length > 10) {
+    while(table.rows.length > 20) {
         table.deleteRow(table.rows.length - 1);
     }
 

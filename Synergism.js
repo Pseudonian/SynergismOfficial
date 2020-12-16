@@ -622,12 +622,16 @@ const loadSynergy = async () => {
         localStorage.removeItem('Synergysave2');
     }
 
+    player.autoSave = data.autoSave || 3;
+    document.getElementById('autoSaveTime').value = player.autoSave;
+    asi = interval(saveSynergy, 1000 * 60 * player.autoSave);
+
     const newest = await kDBRemoveOld();
     let data; 
     try {
         data = JSON.parse(atob(newest[0].save));
     } catch(e) {
-        console.log(e.toString(), newest[0].save);
+        console.log(e.toString());
         return;
     }
 
@@ -665,10 +669,6 @@ const loadSynergy = async () => {
 
         return (player[prop] = data[prop]);
     });
-
-    player.autoSave = data.autoSave || 3;
-    document.getElementById('autoSaveTime').value = player.autoSave;
-    asi = interval(saveSynergy, 1000 * 60 * player.autoSave);
     
     if (data.offerpromo24used !== undefined) {
         player.codes.set(25, false)
