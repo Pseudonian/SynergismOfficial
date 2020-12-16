@@ -204,9 +204,4 @@ const fileReader = () => {
     document.getElementById('kInputGame').addEventListener('change', readFile);
 }
 
-const autoSaveChange = (e) => {
-    player.autoSave = e.value || 3;
-    if(asi) clearInt(asi);
-
-    asi = interval(saveSynergy, 1000 * 60 * player.autoSave);
-}
+const autoSaveChange = (e) => setAutoInterval(e.value);

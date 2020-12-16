@@ -609,6 +609,13 @@ const isDecimal = (o) /*: o is Decimal */ =>
     Object.keys(o).length === 2 && 
     Object.keys(o).every(k => ['mantissa', 'exponent'].includes(k));
 
+const setAutoInterval = (time) => {
+    player.autoSave = Number.isNaN(+time) ? 3 : (time || 3);
+    document.getElementById('autoSaveTime').value = player.autoSave;
+    if(asi) clearInt(asi);
+    asi = interval(saveSynergy, 1000 * 60 * player.autoSave);
+}
+
 const loadSynergy = async () => {
     const oldSave = localStorage.getItem('Synergysave2');
     const dec = LZString.decompressFromBase64(oldSave);
@@ -622,16 +629,14 @@ const loadSynergy = async () => {
         localStorage.removeItem('Synergysave2');
     }
 
-    player.autoSave = data.autoSave || 3;
-    document.getElementById('autoSaveTime').value = player.autoSave;
-    asi = interval(saveSynergy, 1000 * 60 * player.autoSave);
-
     const newest = await kDBRemoveOld();
     let data; 
     try {
         data = JSON.parse(atob(newest[0].save));
+        setAutoInterval(data.autoSave);
     } catch(e) {
         console.log(e.toString());
+        setAutoInterval(3);
         return;
     }
 
