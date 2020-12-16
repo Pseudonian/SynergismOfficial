@@ -597,6 +597,7 @@ const saveSynergy = async (r = 'auto') => {
 
     await kDBWait();
     await kDBAdd({ save: btoa(JSON.stringify(p)), time: Date.now() });
+    await kDBRemoveOld();
     insertSave(btoa(JSON.stringify(p)), r);
 }
 
@@ -621,15 +622,7 @@ const loadSynergy = async () => {
         localStorage.removeItem('Synergysave2');
     }
 
-    const newest = await kDBSortByAge();
-    if(newest.length > 20) {
-        const toRemove = newest.length - 20;
-        const removing = newest.reverse().slice(0, toRemove);
-        for(const obj of removing) {
-            await kDBRemove(obj.time);
-        }
-    } else if(newest.length === 0 || !newest[0].save) return;
-
+    const newest = await kDBRemoveOld();
     let data; 
     try {
         data = JSON.parse(atob(newest[0].save));

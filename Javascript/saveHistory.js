@@ -78,5 +78,4 @@ const removeCell = async (e) => {
     const all = await kDBSortByAge();
     const same = all.find(o => o.save === save);
     if(same) await kDBRemove(same.time);
-    else console.log(all.some(s => s.save === save));
 }

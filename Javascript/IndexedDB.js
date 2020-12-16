@@ -101,3 +101,18 @@ const kDBRemoveAll = async () => {
         await kDBRemove(time);
     }
 }
+
+const kDBRemoveOld = async () => {
+    const newest = await kDBSortByAge();
+    if(newest.length > 20) {
+        const toRemove = newest.length - 20;
+        const removing = newest.reverse().slice(0, toRemove);
+        for(const obj of removing) {
+            await kDBRemove(obj.time);
+        }
+    } else if(!newest || newest.length === 0 || !newest[0].save) return [];
+
+    // if newest has less than 20 saves, won't be reversed
+    // so let's just sort it again to guarantee its order
+    return newest.sort((a, b) => b.time - a.time);
+}
