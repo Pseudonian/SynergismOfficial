@@ -176,6 +176,15 @@ function updateAutoReset(i) {
     }
 }
 
+function updateTesseractAutoBuyAmount() {
+    let v = parseFloat(document.getElementById("tesseractAmount").value);
+        v = Math.floor(v)
+        if (v >= 0) {
+            player.tesseractAutoBuyerAmount = v
+        } else {
+            player.tesseractAutoBuyerAmount = 0;
+        }
+}
 
 function reset(i, fast, from) {
     fast = fast || false
@@ -512,6 +521,7 @@ function reset(i, fast, from) {
             if (player.achievements[187] > 0 && metaData[3] > 1e8) {
                 ascCount *= (Math.log(metaData[3]) / Math.log(10) - 1)
             }
+            ascCount *= challenge15Rewards.ascensions
             ascCount = Math.floor(ascCount)
             player.ascensionCount += ascCount;
             player.wowCubes += metaData[4]; //Metadata is defined up in the top of the (i > 3.5) case

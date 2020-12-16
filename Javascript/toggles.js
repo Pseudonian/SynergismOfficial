@@ -338,6 +338,19 @@ function toggleautoreset(i) {
     }
 }
 
+function toggleautobuytesseract() {
+    if (player.tesseractAutoBuyerToggle === 1 || player.tesseractAutoBuyerToggle === 0) {
+        player.tesseractAutoBuyerToggle = 2;
+        document.getElementById("tesseractautobuytoggle").textContent = "Auto Buy: OFF"
+        document.getElementById("tesseractautobuytoggle").style.border = "2px solid red"
+        
+    } else {
+        player.tesseractAutoBuyerToggle = 1;
+        document.getElementById("tesseractautobuytoggle").textContent = "Auto Buy: ON"
+        document.getElementById("tesseractautobuytoggle").style.border = "2px solid green"
+        }
+}
+
 function toggleauto() {
     const autos = document.getElementsByClassName("auto");
     for (const auto of autos) {
@@ -712,7 +725,7 @@ function toggleAutoTesseracts(i) {
 
 function toggleCorruptionLevel(index, value) {
     let current = player.prototypeCorruptions[index]
-    let maxCorruption = 11
+    let maxCorruption = 12
     if (value > 0 && current < maxCorruption && 0 < index && index <= 9) {
         player.prototypeCorruptions[index] += Math.min(maxCorruption - current, value)
     }

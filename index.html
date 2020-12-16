@@ -274,7 +274,7 @@
             <button class="auto" id="toggle15" toggleid="15" format="Auto Prestige [$]" onclick="toggleSettings(14)" style="background-color: #171717;">Automatic Prestige & Customization Being Developed!</button>
             <div id="prestigeautomation">
             <button id="prestigeautotoggle" onclick="toggleautoreset(1)" style="border:2px solid green; background-color: #171717;"></button>
-                <input class="transcendunlock" type="number" id="prestigeamount" min="1" max="999999999" defaultValue="1" oninput="updateAutoReset(1)"/>
+                <input class="transcendunlock" type="number" id="prestigeamount" min="1" max="999999999" defaultValue="1" onblur="updateAutoReset(1)"/>
                 <p class="transcendunlock" id="autoprestige"></p>
             </div>
         </div>
@@ -362,7 +362,7 @@
         </div>
         <div id="transcendautomation">
             <button id="transcendautotoggle" onclick="toggleautoreset(2)" style="border:2px solid green; background-color: #171717;"></button>
-        <input class="transcendunlock" type="number" id="transcendamount" min="1" max="999999999" defaultValue="1" oninput="updateAutoReset(2)">
+        <input class="transcendunlock" type="number" id="transcendamount" min="1" max="999999999" defaultValue="1" onblur="updateAutoReset(2)">
         <p class="transcendunlock" id="autotranscend"></p>
         </div>
         <p id="transcendhotkeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer.</p>
@@ -414,7 +414,7 @@
         </div>
         <div id="reincarnateautomation">
             <button id="reincarnateautotoggle" onclick="toggleautoreset(3)" style="border:2px solid green; background-color: #171717;"></button>
-        <input class="reincarnationunlock" type="number" id="reincarnationamount" min="1" max="999999999" defaultValue="1" oninput="updateAutoReset(3)">
+        <input class="reincarnationunlock" type="number" id="reincarnationamount" min="1" max="999999999" defaultValue="1" onblur="updateAutoReset(3)">
         <p class="reincarnationunlock" id="autoreincarnate"></p>
         </div>
         <p id="reincarnatehotkeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer.</p>
@@ -501,6 +501,11 @@
             <p id="constUpgradeLevel" style="color: white">Current Level: <span id="constUpgradeLevel2" style="color: orchid">---</span></p>
             <p id="constUpgradeCost" style="color: white">Cost: <span id="constUpgradeCost2" style="color: orchid">---</span> from your Constant</p>
             <p id="constUpgradeEffect1" style="color: white">Current Effect: <span id="constUpgradeEffect2" style="color: orchid">---</span></p>
+        </div>
+        <div id="ascendautomation">
+            <button id="tesseractautobuytoggle" onclick="toggleautobuytesseract()" style="border:2px solid red; background-color: #171717;">Auto Buy: OFF</button>
+        <input class="tesseractautobuyamount" type="number" id="tesseractAmount" min="1" max="999999999" defaultValue="1" oninput="updateTesseractAutoBuyAmount()">
+        <p class="tesseractautobuyamount" id="autotessbuyeramount"></p>
         </div>
         <p id="ascendHotKeys">Press [1], [2], [3], [4], or [5] to buy the respective tiered producer.</p>
     </div>
@@ -1342,32 +1347,50 @@
                         <td><img id="challenge14" class="chal13" src="Pictures/Transparent Pics/ChallengeFourteen.png" style="cursor: pointer; font-size: 0;" onclick="challengeDisplay(14)" alt=""></td>
                         <td><img id="challenge15" class="chal14" src="Pictures/Transparent Pics/ChallengeFifteen.png" style="cursor: pointer; font-size: 0;" onclick="challengeDisplay(15)" alt=""></td>
                 </tr>
+                <tr>
+                    <td ><div class="challengeLevels" class="challengeLevels" id="challenge1level">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge2level">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge3level">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge4level">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge5level">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge6level">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge7level" class="chal6">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge8level" class="chal7">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge9level" class="chal8">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge10level" class="chal9">0 / 25</div></td>
+                    <td ><div class="challengeLevels" id="challenge11level" class="ascendunlock">0 / 10</div></td>
+                    <td ><div class="challengeLevels" id="challenge12level" class="chal11">0 / 10</div></td>
+                    <td ><div class="challengeLevels" id="challenge13level" class="chal12">0 / 10</div></td>
+                    <td ><div class="challengeLevels" id="challenge14level" class="chal13">0 / 10</div></td>
+                    <td ><div class="challengeLevels" id="challenge15level" class="chal14">0 / 9001</div></td>
+                </tr>
                 </table>
             </div>
 
-            <div id="challengeDetails" style="display:none">
-                <p id="challengeName">No Multiplier || Completions: 0/25</p>
-                <p id="challengeFlavor">Multipliers make the game a little fast, let's take them out!</p>
-                <p id="challengeRestrictions">Restriction: No Multipliers</p>
-                <p id="challengeGoal">Gain 1e10 Coins</p>
-                <p id="challengePerCompletionRewards">Per Completion Bonuses <span id="completionSoftcap" style="color: orchid"></span></p>
-                <p id="challengePer1">+10% Multiplier Boosts <span id="challengeCurrent1" style="color:orchid">Current: 0</span></p>
-                <p id="challengePer2">+10 base Multiplier Boosts <span id="challengeCurrent2" style="color:orchid">Current: 0</span></p>
-                <p id="challengePer3">--- <span id="challengeCurrent3" style="color:orchid">Current: 0</span></p>
-                <p id="challengeFirstCompletionRewards">Bonus/Unlock for First Completion</p>
-                <p id="challengeFirst1">+1 Free Multiplier!</p>
-                <p id="challengeQuarkBonus">+1 Quarks</p>
-
-                <button id="startChallenge" onclick="toggleChallenges(triggerChallenge, false)">Start Challenge 1</button>
-                <button id="retryChallenge" onclick="toggleRetryChallenges()">Retry Challenges: OFF</button>
-                <button class="research150" id="toggleAutoChallengeIgnore" onclick="toggleAutoChallengesIgnore(triggerChallenge)">---</button>
+            <div id="challengeDetails">
+                <div id="oneChallengeDetails" style="display:none">
+                    <p id="challengeName">No Multiplier || Completions: 0/25</p>
+                    <p id="challengeFlavor">Multipliers make the game a little fast, let's take them out!</p>
+                    <p id="challengeRestrictions">Restriction: No Multipliers</p>
+                    <p id="challengeGoal">Gain 1e10 Coins</p>
+                    <p id="challengePerCompletionRewards">Per Completion Bonuses <span id="completionSoftcap" style="color: orchid"></span></p>
+                    <p id="challengePer1">+10% Multiplier Boosts <span id="challengeCurrent1" style="color:orchid">Current: 0</span></p>
+                    <p id="challengePer2">+10 base Multiplier Boosts <span id="challengeCurrent2" style="color:orchid">Current: 0</span></p>
+                    <p id="challengePer3">--- <span id="challengeCurrent3" style="color:orchid">Current: 0</span></p>
+                    <p id="challengeFirstCompletionRewards">Bonus/Unlock for First Completion</p>
+                    <p id="challengeFirst1">+1 Free Multiplier!</p>
+                    <p id="challengeQuarkBonus">+1 Quarks</p>
+                    <button id="startChallenge" onclick="toggleChallenges(triggerChallenge, false)">Start Challenge 1</button>
+                    <button id="retryChallenge" onclick="toggleRetryChallenges()">Retry Challenges: OFF</button>
+                    <button class="research150" id="toggleAutoChallengeIgnore" onclick="toggleAutoChallengesIgnore(triggerChallenge)">---</button>
+                </div>
                 <button class="research150" id="toggleAutoChallengeStart" onclick="toggleAutoChallengeRun()">Auto Challenge Sweep [ON]</button>
                 <p class="research150" id="startAutoChallengeTimer">Time for start of sweep: <span id="startTimerValue" style="color: orchid">10s</span></p>
-                <input type="number" class="research150" id="startAutoChallengeTimerInput" min="0" max="999999999" defaultValue="10" oninput="updateAutoChallenge(1)">
+                <input type="number" class="research150" id="startAutoChallengeTimerInput" min="0" max="999999999" defaultValue="10" onblur="updateAutoChallenge(1)">
                 <p class="research150" id="exitAutoChallengeTimer">Time before exiting challenge: <span id="exitTimerValue" style="color: orchid">2s</span></p>
-                <input type="number" class="research150" id="exitAutoChallengeTimerInput" min="0" max="999999999" defaultValue="2" oninput="updateAutoChallenge(2)">
+                <input type="number" class="research150" id="exitAutoChallengeTimerInput" min="0" max="999999999" defaultValue="2" onblur="updateAutoChallenge(2)">
                 <p class="research150" id="enterAutoChallengeTimer">Time before entering challenge: <span id="enterTimerValue" style="color: orchid">2s</span></p>
-                <input type="number" class="research150" id="enterAutoChallengeTimerInput" min="0" max="999999999" defaultValue="2" oninput="updateAutoChallenge(3)">
+                <input type="number" class="research150" id="enterAutoChallengeTimerInput" min="0" max="999999999" defaultValue="2" onblur="updateAutoChallenge(3)">
                 <p class="research150" id="autoChallengeIncrementer" style='color: orange'>Auto Timer: <span id="autoIncrementerAmount" style="color: orchid">0s</span></p>
             </div>
 
@@ -1661,7 +1684,7 @@
                 <div id="antSacrificeButtons">
                     <button id="toggleAutoSacrificeAnt" onclick="toggleAntAutoSacrifice(0)">Auto Sacrifice: OFF</button>
                     <button id="autoSacrificeAntMode" onclick="toggleAntAutoSacrifice(1)">Mode: In-game time</button>
-                    <input id="autoAntSacrificeAmount" type="number" oninput="updateAutoReset(5)">
+                    <input id="autoAntSacrificeAmount" type="number" onblur="updateAutoReset(5)">
                     <p id="autoAntSacrifice"></p>
                 </div>
             </div>
@@ -2102,28 +2125,29 @@
                 <div id="c15Rewards" class="challengeContainer" style='border: 3px solid plum'>
                     <p id="c15Reward0" class="challengePortion">Best Challenge 15 Exponent: <span id="c15Reward0Num" class="challengeNumber" style='color: gold; font-size: 1.2em;'></span></p>
                     <p id="c15RewardList" class="challengePortion" style="color: orchid;">Next Reward Unlocks at 0 coins.</p>
-                    <p id="c15Reward1" class="challengePortion">1. Coin Exponent: +<span id="c15Reward1Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward2" class="challengePortion">2. Taxes: <span id="c15Reward2Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward3" class="challengePortion">3. Accelerator Boosts: +<span id="c15Reward3Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward4" class="challengePortion">4. Multipliers: +<span id="c15Reward4Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward5" class="challengePortion">5. Rune EXP: +<span id="c15Reward5Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward6" class="challengePortion">6. Rune Effectiveness: +<span id="c15Reward6Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward7" class="challengePortion">7. Challenge 1-5 Requirement Scaling: <span id="c15Reward7Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward8" class="challengePortion">8. Challenge 6-10 Requirement Scaling: <span id="c15Reward8Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward9" class="challengePortion">9. Obtainium: +<span id="c15Reward9Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward10" class="challengePortion">10. Offerings: +<span id="c15Reward10Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward11" class="challengePortion">11. Ant Speed: +<span id="c15Reward11Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward12" class="challengePortion">12. Bonus Ant Levels: +<span id="c15Reward12Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward13" class="challengePortion">13. Talisman Effectiveness: +<span id="c15Reward13Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward14" class="challengePortion">14. Global Speed: +<span id="c15Reward14Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward15" class="challengePortion">15. Blessing Effectiveness: +<span id="c15Reward15Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward16" class="challengePortion">16. Ascend Building Production: +<span id="c15Reward16Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward17" class="challengePortion">17. Cubes: +<span id="c15Reward17Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward18" class="challengePortion">18. Tesseracts: +<span id="c15Reward18Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward19" class="challengePortion">19. Hypercubes: +<span id="c15Reward19Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward20" class="challengePortion">20. Platonics: +<span id="c15Reward20Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward21" class="challengePortion">21. Spirit Effectiveness: +<span id="c15Reward21Num" class="challengeNumber"></span>%</p>
-                    <p id="c15Reward22" class="challengePortion">22. Ascension Score: +<span id="c15Reward22Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward1" class="challengePortion">1. All Cube Types I: +<span id="c15Reward1Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward2" class="challengePortion">2. Ascension Count: +<span id="c15Reward2Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward3" class="challengePortion">3. Coin Exponent: +<span id="c15Reward3Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward4" class="challengePortion">4. Taxes: <span id="c15Reward4Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward5" class="challengePortion">5. Obtainium: +<span id="c15Reward5Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward6" class="challengePortion">6. Offerings: +<span id="c15Reward6Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward7" class="challengePortion">7. Accelerators: +<span id="c15Reward7Num" class="challengeNumber"></span>% [Uncorruptable!]</p>
+                    <p id="c15Reward8" class="challengePortion">8. Multipliers: +<span id="c15Reward8Num" class="challengeNumber"></span>% [Uncorruptable!]</p>
+                    <p id="c15Reward9" class="challengePortion">9. Rune EXP: +<span id="c15Reward9Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward10" class="challengePortion">10. Rune Effectiveness: +<span id="c15Reward10Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward11" class="challengePortion">11. All Cube Types II: +<span id="c15Reward11Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward12" class="challengePortion">12. Challenge 1-5 Requirement Scaling: <span id="c15Reward12Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward13" class="challengePortion">13. Challenge 6-10 Requirement Scaling: <span id="c15Reward13Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward14" class="challengePortion">14. Ant Speed: +<span id="c15Reward14Num" class="challengeNumber"></span>% [Uncorruptable!]</p>
+                    <p id="c15Reward15" class="challengePortion">15. Bonus Ant Levels: +<span id="c15Reward15Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward16" class="challengePortion">16. All Cube Types III: +<span id="c15Reward16Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward17" class="challengePortion">17. Talisman Effectiveness: +<span id="c15Reward17Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward18" class="challengePortion">18. Global Speed: +<span id="c15Reward18Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward19" class="challengePortion">19. Blessing Effectiveness: +<span id="c15Reward19Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward20" class="challengePortion">20. Ascend Building Production: +<span id="c15Reward20Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward21" class="challengePortion">21. All Cube Types IV: +<span id="c15Reward21Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward22" class="challengePortion">22. Spirit Effectiveness: +<span id="c15Reward22Num" class="challengeNumber"></span>%</p>
+                    <p id="c15Reward23" class="challengePortion">23. Ascension Score: +<span id="c15Reward23Num" class="challengeNumber"></span>%</p>
                 </div>
                 <div id="platonicUpgrades">
                     <table id="platonicUpgradePics" style='border: 3px solid plum'>
@@ -2267,7 +2291,7 @@
                 <p id="corruptionHypercubes" class="chal13 tightText">If you ascend now, you will gain <span id="corruptionHypercubesValue" style="color: crimson; font-size: 1.2em">32</span> Wow! Hypercubes. [<span style="color: red">Req Score: >1,000,000,000</span>]</p>
                 <p id="corruptionPlatonicCubes" class="chal14 tightText">If you ascend now, you will gain <span id="corruptionPlatonicCubesValue" style="color: lightgoldenrodyellow; font-size: 1.2em">32</span> PLATONIC CUBES. [<span style="color: lightgoldenrodyellow">Req Score: >1,337,000,000,000</span>]</p>
                 <div id="ascensionAutomation" class="cubeUpgrade10 vAlign">
-                    <input id="ascensionAmount" class="ascendunlock hCenter tight" type="number" min="1" max="999999999" defaultValue="1" oninput="updateAutoReset(4)">
+                    <input id="ascensionAmount" class="ascendunlock hCenter tight" type="number" min="1" max="999999999" defaultValue="1" onblur="updateAutoReset(4)">
                     <p id="autoAscend" class="ascendunlock tightText">Ascend when you've completed Sadistic Challenge I a total of <span id="autoAscendMetric" style="color: orchid">1</span> times.</p>
                     <button id="ascensionAutoEnable" class="ascendunlock hCenter tight" style="border: 2px solid green" onclick="toggleAutoAscend()">Auto Ascend [ON]</button>
                     <button id="ascensionAutoToggle" class="hCenter tight" onclick="toggleautoreset(4)" style="border:2px solid orchid; background-color: #171717;">Mode: C10 Completions</button>

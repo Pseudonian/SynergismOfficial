@@ -361,6 +361,9 @@ const player = {
     resettoggle2: 1,
     resettoggle3: 1,
 
+    tesseractAutoBuyerToggle: 0,
+    tesseractAutoBuyerAmount: 0,
+
     coinbuyamount: 1,
     crystalbuyamount: 1,
     mythosbuyamount: 1,
@@ -573,12 +576,13 @@ const player = {
     hypercubeQuarkDaily: 0,
     loadedOct4Hotfix: false,
     loadedNov13Vers: true,
-    version: '2.1.1',
+    loadedDec16Vers: true,
+    version: '2.1.2',
     rngCode: 0
 }
 
 const blank_save = Object.assign({}, player);
-blank_save.codes = new Map(Array.from(Array(30), (_, i) => [i + 1, false]));
+blank_save.codes = new Map(Array.from(Array(31), (_, i) => [i + 1, false]));
 
 /**
  * stringify a map so it can be re-made when importing
@@ -690,6 +694,44 @@ const loadSynergy = async () => {
 
     if(!('rngCode' in data)) {
         player.rngCode = 0;
+    }
+
+    if (player.transcendCount < 0) {
+        player.transcendCount = 0
+    }
+    if (player.reincarnationCount < 0) {
+        player.reincarnationCount = 0;
+    }
+    if (player.runeshards < 0) {
+        player.runeshards = 0;
+    }
+    if (player.researchPoints < 0) {
+        player.researchPoints = 0;
+    }
+
+    if (player.resettoggle1 === 0) {
+        player.resettoggle1 = 1;
+        player.resettoggle2 = 1;
+        player.resettoggle3 = 1;
+    }
+    if (player.tesseractAutoBuyerToggle === 0) {
+        player.tesseractAutoBuyerToggle = 1;
+    }
+    if (player.reincarnationCount < 0.5 && player.unlocks.rrow4 === true) {
+        player.unlocks = {
+            coinone: false,
+            cointwo: false,
+            cointhree: false,
+            coinfour: false,
+            prestige: false,
+            generation: false,
+            transcend: false,
+            reincarnate: false,
+            rrow1: false,
+            rrow2: false,
+            rrow3: false,
+            rrow4: false
+        }
     }
 
     if (data.loaded1009 === undefined || !data.loaded1009) {
@@ -1173,9 +1215,11 @@ const loadSynergy = async () => {
     toggleauto();
 
     document.getElementById("startTimerValue").textContent = format(player.autoChallengeTimer.start, 2, true) + "s"
+    document.getElementById("startAutoChallengeTimerInput").value = player.autoChallengeTimer.start;
     document.getElementById("exitTimerValue").textContent = format(player.autoChallengeTimer.exit, 2, true) + "s"
+    document.getElementById("exitAutoChallengeTimerInput").value = player.autoChallengeTimer.exit;
     document.getElementById("enterTimerValue").textContent = format(player.autoChallengeTimer.enter, 2, true) + "s"
-
+    document.getElementById("enterAutoChallengeTimerInput").value = player.autoChallengeTimer.enter;
 
     let m = 1;
     m *= effectiveLevelMult
@@ -1240,6 +1284,15 @@ if (player.achievements[102] == 1)document.getElementById("runeshowpower4").text
     }
     if (player.resettoggle3 === 2) {
         document.getElementById("reincarnateautotoggle").textContent = "Mode: TIME"
+    }
+  
+    if (player.tesseractAutoBuyerToggle === 1) {
+        document.getElementById("tesseractautobuytoggle").textContent = "Auto Buy: ON"
+        document.getElementById("tesseractautobuytoggle").style.border = "2px solid green"
+    }
+    if (player.tesseractAutoBuyerToggle === 2) {
+        document.getElementById("tesseractautobuytoggle").textContent = "Auto Buy: OFF"
+        document.getElementById("tesseractautobuytoggle").style.border = "2px solid red"
     }
 
 
@@ -1575,7 +1628,8 @@ function updateAllTick() {
     }
     calculateAcceleratorMultiplier();
     a *= acceleratorMultiplier
-    a = Math.pow(a, Math.min(1, (1 + player.platonicUpgrades[6] / 10) * maladaptivePower[player.usedCorruptions[2]] / (1 + Math.abs(player.usedCorruptions[1] - player.usedCorruptions[2]))))
+    a = Math.pow(a, Math.min(1, (1 + player.platonicUpgrades[6] / 30) * maladaptivePower[player.usedCorruptions[2]] / (1 + Math.abs(player.usedCorruptions[1] - player.usedCorruptions[2]))))
+    a *= challenge15Rewards.accelerator
     a = Math.floor(a)
 
     freeAccelerator = a;
@@ -1734,8 +1788,8 @@ function updateAllMultiplier() {
     if ((player.currentChallenge.transcension !== 0 || player.currentChallenge.reincarnation !== 0) && player.upgrades[50] > 0.5) {
         a *= 1.25
     }
+    a = Math.pow(a, Math.min(1, (1 + player.platonicUpgrades[6] / 30) * divisivenessPower[player.usedCorruptions[1]] / (1 + Math.abs(player.usedCorruptions[1] - player.usedCorruptions[2]))))
     a *= challenge15Rewards.multiplier
-    a = Math.pow(a, Math.min(1, (1 + player.platonicUpgrades[6] / 10) * divisivenessPower[player.usedCorruptions[1]] / (1 + Math.abs(player.usedCorruptions[1] - player.usedCorruptions[2]))))
     a = Math.floor(a)
     freeMultiplier = a;
     totalMultiplier = freeMultiplier + player.multiplierBought;
@@ -1809,7 +1863,7 @@ function multipliers() {
     buildingPower = Math.pow(buildingPower, 1 + player.cubeUpgrades[36] * 0.05)
     reincarnationMultiplier = Decimal.pow(buildingPower, totalCoinOwned);
 
-    antMultiplier = Decimal.pow(Decimal.max(1, player.antPoints), 100000 + calculateSigmoidExponential(49900000, (player.antUpgrades[2] + bonusant2) / 5000 * 500 / 499));
+    antMultiplier = Decimal.pow(Decimal.max(1, player.antPoints), calculateCrumbToCoinExp());
 
     s = s.times(multiplierEffect);
     s = s.times(acceleratorEffect);
@@ -1854,7 +1908,7 @@ function multipliers() {
         lol = Decimal.pow(lol, 1.1)
     }
     if (player.currentChallenge.ascension === 15 && player.platonicUpgrades[14] > 0) {
-        lol = Decimal.pow(lol, 1 + 1 / 11 * player.usedCorruptions[9] * Decimal.log(player.coins.add(1), 10) / (1e7 + Decimal.log(player.coins.add(1), 10)))
+        lol = Decimal.pow(lol, 1 + 1 / 20 * player.usedCorruptions[9] * Decimal.log(player.coins.add(1), 10) / (1e7 + Decimal.log(player.coins.add(1), 10)))
     }
     lol = Decimal.pow(lol, challenge15Rewards.coinExponent)
     globalCoinMultiplier = lol;
@@ -2034,12 +2088,12 @@ function multipliers() {
         globalAntMult = Decimal.pow(globalAntMult, 0.2)
     }
 
-    globalAntMult = Decimal.pow(globalAntMult, 1 - 0.9 / 90 * sumContents(player.usedCorruptions))
+    globalAntMult = Decimal.pow(globalAntMult, 1 - 0.9 / 90 * Math.min(99, sumContents(player.usedCorruptions)))
     globalAntMult = Decimal.pow(globalAntMult, extinctionMultiplier[player.usedCorruptions[7]])
     globalAntMult = globalAntMult.times(challenge15Rewards.antSpeed)
 
     if (player.platonicUpgrades[12] > 0) {
-        globalAntMult = globalAntMult.times(Decimal.pow(1 + 1 / 20 * player.platonicUpgrades[12], sumContents(player.highestchallengecompletions)))
+        globalAntMult = globalAntMult.times(Decimal.pow(1 + 1 / 100 * player.platonicUpgrades[12], sumContents(player.highestchallengecompletions)))
     }
     if (player.currentChallenge.ascension === 15 && player.platonicUpgrades[10] > 0) {
         globalAntMult = Decimal.pow(globalAntMult, 1.25)
@@ -2383,13 +2437,15 @@ function resetCheck(i, manual, leaving) {
                 }
                 player.challengecompletions[q] = comp;
                 let y = x - 65
-                challengeDisplay(y, true)
+                challengeDisplay(y, false)
+                updateChallengeLevel(y)
             }
             if (player.challengecompletions[q] > player.highestchallengecompletions[q]) {
                 while (player.challengecompletions[q] > player.highestchallengecompletions[q]) {
                     player.highestchallengecompletions[q] += 1;
                     let y = x - 65;
-                    challengeDisplay(y, true)
+                    challengeDisplay(y, false)
+                    updateChallengeLevel(y)
                     highestChallengeRewards(q, player.highestchallengecompletions[q])
                     updateCubesPerSec()
                     calculateCubeBlessings();
@@ -2446,7 +2502,8 @@ function resetCheck(i, manual, leaving) {
                 counter++;
             }
             player.challengecompletions[q] = comp;
-            challengeDisplay(q, true)
+            challengeDisplay(q, true);
+            updateChallengeLevel(q);
         }
         if (!player.shopUpgrades.instantChallengeBought || leaving) { // TODO: Implement the upgrade levels here
             reset(3, false, "leaveChallenge");
@@ -2715,21 +2772,20 @@ function updateAll() {
         }
     }
 
-    if (player.researches[190] > 0) {
-        if (player.wowTesseracts >= 10000 * Math.pow(1 + player.ascendBuilding5.owned, 3) && player.autoTesseracts[5]) {
-            buyTesseractBuilding(10000, 5)
+//Loops through all buildings which have AutoBuy turned 'on' and purchases the cheapest available building that player can afford
+    if ((player.researches[190] > 0) && (player.tesseractAutoBuyerToggle == 1)) {
+        cheapestTesseractBuilding =  {cost:0, intCost:0, index:0, intCostArray:[1,10,100,1000,10000]}
+        for (let i = 0; i < cheapestTesseractBuilding.intCostArray.length; i++){
+            if ((player.wowTesseracts >= cheapestTesseractBuilding.intCostArray[i] * Math.pow(1 + player['ascendBuilding' + (i+1)]['owned'], 3) + player.tesseractAutoBuyerAmount) && player.autoTesseracts[i+1]) {
+                if ((getTesseractCost([cheapestTesseractBuilding.intCostArray[i]], [i+1])[1] < cheapestTesseractBuilding.cost) || (cheapestTesseractBuilding.cost == 0)){
+                    cheapestTesseractBuilding.cost = getTesseractCost([cheapestTesseractBuilding.intCostArray[i]], [i+1])[1];
+                    cheapestTesseractBuilding.intCost=cheapestTesseractBuilding.intCostArray[i];
+                    cheapestTesseractBuilding.index=[i+1];
+                }
+            }
         }
-        if (player.wowTesseracts >= 1000 * Math.pow(1 + player.ascendBuilding4.owned, 3) && player.autoTesseracts[4]) {
-            buyTesseractBuilding(1000, 4)
-        }
-        if (player.wowTesseracts >= 100 * Math.pow(1 + player.ascendBuilding3.owned, 3) && player.autoTesseracts[3]) {
-            buyTesseractBuilding(100, 3)
-        }
-        if (player.wowTesseracts >= 10 * Math.pow(1 + player.ascendBuilding2.owned, 3) && player.autoTesseracts[2]) {
-            buyTesseractBuilding(10, 2)
-        }
-        if (player.wowTesseracts >= 1 * Math.pow(1 + player.ascendBuilding1.owned, 3) && player.autoTesseracts[1]) {
-            buyTesseractBuilding(1, 1)
+        if (cheapestTesseractBuilding.index > 0){
+            buyTesseractBuilding(cheapestTesseractBuilding.intCost, cheapestTesseractBuilding.index);     
         }
     }
 
@@ -2920,20 +2976,39 @@ let lastUpdate = 0;
 //gameInterval = 0;
 
 function createTimer() {
-    lastUpdate = Date.now();
+    lastUpdate = performance.now();
     interval(tick, 5);
 }
 
+let dt = 5;
+let filterStrength = 20;
+let deltaMean = 0;
 
 function tick() {
+    let now = performance.now();
+    let delta = now - lastUpdate;
+    // compute pseudo-average delta cf. https://stackoverflow.com/a/5111475/343834
+    deltaMean += (delta - deltaMean) / filterStrength;
+    let dtEffective;
+    while (delta > 5) {
+        // tack will compute dtEffective milliseconds of game time
+        dtEffective = dt;
+        // If the mean lag (deltaMean) is more than a whole frame (16ms), compensate by computing deltaMean - dt ms, up to 1 hour
+        dtEffective += deltaMean > 16 ? Math.min(3600 * 1000, deltaMean - dt) : 0;
+        // compute at max delta ms to avoid negative delta
+        dtEffective = Math.min(delta, dtEffective);
+        // run tack and record timings
+        tack(dtEffective / 1000);
+        lastUpdate += dtEffective;
+        delta -= dtEffective;
+    }
+}
+
+function tack(dt) {
 
     if (!timeWarp) {
-        let now = Date.now();
-        let dt = Math.max(0, Math.min(36000, (now - lastUpdate) / 1000));
-
         dailyResetCheck();
         let timeMult = calculateTimeAcceleration();
-        lastUpdate = now;
 
         player.quarkstimer += dt
         if (player.quarkstimer >= (90000 + 45000 * player.researches[195])) {
@@ -3404,7 +3479,7 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvent']('load'
 
     const version = player.version
     const ver = document.getElementById('versionnumber');
-    ver && (ver.textContent = `You're playing on v${player.version} - The Abyss [Last Update: 5:30 PM UTC-8 Nov 13]`);
+    ver && (ver.textContent = `You're playing on v${player.version} - The Abyss [Last Update: 2:40 UTC-8 Dec 16]`);
     document.title = 'Synergism v' + player.version;
 
     setTimeout(async () => {
