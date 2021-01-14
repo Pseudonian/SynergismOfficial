@@ -209,7 +209,7 @@ function cubeUpgradeDesc(i,linGrowth) {
     d.textContent = "Level: " + format(player.cubeUpgrades[i], 0, true) + "/" + format(cubeMaxLevel[i], 0, true);
     d.style.color = "white"
 
-    if (player.wowCubes < cubeBaseCost[i]) {
+    if (player.wowCubes < (i == 50 ? getCubeCost(i,0.01)[1] : cubeBaseCost[i])) {
         c.style.color = "crimson"
     }
     if (player.cubeUpgrades[i] === cubeMaxLevel[i]) {
