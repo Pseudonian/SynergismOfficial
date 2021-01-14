@@ -1441,54 +1441,14 @@ function format(input, accuracy = 0, long = false) {
         }
         powerLook = powerLook.toFixed(4 - powerFront);
         powerLook = powerLook.toString();
+        let powerExp = (powerDigits - powerFront) / 3
         // Return relevant notations alongside the "look" power based on what the power actually is
-        if (power < 1e9) {
-            return mantissaLook + "e" + powerLook + "M";
-        }
-        if (power < 1e12) {
-            return mantissaLook + "e" + powerLook + "B";
-        }
-        if (power < 1e15) {
-            return mantissaLook + "e" + powerLook + "T";
-        }
-        if (power < 1e18) {
-            return mantissaLook + "e" + powerLook + "Qa";
-        }
-        if (power < 1e21) {
-            return mantissaLook + "e" + powerLook + "Qi";
-        }
-        if (power < 1e24) {
-            return mantissaLook + "e" + powerLook + "Sx";
-        }
-        if (power < 1e27) {
-            return mantissaLook + "e" + powerLook + "Sp";
-        }
-        if (power < 1e30) {
-            return mantissaLook + "e" + powerLook + "Oc";
-        }
-        if (power < 1e33) {
-            return mantissaLook + "e" + powerLook + "No";
-        }
-        if (power < 1e36) {
-            return mantissaLook + "e" + powerLook + "Dc";
-        }
-        if (power < 1e39) {
-            return mantissaLook + "e" + powerLook + "UDc";
-        }
-        if (power < 1e42) {
-            return mantissaLook + "e" + powerLook + "DDc";
-        }
-        if (power < 1e45) {
-            return mantissaLook + "e" + powerLook + "TDc";
-        }
-        if (power < 1e48) {
-            return mantissaLook + "e" + powerLook + "QaDc";
-        }
         if (power < 1e51) {
-            return mantissaLook + "e" + powerLook + "QaDc";
+            // only up to ee51 because the script only up to this point
+            return (power < 1e6 ? mantissaLook : "") + "e" + powerLook + ["","k","M","B","T","Qa","Qi","Sx","Sp","Oc","No","Dc","UDc","DDc","TDc","QaDc","QiDc"][powerExp]; //no mantissaLook after e1 M because it no longer accelerate
         }
         // If it doesn't fit a notation then default to mantissa e power
-        return mantissa + "e" + power;
+        return (power < 1e6 ? mantissa : "") + "e" + power; //no mantissa after e1 M because it no longer accelerate
     } else {
         // Failsafe
         return "undefined";
