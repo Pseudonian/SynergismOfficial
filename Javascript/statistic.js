@@ -8,7 +8,7 @@ function loadStatisticsAccelerator() {
     document.getElementById("sA7").textContent = "x" + format(1 + 1 / 5 * player.researches[1], 3, true)
     document.getElementById("sA8").textContent = "x" + format(1 + 1 / 20 * player.researches[6] + 1 / 25 * player.researches[7] + 1 / 40 * player.researches[8] + 3 / 200 * player.researches[9] + 1 / 200 * player.researches[10], 3, true)
     document.getElementById("sA9").textContent = "x" + format(1 + 1 / 20 * player.researches[86], 3, true)
-    document.getElementById("sA10").textContent = "x" + format(1.25, 3, true)
+    document.getElementById("sA10").textContent = "x" + format(((player.currentChallenge.transcension !== 0 || player.currentChallenge.reincarnation !== 0) && player.upgrades[50] > 0.5 ? 1.25 : 1), 3, true)
     document.getElementById("sA11").textContent = "^" + format(Math.min(1, (1 + player.platonicUpgrades[6] / 30) * maladaptivePower[player.usedCorruptions[2]] / (1 + Math.abs(player.usedCorruptions[1] - player.usedCorruptions[2]))), 3, true)
     document.getElementById("sA12").textContent = format(freeAccelerator, 0, true)
 }
@@ -24,7 +24,7 @@ function loadStatisticsMultiplier() {
     document.getElementById("sM8").textContent = "x" + format(1 + 1 / 20 * player.researches[87], 3, true)
     document.getElementById("sM9").textContent = "x" + format(calculateSigmoidExponential(40, (player.antUpgrades[5] + bonusant5) / 1000 * 40 / 39),2,true)
     document.getElementById("sM10").textContent = "x" + format(cubeBonusMultiplier[2], 3, true)
-    document.getElementById("sM11").textContent = "x" + format(1.25, 3, true)
+    document.getElementById("sM11").textContent = "x" + format(((player.currentChallenge.transcension !== 0 || player.currentChallenge.reincarnation !== 0) && player.upgrades[50] > 0.5 ? 1.25 : 1), 3, true)
     document.getElementById("sM12").textContent = "^" + format(Math.min(1, (1 + player.platonicUpgrades[6] / 30) * divisivenessPower[player.usedCorruptions[1]] / (1 + Math.abs(player.usedCorruptions[1] - player.usedCorruptions[2]))), 3, true)
     document.getElementById("sM13").textContent = format(freeMultiplier, 3, true)
 }
