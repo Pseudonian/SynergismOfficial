@@ -207,6 +207,7 @@ function visualUpdateRunes() {
             document.getElementById('runeBlessingPurchaseCost' + i).textContent = format(Math.max(blessingBaseCost * (1 + player.runeBlessingLevels[i]), calculateSummationLinear(player.runeBlessingLevels[i], blessingBaseCost, player.runeshards, player.runeBlessingBuyAmount)[1]))
             if (i === 5) {
                 t = 1
+                document.getElementById('runeBlessingPower5Value3').textContent = format(Decimal.pow(Math.max(1, player.researchPoints), effectiveRuneBlessingPower[5]))
             }
             document.getElementById('runeBlessingPower' + i + 'Value2').textContent = format(1 - t + blessingMultiplierArray[i] * effectiveRuneBlessingPower[i], 4, true)
         }

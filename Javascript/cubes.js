@@ -183,7 +183,7 @@ const cubeUpgradeDescriptions = [null,
     () => "[5x7] Gain +10% more obtainium per level!",
     () => "[5x8] When you ascend, start with 1 worker ant (this is a lot better than it sounds!)",
     () => "[5x9] When you ascend, gain 1 of each challenge 6-8 completion.",
-    () => "[5x10] What doesn't this boost? +0.01% Accelerators, Multipliers, Accelerator Boosts, +0.02% Obtainium, +0.02% Offerings, +0.1 Max Rune Levels, +1 Effective ELO, +0.001 Talisman bonuses per level."
+    () => "[5x10] What doesn't this boost? +0.01% Accelerators, Multipliers, Accelerator Boosts, +0.02% Obtainium, +0.02% Offerings, +0.04 Max Rune Levels, +1 Effective ELO, +0.0004 Talisman bonuses per level. Also lowers taxes by 0.000666% per level"
 ]
 
 function getCubeCost(i,linGrowth) {
