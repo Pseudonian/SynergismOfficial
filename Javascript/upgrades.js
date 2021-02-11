@@ -66,7 +66,7 @@ let upgdesc = {
     upgdesc65: "Multiply the gain of Particles from Reincarnation by 5x!",
     upgdesc66: "When you use an Offering, every unlocked rune will get 3 free experience.",
     upgdesc67: "Atom gain is increased by 3% per Particle producer purchased!",
-    upgdesc68: "Gain a free multiplier for every 1e1000x increase in tax.",
+    upgdesc68: "Gain a free multiplier for every 1e1000x increase in tax [Max 2500].",
     upgdesc69: "Gain more Obtainium based on your particle gain. [Works with automation at a reduced rate!]",
     upgdesc70: "Time seems to go +0.333*log10(MAX obtainium +1)% faster when you buy this.",
     upgdesc71: "Runes will gain (Rune Level/25) additional EXP per offering used.",
@@ -129,7 +129,7 @@ let upgdesc = {
 let crystalupgdesc = {
     crystalupgdesc1: "Gain a 5% multiplicative boost to crystals per AP per level.",
     crystalupgdesc2: "Gain a boost to crystals based on held coins per level.",
-    crystalupgdesc3: "Each purchased Crystal producer increases generation of Crystal producers by .1% per level. [MAX: 12%]",
+    crystalupgdesc3: "Each purchased Crystal producer increases generation of Crystal producers by .1% per level. [MAX: 12% per producer]",
     crystalupgdesc4: "Improve the multiplier to coin production by .05 exponent per level. [MAX: +10.00]",
     crystalupgdesc5: "Every challenge completion increases crystal gain by 1% per level.",
     crystalupgdesc6: "Coming SOON!",
@@ -139,7 +139,7 @@ let crystalupgdesc = {
 
 let constantUpgDesc = {
     constantUpgDesc1: "Make all Tesseract buildings 5% more productive per level.",
-    constantUpgDesc2: "Each Tesseract building bought increases the production of all of them by 0.1% per level [Max 10%].",
+    constantUpgDesc2: "Each Tesseract building bought increases the production of all of them by 0.1% per level [Max 10% per building].",
     constantUpgDesc3: "Increase offering gain +2% per level.",
     constantUpgDesc4: "Increase obtainium gain +4% per level.",
     constantUpgDesc5: "Multiply ant speed by (1 + log10(Constant + 1)/10)^level",

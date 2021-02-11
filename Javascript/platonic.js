@@ -6,13 +6,13 @@ const platonicUpgradeDesc = {
     5: 'C10 Exponent: 1.035 --> 1.0375, Constant tax exponent +0.10, 2x faster constant production, +5/+3 Challenge caps, +100% Obtainium/Offerings, ^1.10 coin gain in C15!',
     6: 'Raises corruption 1 and 2 exponent ^(1 + level/30), capacity of ^1 on Mult/Accel.',
     7: 'Raises speed below 1x to the power of ^(1 - level/30).',
-    8: 'Divides Hyperchallenged by (1 + 0.4 * level), with a minimum 1x challenge req. multiplier!',
-    9: 'Gain more obtainium with the illiteracy corruption, up until 1e100 obtainium!',
+    8: 'Divides challenge exponent requirements while Hyperchallenged corruption is active by (1 + 0.4 * level), with a minimum 1x challenge req. multiplier!',
+    9: 'Multiplies the illiteracy corruption obtainium gain exponent based on held obtainum. Bonus increases to a maximum of *10 exponent at 1e100 held obtanium [Maximum total corruption exponent of ^1]! Also provides a +150% uncorruptable obtanium gain regardless of whether or not illiteracy is corrupted.',
     10: 'C10 Exponent: 1.0375 --> 1.04, Const. tax exponent +0.20 and 10x faster constant production, +5/+3 Challenge caps, +250% Obtainium and Offerings, +100% Cubes/Tesseracts/Hypercubes/Platonics for 5T/7.5T/10T/20T score. ^1.25 ant exponent in C15!',
-    11: 'With this upgrade, you will gain diamonds equal to particle gain!',
+    11: 'In Market Deflation 11 or higher with this upgrade, you will gain diamonds equal to particle gain when you reincarnate!',
     12: 'Gain (1 + lvl/100)x ant multiplier per challenge completion, ignoring corruptions to ants.',
     13: 'Effect of Drought is raised to the power of 0.5.',
-    14: 'Gain a small coin exponent dependent on your coins, up until 1e4T coins.',
+    14: 'Increases coin exponent in C15 up to maximum of 55% more exponent.',
     15: 'I suppose that, after all, we all are Everywhere at the End of Time.'
 }
 
