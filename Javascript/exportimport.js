@@ -44,9 +44,9 @@ function saveFilename() {
 
 async function exportSynergism() {
     player.offlinetick = Date.now();
-    if (player.quarkstimer >= 3600) {
-        player.worlds += (Math.floor(player.quarkstimer / 3600) * (1 + player.researches[99] + player.researches[100] + talisman7Quarks + player.researches[125] + player.researches[180] + player.researches[195]));
-        player.quarkstimer = (player.quarkstimer % 3600)
+    if (player.quarkstimer >= 3600/quarkPerHourCheck()) {
+        player.worlds += quarkGain();
+        player.quarkstimer = (player.quarkstimer % (3600/quarkPerHourCheck()));
     }
     // set attribute to 0, turn tab back to white
     document.getElementById('settingstab').setAttribute('full', 0);

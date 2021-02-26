@@ -2970,15 +2970,63 @@ function tick() {
     }
 }
 
+function quarkTimerCheck(){
+    let baseTime = 90000 //In Seconds
+    if (player.researches[195] > 0) {
+        baseTime += 45000 * player.researches[195] // Research 8x20
+    }
+    if (isEvent) {
+        baseTime *= 3
+    }
+    return baseTime
+}
+function quarkPerHourCheck(){
+    let baseQuarkPerHour = 1;
+    if (player.researches[99] > 0) {
+        baseQuarkPerHour += player.researches[99]; //Caps at 2 not 1
+    }
+    if (player.researches[100] > 0) {
+        baseQuarkPerHour += 1;
+    }
+    if (player.researches[125] > 0) {
+        baseQuarkPerHour += 1;
+    }
+    if (player.researches[180] > 0) {
+        baseQuarkPerHour += 1;
+    }
+    if (player.researches[195] > 0) {
+        baseQuarkPerHour += player.researches[195] //Caps at 2 not 1
+    }
+    if (player.talismanRarity[7] > 5) {
+        baseQuarkPerHour += 2
+    }
+    if (isEvent){
+        baseQuarkPerHour *= 3
+    }
+    return (baseQuarkPerHour)
+}
+function quarkCapacityCheck(){
+    const timeMultiplier = quarkTimerCheck();
+    const baseQuarks = quarkPerHourCheck();
+    return (baseQuarks * timeMultiplier/3600);
+}
+function quarkGain() {
+    const quarkPerHour = quarkPerHourCheck();
+    const quarkGain = Math.floor(player.quarkstimer * quarkPerHour / 3600);
+    return (quarkGain);
+}
+
 function tack(dt) {
 
     if (!timeWarp) {
+        eventCheck();
         dailyResetCheck();
         let timeMult = calculateTimeAcceleration();
 
         player.quarkstimer += dt
-        if (player.quarkstimer >= (90000 + 45000 * player.researches[195])) {
-            player.quarkstimer = (90000 + 45000 * player.researches[195])
+        const quarkCapacity = quarkTimerCheck();
+        if (player.quarkstimer >= quarkCapacity) {
+            player.quarkstimer = quarkCapacity
         }
         if (player.researches[61] > 0) {
             player.obtainiumtimer += (dt * timeMult);

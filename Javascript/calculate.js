@@ -955,6 +955,9 @@ function calculateTimeAcceleration() {
     if (timeMult > 3600 && player.achievements[242] < 1) {
         achievementaward(242)
     }
+    if (isEvent) {
+        timeMult *= 1.5
+    }
     return (timeMult)
 }
 
@@ -1037,6 +1040,10 @@ function CalcCorruptionStuff() {
     let bankMultiplier = 1;
     let effectiveScore = 1;
     let speed = calculateTimeAcceleration()
+
+    let eventMultiplier = 1
+    if (isEvent){eventMultiplier *= 2.50}
+
     for (let i = 1; i <= 10; i++) {
         challengeModifier = (i >= 6) ? 2 : 1;
         cubeBank += challengeModifier * player.highestchallengecompletions[i]
@@ -1079,6 +1086,7 @@ function CalcCorruptionStuff() {
     if (effectiveScore > 25e12 && player.platonicUpgrades[15] > 0) {
         cubeGain *= 2.25
     }
+    cubeGain *= eventMultiplier;
 
     let tesseractGain = 1;
     tesseractGain *= Math.pow(1 + Math.max(0, (effectiveScore - 1e5)) / 1e4, .35);
@@ -1103,6 +1111,7 @@ function CalcCorruptionStuff() {
     tesseractGain *= (1 + 4 / 100 * (player.achievements[205] + player.achievements[206] + player.achievements[207]) + 3 / 100 * player.achievements[208])
     tesseractGain *= (1 + player.achievements[240] * Math.max(0.1, 1 / 20 * Math.log(speed + 0.01) / Math.log(10)))
     tesseractGain *= (1 + 6 / 100 * player.achievements[250] + 10 / 100 * player.achievements[251])
+    tesseractGain *= 2.25
 
     let hypercubeGain = (effectiveScore >= 1e9) ? 1 : 0;
     hypercubeGain *= Math.pow(1 + Math.max(0, (effectiveScore - 1e9)) / 1e8, .5);
@@ -1121,6 +1130,7 @@ function CalcCorruptionStuff() {
     hypercubeGain *= (1 + 4 / 100 * (player.achievements[212] + player.achievements[213] + player.achievements[214]) + 3 / 100 * player.achievements[215])
     hypercubeGain *= (1 + player.achievements[240] * Math.max(0.1, 1 / 20 * Math.log(speed + 0.01) / Math.log(10)))
     hypercubeGain *= (1 + 6 / 100 * player.achievements[250] + 10 / 100 * player.achievements[251])
+    hypercubeGain *= eventMultiplier
 
     let platonicGain = (effectiveScore >= 1.337e12) ? 1 : 0;
     platonicGain *= Math.pow(1 + Math.max(0, effectiveScore - 1.337e12) / 1.337e11, .75)
@@ -1141,8 +1151,29 @@ function CalcCorruptionStuff() {
     platonicGain *= (1 + player.achievements[196] * 1 / 5000 * Decimal.log(player.ascendShards.add(1), 10))
     platonicGain *= (1 + player.achievements[240] * Math.max(0.1, 1 / 20 * Math.log(speed + 0.01) / Math.log(10)))
     platonicGain *= (1 + 6 / 100 * player.achievements[250] + 10 / 100 * player.achievements[251])
+    platonicGain *= eventMultiplier
 
     return [cubeBank, Math.floor(baseScore), corruptionMultiplier, Math.floor(effectiveScore), Math.floor(cubeGain), Math.floor(tesseractGain), Math.floor(hypercubeGain), Math.floor(platonicGain)]
+}
+
+const eventStart = "02/26/2021"
+const eventEnd = "02/28/2021 23:59:59"
+
+function eventCheck() {
+    let start = new Date(eventStart);
+    let end = new Date(eventEnd);
+    let now = new Date();
+
+    if(now.getTime() >= start.getTime() && now.getTime() <= end.getTime()){
+        isEvent = true;
+        document.getElementById('eventCurrent').textContent = "ACTIVE UNTIL " + end
+        document.getElementById('eventBuffs').textContent = "2.5x Ascension Rewards, 1.5x Global Speed, 3x Quark Gain Speed and Caps!"
+    }
+    else{
+        isEvent = false;
+        document.getElementById('eventCurrent').textContent = "INACTIVE"
+        document.getElementById('eventBuffs').textContent = ""
+    };
 }
 
 function dailyResetCheck() {
