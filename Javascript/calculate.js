@@ -1156,7 +1156,7 @@ function CalcCorruptionStuff() {
     return [cubeBank, Math.floor(baseScore), corruptionMultiplier, Math.floor(effectiveScore), Math.floor(cubeGain), Math.floor(tesseractGain), Math.floor(hypercubeGain), Math.floor(platonicGain)]
 }
 
-const eventStart = "02/26/2021"
+const eventStart = "02/25/2021 18:00:00"
 const eventEnd = "02/28/2021 23:59:59"
 
 function eventCheck() {
