@@ -1401,6 +1401,22 @@ margin-left: -13px
 	left: 50%;
 	margin-left: -450px;
 }
+#event{
+	position: absolute;
+	width: 900px;
+	height: 100px;
+	top: 470px;
+	left: 50%;
+	margin-left: -450px;
+}
+#eventBuffs{
+	position: absolute;
+	width: 900px;
+	height: 100px;
+	top: 490px;
+	left: 50%;
+	margin-left: -450px;
+}
 
 
 #statistics {

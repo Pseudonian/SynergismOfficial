@@ -428,3 +428,5 @@ var autoResetTimers = {
     reincarnation: 0,
     ascension: 0
 }
+
+let isEvent = false
