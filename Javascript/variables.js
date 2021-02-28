@@ -420,6 +420,7 @@ var challenge15Rewards = {
     cube4: 1,
     spiritBonus: 1,
     score: 1,
+    quarks: 1,
 }
 
 var autoResetTimers = {

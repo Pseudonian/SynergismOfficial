@@ -384,7 +384,7 @@ const player = {
 
     // create a Map with keys defaulting to false
     codes: new Map(
-        Array.from(Array(30), (_, i) => [i + 1, false])
+        Array.from(Array(32), (_, i) => [i + 1, false])
     ),
 
     loaded1009: true,
@@ -584,7 +584,7 @@ const player = {
 }
 
 const blank_save = Object.assign({}, player);
-blank_save.codes = new Map(Array.from(Array(31), (_, i) => [i + 1, false]));
+blank_save.codes = new Map(Array.from(Array(32), (_, i) => [i + 1, false]));
 
 /**
  * stringify a map so it can be re-made when importing
@@ -3000,10 +3000,33 @@ function quarkPerHourCheck(){
     if (player.talismanRarity[7] > 5) {
         baseQuarkPerHour += 2
     }
-    if (isEvent){
+    if (isEvent) {
         baseQuarkPerHour *= 3
     }
-    return (baseQuarkPerHour)
+
+    let quarkPerHourMultiplier = 1;
+    if (player.achievementPoints > 0) {
+        quarkPerHourMultiplier += player.achievementPoints / 25000 // Max of +20.00%
+    }
+    if (player.achievements[250] > 0) {
+        quarkPerHourMultiplier += 0.10
+    }
+    if (player.achievements[251] > 0) {
+        quarkPerHourMultiplier += 0.10
+    }
+    if (player.platonicUpgrades[5] > 0) {
+        quarkPerHourMultiplier += 0.10
+    }
+    if (player.platonicUpgrades[10] > 0) {
+        quarkPerHourMultiplier += 0.15
+    }
+    if (player.platonicUpgrades[15] > 0) {
+        quarkPerHourMultiplier += 0.20
+    }
+    if (player.challenge15Exponent >= 1e11) {
+        quarkPerHourMultiplier += (challenge15Rewards.quarks - 1)
+    }
+    return (baseQuarkPerHour * quarkPerHourMultiplier)
 }
 function quarkCapacityCheck(){
     const timeMultiplier = quarkTimerCheck();

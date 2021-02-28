@@ -190,6 +190,12 @@ function promocodes() {
         if(player.platonicUpgrades[5] > 0){quarkCounter += 1}
         player.worlds += quarkCounter
         el.textContent = 'Happy holidays from Platonic, to you and yours! A gift of ' + format(quarkCounter) + " Quarks, just for you."
+    } else if(input === '20' && isEvent && !player.codes.get(32)){
+        player.codes.set(32,true);
+        player.worlds += 1000
+        player.quarkstimer += 88400
+        player.ascensionCount += 88400
+        el.textContent = "Happy Event #1! Gained 1,000 Quarks, 24 hours of Quark Timer and 24 hours of Ascension Timer!"
     }
     else {
         el.textContent = "Your code is either invalid or already used. Try again!"

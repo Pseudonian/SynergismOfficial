@@ -104,7 +104,7 @@ function loadStatisticsOfferingMultipliers() {
 }
 
 function c15RewardUpdate(){
-    let exponentRequirements = [750, 1.5e3, 3e3, 5e3, 7.5e3, 7.5e3, 1e4, 1e4, 2e4, 4e4, 6e4, 1e5, 1e5, 2e5, 5e5, 1e6, 3e6, 1e7, 3e7, 1e8, 5e8, 2e9, 1e10]
+    let exponentRequirements = [750, 1.5e3, 3e3, 5e3, 7.5e3, 7.5e3, 1e4, 1e4, 2e4, 4e4, 6e4, 1e5, 1e5, 2e5, 5e5, 1e6, 3e6, 1e7, 3e7, 1e8, 5e8, 2e9, 1e10, 1e11]
     let keys = Object.keys(challenge15Rewards)
     let e = player.challenge15Exponent
 
@@ -204,6 +204,10 @@ function c15RewardUpdate(){
         //Ascension Score [10b]
         challenge15Rewards[keys[22]] = 1 + 1/4 * Math.pow(e/1e10,1/4)
     }
+    if(e >= exponentRequirements[23]){
+        //Quark Gain [100b]
+        challenge15Rewards[keys[23]] = 1 + 1/100 * Math.log(e/1e11) / Math.log(2)
+    }
 
 
     updateDisplayC15Rewards();
@@ -211,7 +215,7 @@ function c15RewardUpdate(){
 
 function updateDisplayC15Rewards(){
     document.getElementById('c15Reward0Num').textContent = format(player.challenge15Exponent,0,true)
-    let exponentRequirements = [750, 1.5e3, 3e3, 5e3, 7.5e3, 7.5e3, 1e4, 1e4, 2e4, 4e4, 6e4, 1e5, 1e5, 2e5, 5e5, 1e6, 3e6, 1e7, 3e7, 1e8, 5e8, 2e9, 1e10]
+    let exponentRequirements = [750, 1.5e3, 3e3, 5e3, 7.5e3, 7.5e3, 1e4, 1e4, 2e4, 4e4, 6e4, 1e5, 1e5, 2e5, 5e5, 1e6, 3e6, 1e7, 3e7, 1e8, 5e8, 2e9, 1e10, 1e11]
     console.log(exponentRequirements.length)
     let values = Object.values(challenge15Rewards)
     let keepExponent = 'None'

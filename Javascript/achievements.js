@@ -436,8 +436,8 @@ areward = {
     areward222: "Gain +3% Platonic Cubes on ascension!",
     areward223: "Gain 20% of excess time after 10 seconds each Ascensions as a linear multiplier to ascensions (max 24 hours). Gain +0.1% Platonic Cubes per 1,337,000 ascensions, up to +200%!",
     areward240: "Ascension Cube Gain Multipliers is VERY slightly affected by global speed multipliers: 1 + log10(Speed)/20 (Min: 1.10x, Max: 1.50x)", 
-    areward250: "You gain a permanent +60% Obtainium and Offering bonus, with +6% all cube types!",
-    areward251: "You gain a permanent +100% Obtainium and Offering bonus, with +10% all cube types!"
+    areward250: "You gain a permanent +60% Obtainium and Offering bonus, with +6% all cube types! You also get +10% Quarks forever (additive)!",
+    areward251: "You gain a permanent +100% Obtainium and Offering bonus, with +10% all cube types! You also get +10% Quarks forever (additive)!"
 }
 
 function resetachievementcheck(i) {

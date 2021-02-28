@@ -1157,7 +1157,7 @@ function CalcCorruptionStuff() {
 }
 
 const eventStart = "02/25/2021 18:00:00"
-const eventEnd = "02/28/2021 23:59:59"
+const eventEnd = "03/01/2021 23:59:59"
 
 function eventCheck() {
     let start = new Date(eventStart);
