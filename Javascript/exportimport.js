@@ -193,8 +193,8 @@ function promocodes() {
     } else if(input === '20' && isEvent && !player.codes.get(32)){
         player.codes.set(32,true);
         player.worlds += 1000
-        player.quarkstimer += 88400
-        player.ascensionCount += 88400
+        player.quarkstimer += 86400
+        player.ascensionCounter += 86400
         el.textContent = "Happy Event #1! Gained 1,000 Quarks, 24 hours of Quark Timer and 24 hours of Ascension Timer!"
     }
     else {
