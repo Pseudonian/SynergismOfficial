@@ -266,6 +266,9 @@ function revealStuff() {
     player.researches[124] > 0 ? // 5x24 Reasearch [Ant AutoSac]    
         document.getElementById("autoAntSacrifice").style.display = "block" :
         document.getElementById("autoAntSacrifice").style.display = "none";
+     player.researches[124] > 0 ? // 5x24 Reasearch [Ant AutoSac]    
+        document.getElementById(" autoAntSacrificeAmount").style.display = "block" :
+        document.getElementById(" autoAntSacrificeAmount").style.display = "none";
     
     player.cubeUpgrades[8] > 0 ?
         document.getElementById('particleAutoUpgrade').style.display = "block" :
