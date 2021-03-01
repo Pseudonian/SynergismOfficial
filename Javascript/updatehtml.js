@@ -259,9 +259,9 @@ function revealStuff() {
 
     player.researches[124] > 0 ?
         document.getElementById("toggleAutoSacrificeAnt").style.display = "block" :
-        document.getElementById("toggleAutoSacrificeAnt").style.display = "none";
+        document.getElementById("toggleAutoSacrificeAnt").style.display = "none":
         document.getElementById("autoSacrificeAntMode").style.display = "block" :
-        document.getElementById("autoSacrificeAntMode").style.display = "none";
+        document.getElementById("autoSacrificeAntMode").style.display = "none":
         document.getElementById("autoAntSacrifice").style.display = "block" :
         document.getElementById("autoAntSacrifice").style.display = "none";
     
