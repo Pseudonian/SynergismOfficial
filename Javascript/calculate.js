@@ -214,7 +214,7 @@ function lookupTableGen(runeLevel) {
 
 let lookupTableRuneExp = function () {
     let lookup = {};
-    for (let runeLevel = 0; runeLevel <= 20000; ++runeLevel) {
+    for (let runeLevel = 0; runeLevel <= 40000; ++runeLevel) {
         lookup[runeLevel] = lookupTableGen(runeLevel);
     }
     return lookup;
