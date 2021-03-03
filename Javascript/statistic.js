@@ -206,7 +206,7 @@ function c15RewardUpdate(){
     }
     if(e >= exponentRequirements[23]){
         //Quark Gain [100b]
-        challenge15Rewards[keys[23]] = 1 + 1/100 * Math.log(e/1e11) / Math.log(2)
+        challenge15Rewards[keys[23]] = 1 + 1/100 * Math.log(e/5e10) / Math.log(2)
     }
 
 
