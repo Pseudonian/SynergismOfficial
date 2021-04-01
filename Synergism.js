@@ -3512,7 +3512,7 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvent']('load'
 
     const version = player.version
     const ver = document.getElementById('versionnumber');
-    ver && (ver.textContent = `You're playing on Github v${player.version} - The Abyss [Last Update: 11:30P UTC-8 27-Feb-2021].`);
+    ver && (ver.textContent = `You're playing on Github v${player.version} - The Abyss [Last Update: 01:00 UTC-5 01-Apr-2021].`);
     document.title = 'Synergism v' + player.version;
 
     const dec = LZString.decompressFromBase64(localStorage.getItem('Synergysave2'));
