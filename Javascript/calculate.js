@@ -1089,6 +1089,9 @@ function CalcCorruptionStuff() {
     cubeGain *= eventMultiplier;
 
     let tesseractGain = 1;
+    //This used to be a kong-only buff, now it's always given. Yay!
+    tesseractGain *= 2.25
+    //Back to scheduled program
     tesseractGain *= Math.pow(1 + Math.max(0, (effectiveScore - 1e5)) / 1e4, .35);
     tesseractGain *= (1 + 0.01 * Decimal.log(player.ascendShards.add(1), 4) * Math.min(1, player.constantUpgrades[10]));
     if (effectiveScore >= 100000) {
