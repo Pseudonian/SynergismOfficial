@@ -1077,6 +1077,9 @@ function loadSynergy() {
         for (let j = 1; j <= 50; j++) {
             updateCubeUpgradeBG(j);
         }
+	for (let j = 1; j <= 15; j++) {
+            updatePlatonicUpgradeBG(j);
+        }
 
         player.subtabNumber = 0;
         runescreen = "runes";
