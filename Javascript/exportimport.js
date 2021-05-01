@@ -119,6 +119,8 @@ function promocodes() {
     const input = prompt("Got a code? Great! Enter it in (CaSe SeNsItIvE).");
     const el = document.getElementById("promocodeinfo");
 
+    const date = new Date();
+
     if (input === "synergism2020" && !player.codes.get(1)) {
         player.codes.set(1, true);
         player.runeshards += 25;
@@ -196,8 +198,21 @@ function promocodes() {
         player.quarkstimer += 86400
         player.ascensionCounter += 86400
         el.textContent = "Happy Event #1! Gained 1,000 Quarks, 24 hours of Quark Timer and 24 hours of Ascension Timer!"
-    }
-    else {
+    } else if (
+        date.getMonth() === 4 && // 0-based; May
+        date.getDate() === 1 &&
+        input === 'anniversary' && 
+        !player.codes.get(33)
+    ) {
+        player.codes.set(33, true);
+        player.worlds += 1000 * (new Date().getFullYear() - 2020);
+
+        alert(`
+        Thanks to everyone who has played Synergism and kept it alive for so long. You're all amazing. ❤️
+
+        Here's to another year!
+        `);
+    } else {
         el.textContent = "Your code is either invalid or already used. Try again!"
     }
 
