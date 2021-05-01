@@ -351,6 +351,9 @@ function calculateOfferings(i, calcMult = true, statistic = false) {
         return productContents(arr)
     }
 
+    if(isEvent){
+        q *= 3
+    }
     q = Math.floor(q) * 100 / 100
 
     let persecond = 0;
@@ -956,7 +959,7 @@ function calculateTimeAcceleration() {
         achievementaward(242)
     }
     if (isEvent) {
-        timeMult *= 1.5
+        timeMult *= 2
     }
     return (timeMult)
 }
@@ -1042,7 +1045,7 @@ function CalcCorruptionStuff() {
     let speed = calculateTimeAcceleration()
 
     let eventMultiplier = 1
-    if (isEvent){eventMultiplier *= 2.50}
+    if (isEvent){eventMultiplier *= 2.021}
 
     for (let i = 1; i <= 10; i++) {
         challengeModifier = (i >= 6) ? 2 : 1;
@@ -1159,8 +1162,8 @@ function CalcCorruptionStuff() {
     return [cubeBank, Math.floor(baseScore), corruptionMultiplier, Math.floor(effectiveScore), Math.floor(cubeGain), Math.floor(tesseractGain), Math.floor(hypercubeGain), Math.floor(platonicGain)]
 }
 
-const eventStart = "02/25/2021 18:00:00"
-const eventEnd = "03/01/2021 23:59:59"
+const eventStart = "04/30/2021 00:00:00"
+const eventEnd = "05/04/2021 23:59:59"
 
 function eventCheck() {
     let start = new Date(eventStart);
@@ -1170,7 +1173,7 @@ function eventCheck() {
     if(now.getTime() >= start.getTime() && now.getTime() <= end.getTime()){
         isEvent = true;
         document.getElementById('eventCurrent').textContent = "ACTIVE UNTIL " + end
-        document.getElementById('eventBuffs').textContent = "2.5x Ascension Rewards, 1.5x Global Speed, 3x Quark Gain Speed and Caps!"
+        document.getElementById('eventBuffs').textContent = "2x Global Speed, 3x Offerings, 2.021x All Cube Gain, Triple Export Quark Gain and Caps!"
     }
     else{
         isEvent = false;
