@@ -200,7 +200,6 @@ function promocodes() {
         el.textContent = "Happy Event #1! Gained 1,000 Quarks, 24 hours of Quark Timer and 24 hours of Ascension Timer!"
     } else if (
         date.getMonth() === 4 && // 0-based; May
-        date.getDate() === 1 &&
         input === 'anniversary' && 
         !player.codes.get(33)
     ) {
