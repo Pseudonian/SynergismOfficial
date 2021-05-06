@@ -1,8 +1,8 @@
-const intervalHold = [];
+const intervalHold = new Set();
 const interval = new Proxy(setInterval, {
     apply(target, thisArg, args) {
         const set = target.apply(thisArg, args);
-        intervalHold.push(set);
+        intervalHold.add(set);
         return set;
     }
 });
@@ -10,7 +10,9 @@ const interval = new Proxy(setInterval, {
 const clearInt = new Proxy(clearInterval, {
     apply(target, thisArg, args) {
         const id = args[0];
-        intervalHold.splice(intervalHold.indexOf(id), 1); // remove from intervalHold array
+        if (intervalHold.has(id))
+            intervalHold.delete(id);
+
         return target.apply(thisArg, args);
     }
 });
@@ -3502,18 +3504,11 @@ document['addEventListener' in document ? 'addEventListener' : 'attachEvent']('k
 
 });
 
-window['addEventListener' in window ? 'addEventListener' : 'attachEvent']('load', function () {
-    if (location.href.includes('kong')) {
-        // kongregate
-        const script = document.createElement('script');
-        script.setAttribute('src', 'https://cdn1.kongregate.com/javascripts/kongregate_api.js');
-        document.head.appendChild(script);
-    }
+const reloadShit = async () => {
+    for (const timer of intervalHold)
+        clearInt(timer);
 
-    const version = player.version
-    const ver = document.getElementById('versionnumber');
-    ver && (ver.textContent = `You're playing on Github v${player.version} - The Abyss [Last Update: 01:00 UTC-5 01-Apr-2021].`);
-    document.title = 'Synergism v' + player.version;
+    intervalHold.clear();
 
     const dec = LZString.decompressFromBase64(localStorage.getItem('Synergysave2'));
     const isLZString = dec !== '';
@@ -3521,19 +3516,33 @@ window['addEventListener' in window ? 'addEventListener' : 'attachEvent']('load'
     if (isLZString) {
         localStorage.clear();
         localStorage.setItem('Synergysave2', btoa(dec));
-        alert('Transferred save to new format successfully!');
+        await Alert('Transferred save to new format successfully!');
     }
 
-    setTimeout(function () {
-        loadSynergy();
-        saveSynergy();
-        toggleauto();
-        revealStuff();
-        hideStuff();
-        htmlInserts();
-        // thanks Kewne
-        createTimer();
-        constantIntervals();
-        player.version = version;
-    }, 0);
+    loadSynergy();
+    saveSynergy();
+    toggleauto();
+    revealStuff();
+    hideStuff();
+    htmlInserts();
+    createTimer();
+    constantIntervals();
+}
+
+window.addEventListener('load', function () {
+    if (location.href.includes('kong')) {
+        // kongregate
+        const script = document.createElement('script');
+        script.setAttribute('src', 'https://cdn1.kongregate.com/javascripts/kongregate_api.js');
+        document.head.appendChild(script);
+    }
+
+    const ver = document.getElementById('versionnumber');
+    ver && (ver.textContent = `You're playing on Github v${player.version} - The Abyss [05-May-2021 (Blame Platonic for breakage)].`);
+    document.title = 'Synergism v' + player.version;
+
+    corruptionButtonsAdd();
+    corruptionLoadoutTableCreate();
+
+    reloadShit();
 });
