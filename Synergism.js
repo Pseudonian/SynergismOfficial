@@ -3516,7 +3516,7 @@ const reloadShit = async () => {
     if (isLZString) {
         localStorage.clear();
         localStorage.setItem('Synergysave2', btoa(dec));
-        await Alert('Transferred save to new format successfully!');
+        alert('Transferred save to new format successfully!');
     }
 
     loadSynergy();
