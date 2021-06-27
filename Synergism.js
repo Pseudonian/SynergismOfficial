@@ -3527,6 +3527,8 @@ const reloadShit = async () => {
     htmlInserts();
     createTimer();
     constantIntervals();
+
+    alert(`You're playing on an outdated version! Come play v2.5.0 at https://pseudo-corp.github.io/SynergismOfficial and join our discord: discord.gg/synergism`);
 }
 
 window.addEventListener('load', function () {
