@@ -253,6 +253,20 @@ function createPlatonicDescription(index) {
     }
 }
 
+function updatePlatonicUpgradeBG(i) {
+	let a = document.getElementById("platUpg" + i);
+
+    if (player.platonicUpgrades[i] === 0) {
+        a.style.backgroundColor = "black";
+    }
+    if (player.platonicUpgrades[i] > 0 && player.platonicUpgrades[i] < platUpgradeBaseCosts[i].maxLevel) {
+        a.style.backgroundColor = "purple";
+    }
+    if (player.platonicUpgrades[i] === platUpgradeBaseCosts[i].maxLevel) {
+        a.style.backgroundColor = "green";
+    }
+}
+
 function buyPlatonicUpgrades(index) {
     let resourceCheck = checkPlatonicUpgrade(index)
     if (resourceCheck.canBuy) {
@@ -266,4 +280,5 @@ function buyPlatonicUpgrades(index) {
         player.wowAbyssals -= platUpgradeBaseCosts[index].abyssals
     }
     createPlatonicDescription(index)
+    updatePlatonicUpgradeBG(index);
 }
