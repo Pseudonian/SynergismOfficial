@@ -329,7 +329,7 @@ function researchDescriptions(i, auto, linGrowth) {
         document.getElementById("researchinfo3").style.color = "white"
     }
 
-    if (player.researchPoints < researchBaseCosts[i] && player.researches[i] < (researchMaxLevels[i])) {
+    if (player.researchPoints < (i == 200 ? getResearchCost(i,false,0.01)[1] : researchBaseCosts[i]) && player.researches[i] < (researchMaxLevels[i])) {
         document.getElementById("researchcost").style.color = "crimson"
     }
 
