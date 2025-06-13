@@ -320,6 +320,7 @@ a {color: white;}
 	border: 1px solid orange;
 	left: 72%;
 	margin-left: -50px;
+	z-index: 2;
 }
 
 .buildingTabs {
